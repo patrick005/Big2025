@@ -1,6 +1,8 @@
 # Big2025
 고려대 HRD 빅데이터 교육 - ubuntu 22.04
 
+## ubuntu 22.04 한국어 패치
+https://staraube.tistory.com/105
 
 ## 2025-03-04
 ---
