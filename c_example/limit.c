@@ -9,7 +9,9 @@ int main()
 
     printf("INT_MAX : %d \t INT_MIN : %d\n", INT_MAX, INT_MIN);
     printf("LONG_MAX : %ld \t LONG_MIN : %ld\n", LONG_MAX, LONG_MIN);
+    printf("INT_MAX + 1 : %d\n", INT_MAX +1);
 
 
     return 0;
 }
+
