@@ -18,6 +18,7 @@ int main()
     printf("sizeof(num): %ld\n", sizeof(num));
     printf("sizeof(3.141592): %ld\n", sizeof(3.141592));
     printf("sizeof(uint32_t): %ld\n", sizeof(uint32_t));
+    printf("sizeof(long double): %ld\n", sizeof(long double));
     
     return 0;
 }
