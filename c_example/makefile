@@ -1,6 +1,7 @@
-TARGET = infinit limit celsius2fah far2celsius charNumber test
+TARGET = infinit limit celsius2fah far2celsius charNumber test 
+TARGET2 = triangle triangle2 arithemectics
 
-all : ${TARGET}
+all : ${TARGET2}
 
 infinit : $@
 limit : $@ 
@@ -9,5 +10,10 @@ far2celsius : $@
 charNumber : $@
 test : $@
 
+
+triangle2: $@
+triangle: $@
+arithemectics: $@
+
 clean : 
-	rm ${TARGET}
+	rm ${TARGET2}
