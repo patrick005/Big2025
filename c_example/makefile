@@ -1,7 +1,7 @@
 TARGET = infinit limit celsius2fah far2celsius charNumber test 
-TARGET2 = triangle triangle2 arithemectics increment literal
+TARGET2 = triangle triangle2 arithemectics increment literal genderRatio
 
-all : ${TARGET}
+all : ${TARGET2}
 
 infinit : $@
 limit : $@ 
@@ -19,4 +19,4 @@ literal: $@
 
 
 clean : 
-	rm ${TARGET}
+	rm ${TARGET2}
