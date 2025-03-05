@@ -47,10 +47,16 @@ int main(void)
 
 void printAttrib(unsigned char attr)
 {
-    //printf("attr: 0x%02x\n", attr);
-    printf(" BOLD : %d\n", !(~(attr | ~BOLD)));
-    printf(" ITALIC : %d\n", !(~(attr | ~ITALIC)>>1));
-    printf(" SHADOW : %d\n", !(~(attr | ~SHADOW)>>2));
-    printf(" UL : %d\n", !(~(attr | ~UL)>>3));
+        //printf("attr: 0x%02x\n", attr);
+    // printf(" BOLD : %d\n", !(~(attr | ~BOLD)));
+    // printf(" ITALIC : %d\n", !(~(attr | ~ITALIC)>>1));
+    // printf(" SHADOW : %d\n", !(~(attr | ~SHADOW)>>2));
+    // printf(" UL : %d\n", !(~(attr | ~UL)>>3));
+
+    printf(" BOLD : %d\n", (attr & BOLD));
+    printf(" BOLD : %d\n", (attr & ITALIC)>>1);
+    printf(" BOLD : %d\n", (attr & SHADOW)>>2);
+    printf(" BOLD : %d\n", (attr & UL)>>3);
+
     printf("----------------------------------\n");
 }
