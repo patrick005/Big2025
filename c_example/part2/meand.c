@@ -23,6 +23,6 @@ int main(){
     }
     
 printf("0부터 %d까지 소수의 개수는 %d개 입니다.\n", sosu, result);
-
+// test text
     return 0;
 }
