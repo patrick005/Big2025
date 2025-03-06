@@ -3,7 +3,7 @@
 
 int main(){
 
-    int sosu = 10;
+    int sosu = 100;
     int result = 0;
 
     for(int i = 2; i <= sosu; i++){
@@ -23,6 +23,6 @@ int main(){
     }
     
 printf("0부터 %d까지 소수의 개수는 %d개 입니다.\n", sosu, result);
-// test text
+
     return 0;
 }
