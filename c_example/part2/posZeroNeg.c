@@ -5,24 +5,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char* argv[]){
+int main(void){
     
     int num;
-    if (argc<2){
-        printf("인자를 하나 넣어서 실행하세요\n");
-        return 0;
-    }
-    num = atoi(argv[1]);
-    char* a;
+    printf("숫자를 넣으시오: ");
+    scanf("%d", &num);
+
+    //방법1
+    // char *string;
+    // if(num>0){
+    //     string = "양수";
+    // }else if(num<0){
+    //     string = "음수";
+    // }else{
+    //     string = "제로";
+    // }
+    // printf("입력한 수 %d 는 %s 입니다\n", num, string);
     
-    if(num>0){
-        a = "양수";
-    }else if(num=0){
-        a = "제로";
-    }else if(num<0){
-        a = "음수";
-    }
-    printf("입력한 수 %d 는 %s 입니다\n", num, a);
+    //방법2
+    printf("입력한 수 %d 는 %s 입니다\n", num, num>0 ? "양수" : num<0 ? "음수" : "영");
     
 
     return 0;
