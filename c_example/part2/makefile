@@ -1,4 +1,4 @@
-TARGET = absolute leafYear passFail grade grade2 posZeroNeg bigletter one2Ten one2tensum meand multiplyTable ascii star one2TenWhile one2TenDoWhile randomTwonit staticLocalVariable functionSum returnValue power dice sumArray sumMartix
+TARGET = absolute leafYear passFail grade grade2 posZeroNeg bigletter one2Ten one2tensum meand multiplyTable ascii star one2TenWhile one2TenDoWhile randomTwonit staticLocalVariable functionSum returnValue power dice sumArray sumMartix findMax findValueinArray scoreGrade
 
 all : ${TARGET}
 
@@ -25,6 +25,9 @@ power: $@
 dice: $@
 sumArray: $@
 sumMartix:$@
+findMax:$@
+findValueinArray:$@
+scoreGrade: $@
 
 clean : 
 	rm ${TARGET}
