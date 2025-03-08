@@ -10,12 +10,11 @@
 #include <stdlib.h>
 #include <time.h>
 #define MAX 3                                   //시스템상 제공하는 숫자의 개수 제한
-#define MAXC 100
 
 int main(void){
 
     int ball_input[3] = {0};                        //입력받는 공 숫자 3개 배열
-    int ball_sys[3];                                //시스템 출력 공 숫자 3개 배열
+    int ball_sys[3] = {0};                                //시스템 출력 공 숫자 3개 배열
     int temp;                                       //중복검사
     int count = 0;                                  //시도 횟수
     int strike = 0;                                 //스트라이크 횟수([i], i 같을때)
@@ -28,7 +27,7 @@ int main(void){
 
     srand((unsigned int)time(NULL));
     for(int i = 0; i < MAX; ++i){
-        ball_sys[i] = rand() % 9;        //시스템 출력 공 3개
+        ball_sys[i] = rand() % 10;        //시스템 출력 공 3개
     }
     printf("\n");
 
