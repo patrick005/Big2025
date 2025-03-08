@@ -1,14 +1,14 @@
-## 가상환경 설정 방법
-# 1. VMware Workstation Pro 설치
+# 가상환경 설정 방법
+## 1. VMware Workstation Pro 설치
  - VMware-player-17.5.2-23775571.zip 다운로드 후 압축 해제
  - https://softwareupdate.vmware.com/cds/vmw-desktop/player/17.5.2/23775571/windows/core/
 
-# 2. 가상환경 os(운영체제)로 리눅스를 설치하여 실습
+## 2. 가상환경 os(운영체제)로 리눅스를 설치하여 실습
  - 범용 리눅스인 우분투를 사용
  - ubuntu 22.04 LTS Desktop image download 다운로드
  - https://releases.ubuntu.com/jammy
 
-# 3. VMware Player에서 새로운 가상 환경 생성
+## 3. VMware Player에서 새로운 가상 환경 생성
 1) VMware Player을 실행하여 ubuntu 22.04 image 선택
 2) 프로젝트 생성하여 프로젝트명 작성 및 아이디 비번 만들기
  - 비번은 자주 사용하니, 중요 프로젝트가 아니라면 간단히
@@ -18,7 +18,7 @@
 4) cmd를 여는 방법: ctrl + alt + t 
 
 
-# 4. 표기 언어 및 입력기 언어 한국어 설정
+## 4. 표기 언어 및 입력기 언어 한국어 설정
 1) 설정에서 지역 및 언어 설정에서 한국을 고른다.  
 -> 재부팅 시 ui가 한글로 바뀜  
 -> 설정에서 한글로 바꿀 때 파일명에 대해서도 한글로 바꾸는 것은 적용하지 않기  
