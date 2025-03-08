@@ -10,7 +10,7 @@
  - Ubuntu 22.04 [다운로드](https://releases.ubuntu.com/jammy)
 
 ## 3. VMware Player에서 새로운 가상 환경 생성
-1) VMware Player을 실행하여 ubuntu 22.04 image 선택
+1) VMware Player을 실행하여 다운로드한 ubuntu 22.04 image 지정
 2) 프로젝트 생성하여 프로젝트명 작성 및 아이디 비번 만들기
  - 비번은 자주 사용하니, 중요 프로젝트가 아니라면 간단히
  - 세부설정: 하드 50\~100GB / 가상 램은 4~8GB / Processors core 6
