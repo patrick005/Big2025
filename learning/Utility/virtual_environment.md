@@ -7,7 +7,7 @@
 ## 2. 가상환경 os(운영체제)로 리눅스를 설치하여 실습
  - 범용 리눅스인 우분투를 사용
  - ubuntu 22.04 LTS Desktop image download 다운로드
- - https://releases.ubuntu.com/jammy
+ - Ubuntu 22.04 [다운로드](https://releases.ubuntu.com/jammy)
 
 ## 3. VMware Player에서 새로운 가상 환경 생성
 1) VMware Player을 실행하여 ubuntu 22.04 image 선택
