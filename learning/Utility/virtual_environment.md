@@ -1,7 +1,8 @@
 # 가상환경 설정 방법
 ## 1. VMware Workstation Pro 설치
  - VMware-player-17.5.2-23775571.zip 다운로드 후 압축 해제
- - https://softwareupdate.vmware.com/cds/vmw-desktop/player/17.5.2/23775571/windows/core/
+ - VMware 17.5.2 [다운로드]([https://pages.github.com/](https://softwareupdate.vmware.com/cds/vmw-desktop/player/17.5.2/23775571/windows/core/))  
+  
 
 ## 2. 가상환경 os(운영체제)로 리눅스를 설치하여 실습
  - 범용 리눅스인 우분투를 사용
