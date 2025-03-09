@@ -9,11 +9,12 @@
 이메일 : ksonic@korea.ac.kr  
 ```
 ## C언어
+```
 강사명: 최수길 강사님  
 휴대폰: 010-4573-5540  
 github: github.com/freshmea  
 카톡ID: freshmea  
-
+```
 ---
 
 1일차
