@@ -151,8 +151,8 @@ void print_answer(char b[][SIZE]) {
 
 int main(){
 	int r, c;
-	char board[SIZE][SIZE] = { 0 };	// 보드 이차원 배열
-	srand(time(NULL));		// 시드 설정
+	char board[SIZE][SIZE] = { 0 };	// 게임보드 설정
+	srand(time(NULL));              // 난수 설정
 
 	// 보드 초기화 및 출력
 	for (int i = 0; i < SIZE; i++) {
