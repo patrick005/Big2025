@@ -27,17 +27,17 @@
   
 ## 5. VScode 설치
 1) Ubuntu에 맞는 압축 확장자(.deb) 설치 파일을 [다운로드](https://code.visualstudio.com/Download)  
-2) 설치된 위치의 터미너에서 ```sudo dpkg -i [패키지이름.deb]```
+2) 설치된 위치의 터미너에서  ```sudo dpkg -i [패키지이름.deb]```
   
 ## 6. Git 연동  
-1) 터미널에서 git관련 기능 설치  ```$sudo apt-get install git```  
-2) Git초기화 및 로컬 저장소 생성 (처음 설정시 적용)  ```$git init```  
-3) Git 링크와의 연결  ```$git remote add origin [Git링크]```  
-4) .git이란 로컬 저장가 생겼는지 확인  ```$ls -al```
-5) GitHub에서 최신 변경사항 가져오기  ```$git fetch origin```
+1) 터미널에서 git관련 기능 설치   ```$sudo apt-get install git```  
+2) Git초기화 및 로컬 저장소 생성 (처음 설정시 적용)   ```$git init```  
+3) Git 링크와의 연결   ```$git remote add origin [Git링크]```  
+4) .git이란 로컬 저장가 생겼는지 확인   ```$ls -al```
+5) GitHub에서 최신 변경사항 가져오기   ```$git fetch origin```
 6) 
-7) 새로운 브랜치(main)를 만들고, 원격 브랜치(origin/main)를 따라가도록 설정  ```$git checkout -b main origin/main```
+7) 새로운 브랜치(main)를 만들고, 원격 브랜치(origin/main)를 따라가도록 설정   ```$git checkout -b main origin/main```
 6-1) 원격 브랜치 
-8) GitHub에서 변경점 가져오기  ```$git pull```
+8) GitHub에서 변경점 가져오기   ```$git pull```
 9) 
 
