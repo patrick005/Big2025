@@ -1,17 +1,8 @@
 # Big2025
-고려대 HRD 빅데이터 교육 - ubuntu 22.04
+고려대 HRD 빅데이터 교육과정을 정리한 저장소입니다.
 
-## ubuntu 22.04 한국어 패치
-https://staraube.tistory.com/105
-
-## 2025-03-04
----
-
-- 첫 번째 변경 커밋입니다
-
-  
-c언어
-강사명: 최수길 강사님(과장)
+## C언어
+강사명: 최수길 강사님
 휴대폰: 010-4573-5540
 github: github.com/freshmea
 카톡ID: freshmea
