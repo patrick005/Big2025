@@ -38,7 +38,7 @@ ORDER BY	~	]
 
 ## SELECT 
 - 컬럼명, 컬럼명, ... : 해당 컬럼 지정
-- * : 모든 컬럼
+- /* : 모든 컬럼
 - 수식
 - 함수
 - AS : 컬럼 별칭
@@ -120,7 +120,7 @@ ORDER BY SALARY DESC , LAST_NAME;
 DESC EMP;
 ```
 
-- INDEX 컬러명 대신으로 사용
+- INDEX 컬럼명 대신 숫자 사용 가능
 ```sql
 SELECT LAST_NAME, SALARY
 FROM EMP
