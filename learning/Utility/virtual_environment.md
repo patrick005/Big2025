@@ -12,7 +12,8 @@
 1) VMware Player을 실행하여 다운로드한 ubuntu 22.04 image 지정  
 2) 프로젝트 생성하여 프로젝트명 작성 및 아이디 비번 만들기  
  - 비번은 자주 사용하니, 중요 프로젝트가 아니라면 간단히 만들기  
- - 세부설정: 하드 50\~100GB / 가상 램은 4~8GB / Processors core 6  `코어는 높으면 경고 문구를 띄워주니 안 뜰 때까지 낮추기`  
+ - 세부설정: 하드 50\~100GB / 가상 램은 4~8GB / Processors core 6  
+     `코어는 높으면 경고 문구를 띄워주니 안 뜰 때까지 낮추기`  
 3) 디폴트값 따라가며 키보드는 나중에 변경하니 아무거나, 시간설정은 서울로 하면 됨  
   
 ## 4. 표기 언어 및 입력기 언어 한국어 설정
@@ -27,17 +28,24 @@
   
 ## 5. VScode 설치
 1) Ubuntu에 맞는 압축 확장자(.deb) 설치 파일을 [다운로드](https://code.visualstudio.com/Download)  
-2) 설치된 위치의 터미너에서  ```sudo dpkg -i [패키지이름.deb]```
+2) 설치된 위치의 터미너에서  
+   ```sudo dpkg -i [패키지이름.deb]```
   
 ## 6. Git 연동  
-1) 터미널에서 git관련 기능 설치   ```$sudo apt-get install git```  
-2) Git초기화 및 로컬 저장소 생성 (처음 설정시 적용)   ```$git init```  
-3) Git 링크와의 연결   ```$git remote add origin [Git링크]```  
-4) .git이란 로컬 저장가 생겼는지 확인   ```$ls -al```
-5) GitHub에서 최신 변경사항 가져오기   ```$git fetch origin```
+1) 터미널에서 git관련 기능 설치  
+  ```$sudo apt-get install git```  
+2) Git초기화 및 로컬 저장소 생성 (처음 설정시 적용)  
+  ```$git init```  
+3) Git 링크와의 연결  
+  ```$git remote add origin [Git링크]```  
+4) .git이란 로컬 저장가 생겼는지 확인  
+  ```$ls -al```  
+5) GitHub에서 최신 변경사항 가져오기  
+  ```$git fetch origin```  
 6) 
-7) 새로운 브랜치(main)를 만들고, 원격 브랜치(origin/main)를 따라가도록 설정   ```$git checkout -b main origin/main```
+7) 새로운 브랜치(main)를 만들고, 원격 브랜치(origin/main)를 따라가도록 설정  
+  ```$git checkout -b main origin/main```  
 6-1) 원격 브랜치 
-8) GitHub에서 변경점 가져오기   ```$git pull```
-9) 
+11) GitHub에서 변경점 가져오기   ```$git pull```
+12) 
 
