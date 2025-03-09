@@ -51,7 +51,9 @@ ORDER BY	~	]
 ```sql
 SELECT *
 FROM EMP;
-//모든사원 모든 정보+연봉 확인
+```
+```sql
+- 모든사원 모든 정보+연봉 확인
 SELECT EMP.*, SALARY*12 AS YEAR_SALARY
 FROM EMP;
 ```
