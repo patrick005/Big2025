@@ -67,7 +67,7 @@ void -> 공란
 char -> 문자  
 <p style="color:#FFFFFF;">0000</p>
 
-- Type  
+### Type  
 -정수형  
  *문자형 char()  
  * void
