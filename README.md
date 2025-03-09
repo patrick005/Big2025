@@ -1,6 +1,3 @@
-<--[![patrick's GitHub stats](https://github-readme-stats.vercel.app/api?username=patrick005)](https://github.com/patrick005/github-readme-stats)!-->
-
-
 # Big2025
 고려대 HRD 빅데이터 교육과정을 정리한 저장소입니다.
 
