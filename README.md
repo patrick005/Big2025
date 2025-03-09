@@ -69,10 +69,10 @@ char -> 문자
 
 - Type  
 -정수형  
-<p style="color:#FFFFFF;">0000</p>ㄴ 문자형 char()  
-<p style="color:#FFFFFF;">0000</p>ㄴ void<p style="color:#FFFFFF;">000000000</p>-  함수 출력을 하지 않을 때  
-<p style="color:#FFFFFF;">00000000000000000000</p>ㄴ 함수 입력을 안 받을 때  
-<p style="color:#FFFFFF;">00000000000000000000</p>ㄴ 임의의 인자를 전달*  
+ㄴ 문자형 char()  
+ㄴ void 	-  함수 출력을 하지 않을 때  
+		ㄴ 함수 입력을 안 받을 때  
+		ㄴ 임의의 인자를 전달*  
 임의의 인자: type 미정이라 뭘 줄진 몰라도 뭔갈 줄 것이기에 미리 선언이라도 한다는 느낌?  
 
 
