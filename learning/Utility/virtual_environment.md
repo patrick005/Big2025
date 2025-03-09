@@ -38,7 +38,7 @@
   ```$git init```  
 3) Git 링크와의 연결  
   ```$git remote add origin [Git링크]```  
-4) .git이란 로컬 저장가 생겼는지 확인  
+4) .git이란 로컬 저장소가 생겼는지 확인  
   ```$ls -al```  
 5) GitHub에서 최신 변경사항 가져오기  
   ```$git fetch origin```  
