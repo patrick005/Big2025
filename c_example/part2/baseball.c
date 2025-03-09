@@ -33,22 +33,21 @@ int main(void){
 
     while (strike != 3) {						
         START:
-            printf("0~9까지의 숫자 중 3개를 넣으세요 : ");
+            printf("0~9까지의 숫자 중 3개를 넣으세요 : ");      //사용자 입력 공 3개
             scanf("%d", &temp);
             strike = 0;
             ball = 0;
 
-            
             ball_input[0] = temp / 100 % 10;
             ball_input[1] = temp / 10 % 10;
             ball_input[2] = temp % 10;
 
-            if (temp < 0 || temp > 999){
+            if (temp < 0 || temp > 999){                        //입력값에 대한 유효성 검사
                 printf("\n 유효한 값이 아닙니다.\n");
                 goto START;
             }
     
-            for (int i = 0; i < 3; i++){
+            for (int i = 0; i < 3; i++){                        //입력값에 대한 중복성 검사
                 for (int j = 0; j < i; j++){
                     if (ball_input[i] == ball_input[j]){
                         printf("\n중복된 숫자가 존재합니다.\n");
@@ -58,7 +57,7 @@ int main(void){
                 }
             }
     
-            for (int i = 0; i < 3; i++){
+            for (int i = 0; i < 3; i++){                        //입력값에 대한 판독
                 for (int j = 0; j < 3; j++){
                     if (ball_sys[i] == ball_input[j]){
                         if (i == j){
