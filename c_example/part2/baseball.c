@@ -69,12 +69,11 @@ int main(void){
                     }
                 }
             }
-    
-            count++;
 
+            count++;
             printf("strike:%d\nball:%d", strike, ball);
             printf("\n");
         }
-        printf("승리하셨습니다. 총 시도 횟수는 %d회 입니다.\n", count);
-        return 0;
-    }
+    printf("승리하셨습니다. 총 시도 횟수는 %d회 입니다.\n", count);
+    return 0;
+}
