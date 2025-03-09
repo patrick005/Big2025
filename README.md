@@ -2,10 +2,10 @@
 고려대 HRD 빅데이터 교육과정을 정리한 저장소입니다.
 
 ## C언어
-강사명: 최수길 강사님
-휴대폰: 010-4573-5540
-github: github.com/freshmea
-카톡ID: freshmea
+강사명: 최수길 강사님  
+휴대폰: 010-4573-5540  
+github: github.com/freshmea  
+카톡ID: freshmea  
 
 ---
 
