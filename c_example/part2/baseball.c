@@ -9,44 +9,73 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#define MAX 3                                   //시스템상 제공하는 숫자의 개수 제한
 
 int main(void){
 
     int ball_input[3] = {0};                        //입력받는 공 숫자 3개 배열
-    int ball_sys[3] = {0};                                //시스템 출력 공 숫자 3개 배열
+    int ball_sys[3] = {0};                          //시스템 출력 공 숫자 3개 배열
     int temp;                                       //중복검사
     int count = 0;                                  //시도 횟수
     int strike = 0;                                 //스트라이크 횟수([i], i 같을때)
     int ball = 0;                                   //볼 횟수        ([i] 같을때)
 
-    printf("0~9까지의 숫자 중 3개를 넣으세요 : ");
-    for(int i = 0; i < 10; ++i){
-        scanf("%d", &ball_input[i]);              //공 3개에 대해 입력 
-    }
-
-    srand((unsigned int)time(NULL));
-    for(int i = 0; i < MAX; ++i){
-        ball_sys[i] = rand() % 10;        //시스템 출력 공 3개
+    srand((unsigned int)time(NULL));                //시스템 출력 공 3개
+    for(int i = 0; i < 3; ++i){
+        ball_sys[i] = rand() % 10;
+        for (int j = 0; j < i; j++){
+			if (ball_sys[i] == ball_sys[j]){
+				i--;
+				break;
+			}
+		}
     }
     printf("\n");
 
-    //배열간 비교 및 추출
-    for(int i = 2; i <= ball_input[0]; i++){
-        int count = 0;
+    while (strike != 3) {						
+        START:
+            printf("0~9까지의 숫자 중 3개를 넣으세요 : ");
+            scanf("%d", &temp);
+            strike = 0;
+            ball = 0;
 
-        for(int j = 2; j <= i; j++){
+            
+            ball_input[0] = temp / 100 % 10;
+            ball_input[1] = temp / 10 % 10;
+            ball_input[2] = temp % 10;
 
-            if(i % j == 0){
-                count ++;
-            }else
-                continue;
+            if (temp < 0 || temp > 999){
+                printf("\n 유효한 값이 아닙니다.\n");
+                goto START;
+            }
+    
+            for (int i = 0; i < 3; i++){
+                for (int j = 0; j < i; j++){
+                    if (ball_input[i] == ball_input[j]){
+                        printf("\n중복된 숫자가 존재합니다.\n");
+                        goto START;
+                    }
+                    continue;
+                }
+            }
+    
+            for (int i = 0; i < 3; i++){
+                for (int j = 0; j < 3; j++){
+                    if (ball_sys[i] == ball_input[j]){
+                        if (i == j){
+                             strike++;
+                        }else{
+                            ball++;
+                            break;
+                        }
+                    }
+                }
+            }
+    
+            count++;
 
+            printf("strike:%d\nball:%d", strike, ball);
+            printf("\n");
         }
-        if(count == 1){
-            //result++;
-        }
+        printf("승리하셨습니다. 총 시도 횟수는 %d회 입니다.\n", count);
+        return 0;
     }
-
-    return 0;
-}
