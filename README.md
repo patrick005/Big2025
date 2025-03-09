@@ -1,5 +1,4 @@
-[![patrick's GitHub stats](https://github-readme-stats.vercel.app/api?username=aa)](https://github.com/aa/github-readme-stats)
-[![patrick's GitHub stats](https://github-readme-stats.vercel.app/api?username=patrick005)](https://github.com/patrick005/github-readme-stats)
+<--[![patrick's GitHub stats](https://github-readme-stats.vercel.app/api?username=patrick005)](https://github.com/patrick005/github-readme-stats)!-->
 
 
 # Big2025
