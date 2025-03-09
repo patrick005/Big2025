@@ -1,4 +1,4 @@
-# 6. Git 연동  
+# Git 연동  
 
 1) 터미널에서 git관련 기능 설치  
   ```$sudo apt-get install git```  
