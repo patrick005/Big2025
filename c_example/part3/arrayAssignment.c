@@ -16,11 +16,20 @@ int main(void){
     printf("nums1 의 주소값 %p\n", nums1);
     printf("nums2 의 주소값 %p\n", nums2);
     // 서로 독립적인 메모리이다.
-    nums2[3] = 13;
+    nums2[3] = 14;
+    //shallow copy, 메모리를 공유하는 방법
+    int *nums3;
+    nums3 = nums1;
+    printf("nums3 의 주소값 %p\n", nums3);
+    nums3[2] = 23;
+
     for(int i = 0; i < 5; ++i){
+        printf("----------------\n");
         printf("nums1 %d : %d, \n", i , nums1[i]);
         printf("nums2 %d : %d, \n", i , nums2[i]);
+        printf("nums3 %d : %d, \n", i , nums3[i]);
     }
+    
     
     return 0;
 }
