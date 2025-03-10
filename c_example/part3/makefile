@@ -1,8 +1,11 @@
-TARGET = swap
+TARGET = swap selection bubble qsort
 
 all : ${TARGET}
 
- swap : $@
+swap : $@
+selection:$@
+bubble : $@
+qsort : $@
 
 
 
