@@ -1,8 +1,8 @@
-TARGET = 
+TARGET = swap
 
 all : ${TARGET}
 
- : $@
+ swap : $@
 
 
 
