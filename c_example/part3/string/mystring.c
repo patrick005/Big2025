@@ -10,11 +10,16 @@ int my_strlen(const char *s){
 
 void my_strcpy(char *des, const char *src){
     int i = 0;
-    while(src[i] != '\0'){
+    // while(src[i] != '\0'){
+    //     des[i] = src[i];
+    //     ++i;
+    // }
+    // des[i] = '\0';
+
+    for(int i = 0; i < (sizeof(src)/sizeof(src[0])+10); ++i){
         des[i] = src[i];
-        ++i;
     }
-    des[i] = '\0';
+    
 }
 
 int my_strcmp(const char *s1, const char *s2){
