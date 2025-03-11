@@ -16,7 +16,7 @@ void my_strcpy(char *des, const char *src){
     // }
     // des[i] = '\0';
 
-    for(int i = 0; i < (sizeof(src)/sizeof(src[0])+10); ++i){
+    for(int i = 0; i < ((int)sizeof(src)/(int)sizeof(src[0])+10); ++i){
         des[i] = src[i];
     }
     
