@@ -16,6 +16,7 @@ int main(void){
 
     Date today;
     today = d;
+    today.temp[0] = d.temp[0];//shallow copy
     printDate(&today);
     today.temp[0] = 10; // 배열이 복사 됨.
     printDate(&d);
