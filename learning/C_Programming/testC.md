@@ -27,11 +27,11 @@ scanf란 함수를 사용한다면 주소를 통해 불러옴
 2. Ubuntu 22.04
 
 3. 텍스트 프로그램 
-1) nano, vi (기본 제공 프로그램 ide)
-2) vscode(확장성이 용이)
-- AI인 copilot을 연동
-- ssh 연결한 원격 작업
-- git과의 연동  (github는 클라우드 서비스)
+	1) nano, vi (기본 제공 프로그램 ide)
+	2) vscode(확장성이 용이)
+	- AI인 copilot을 연동
+	- ssh 연결한 원격 작업
+	- git과의 연동  (github는 클라우드 서비스)
 
 4. c 언어
 
