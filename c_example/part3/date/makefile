@@ -11,6 +11,6 @@ main.o : main.c date.h
 date.o : date.c
 	cc -c date.c
 
-
+$@
 clean : 
 	rm ${TARGET} main.o date.o
