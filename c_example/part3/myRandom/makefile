@@ -2,12 +2,15 @@ TARGET = myRandom
 
 all : ${TARGET}
 
+myRandom : main.o myRandom.o
+	cc -o myRandom main.o myRandom.o
 
-myRandom: $@
+main.o : main.c myRandom.h
+	cc -c main.c
 
-
-
+myRandom.o : myRandom.c
+	cc -c myRandom.c
 
 
 clean : 
-	rm ${TARGET}
+	rm ${TARGET} main.o myRandom.o
