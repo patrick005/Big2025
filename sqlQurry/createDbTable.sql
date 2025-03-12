@@ -1,3 +1,4 @@
+--db생성
 create database mydb;
 grant all privileges on mydb.* to myuser @ %;
 -- grant all privileges on mydb.* to 'myuser' @'%'; /터미널에선 % 가려줘야함
