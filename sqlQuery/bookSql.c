@@ -114,7 +114,8 @@ void add_books(MYSQL *conn) {
     
     if (mysql_query(conn, query)) {
         printf("도서 추가 실패\n");
-        return ;
+    }else{
+        printf("도서 추가 성공\n");
     }
     
     printf("도서가 성공적으로 추가되었습니다.\n");
