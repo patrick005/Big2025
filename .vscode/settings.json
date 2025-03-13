@@ -1,10 +1,15 @@
 {
     "files.associations": {
+        "*.py": "python",
+        "*.repos": "yaml",
+        "*.world": "xml",
+        "*.xacro": "xml",
         "stdio.h": "c",
-        "types.h": "c",
-        "stdlib.h": "c",
-        "time.h": "c",
-        "string.h": "c"
+        "random": "c",
+        "stdbool.h": "c",
+        "string": "c",
+        "mysql.h": "c"
     },
+    "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025"
 }

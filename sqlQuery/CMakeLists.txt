@@ -10,8 +10,8 @@ add_executable(bookSql sqlQuery/bookSql.c)
 
 target_include_directories(bookSql PRIVATE /usr/include/mysql)
 target_link_directories(bookSql PRIVATE /usr/lib/mysql)
-target_link_libraries(bookSql PRIVATE /usr/lib/mysql/**)
-# target_link_libraries(bookSql PRIVATE mysqlclient)
+# target_link_libraries(bookSql PRIVATE mysql)
+target_link_libraries(bookSql PRIVATE mysqlclient)
 
 message(STATUS "Using compiler: ${CMAKE_C_COMPILER}")
 message(STATUS "Include directories: /usr/include/mysql")
