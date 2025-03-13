@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-#include <stdlib.h>
 //sudo apt install libmysql++*
 //mysql사용을 위한 설치
 //dpkg -L libmysqlclient-dev | grep mysql.h
@@ -78,9 +77,6 @@ int main(void){
             case EXIT:
                 exit_books(conn);
                 break;
-            default:
-                printf("잘못된 접근입니다.\n");
-                break;
         }
     }
     mysql_close(conn);
@@ -113,7 +109,7 @@ void fetch_books(MYSQL *conn){
     }
     res = mysql_store_result(conn);
     if (!res){
-        printf("가져오기 실패\n");
+        printf("가져오기 실패!\n");
         return;
     }
     Book *pBook;
@@ -134,7 +130,6 @@ void fetch_books(MYSQL *conn){
                (pBook + j)->publisher, (pBook + j)->price);
     }
     free(pBook);
-    mysql_free_result(res);
     // TODO: 엔터만 쳐도 스킵
     int temp;
     scanf("%d", &temp);
@@ -223,6 +218,7 @@ void query_books(MYSQL *conn){
     char query[255];
     printf("------------ 쿼리 입력 ------------\n");
     printf("쿼리를 입력하세요: ");
+    getchar(); 
     fgets(query, sizeof(query), stdin);
     query[strspn(query, "\n")] = 0;
     printf("%s", query);
@@ -236,31 +232,18 @@ void query_books(MYSQL *conn){
 
     res = mysql_store_result(conn);
     if (res) { // 쿼리 결과가 있는 경우
-        int num_fields = mysql_num_fields(res);
-        MYSQL_FIELD *fields = mysql_fetch_fields(res);
-
-        // 컬럼 이름 출력
-        for(int i = 0; i < num_fields; i++){
-            printf("%s\t", fields[i].name);
-        }
-        printf("\n");
-
-        while((row = mysql_fetch_row(res))){
-            for(int i = 0; i < num_fields; i++){
-                printf("%s\t", row[i] ? row[i] : "NULL");
+        while ((row = mysql_fetch_row(res))) {
+            for (int i = 0; i < mysql_num_fields(res); i++) {
+                printf("%s\t", row[i]);
             }
             printf("\n");
         }
-        mysql_free_result(res); // 결과 해제
-    }else{ 
-        if(mysql_field_count(conn) == 0) {
-            printf("쿼리 실행 완료. 영향을 받은 행 수: %llu\n", (unsigned long long)mysql_affected_rows(conn));
-        }else{
-            printf("쿼리 실행 완료. (결과 없음)\n");
-        }
+    } else { 
+        printf("결과 없음\n");
     }
+
     printf("엔터 키를 누르세요...");
-    getchar();
+    getchar(); 
 }
 
 
