@@ -1,93 +1,4 @@
-#include <mysql.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
-//sudo apt install libmysql++*
-//mysql사용을 위한 설치
-//dpkg -L libmysqlclient-dev | grep mysql.h
-//위치확인
-//.vscode/c_cpp_properties.json에서 Path 설정
-//외부라이브러리라 3가지를 명시해야한다
-//cc -o bookSql bookSql.c -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient
-//-I-L-l
-
-//libmysqlclient.so libmysqlclient.a -->.so동적라이브러리 자체 내장
-
-typedef struct{
-    int bookid;
-    char bookname[40];
-    char publisher[40];
-    int price;
-}Book;
-
-enum menu{
-    SELECT, 
-    INSERT, 
-    DROP, 
-    ALTER, 
-    QUERY,
-    EXIT
-};
-
-void fetch_books(MYSQL *conn);
-void add_books(MYSQL *conn);
-void delete_books(MYSQL *conn);
-void update_books(MYSQL *conn);
-void query_books(MYSQL *conn);
-void exit_books(MYSQL *conn);
-void print_menu(void);
-
-int main(void){
-    MYSQL *conn;
-    char *host = "localhost";
-    char *user = "myuser";
-    char *pass = "0000";
-    char *db = "mydb";
-    int port = 3306;
-    int choice;
-
-    conn = mysql_init(NULL);//db 연결 요청 준비
-    if(mysql_real_connect(conn, host, user, pass, db, port, NULL, 0)){
-        printf("MySQL 연결 성공\n");
-    }else{
-        printf("MySQL 연결 실패\n");
-        return 1;
-    }
-
-    while (true){
-        // printf("1번, 2번 고르세요\n");
-        print_menu();
-        scanf("%d", &choice);
-        while(getchar() != '\n');
-        switch (choice){
-            case SELECT:
-                fetch_books(conn);
-                break;
-            case INSERT:
-                add_books(conn);//libmysqlclient.so libmysqlclient.a
-                break;
-            case DROP:
-                delete_books(conn);
-                break;
-            case ALTER:
-                update_books(conn);
-                break;
-            case QUERY:
-                query_books(conn);
-                break;
-            case EXIT:
-                exit_books(conn);
-                break;
-            default:
-                printf("잘못된 접근입니다.\n");
-                break;
-        }
-    }
-    mysql_close(conn);
-    return 0;
-}
-//cc -o bookSql bookSql.c -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient
+#include "booksql.h"
 
 void print_menu(void){
 
@@ -166,7 +77,6 @@ void add_books(MYSQL *conn){
     getchar();
     return;
 }
-
 
 void delete_books(MYSQL *conn){
     printf("------------ 도서 제거 ------------\n");
@@ -266,7 +176,6 @@ void query_books(MYSQL *conn){
     printf("엔터 키를 누르세요...");
     getchar();
 }
-
 
 void exit_books(MYSQL *conn){
     exit(0);

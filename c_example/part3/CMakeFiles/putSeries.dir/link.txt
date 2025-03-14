@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/putSeries.dir/putSeries.c.o -o putSeries 

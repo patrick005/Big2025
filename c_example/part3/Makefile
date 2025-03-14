@@ -243,6 +243,20 @@ enumExample/fast:
 .PHONY : enumExample/fast
 
 # Convenience name for target.
+c_example/part3/CMakeFiles/fflushEx.dir/rule:
+	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/fflushEx.dir/rule
+.PHONY : c_example/part3/CMakeFiles/fflushEx.dir/rule
+
+# Convenience name for target.
+fflushEx: c_example/part3/CMakeFiles/fflushEx.dir/rule
+.PHONY : fflushEx
+
+# fast build rule for target.
+fflushEx/fast:
+	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/fflushEx.dir/build.make c_example/part3/CMakeFiles/fflushEx.dir/build
+.PHONY : fflushEx/fast
+
+# Convenience name for target.
 c_example/part3/CMakeFiles/fileDescriptor.dir/rule:
 	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/fileDescriptor.dir/rule
 .PHONY : c_example/part3/CMakeFiles/fileDescriptor.dir/rule
@@ -339,6 +353,20 @@ pointerConcept: c_example/part3/CMakeFiles/pointerConcept.dir/rule
 pointerConcept/fast:
 	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/pointerConcept.dir/build.make c_example/part3/CMakeFiles/pointerConcept.dir/build
 .PHONY : pointerConcept/fast
+
+# Convenience name for target.
+c_example/part3/CMakeFiles/putSeries.dir/rule:
+	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/putSeries.dir/rule
+.PHONY : c_example/part3/CMakeFiles/putSeries.dir/rule
+
+# Convenience name for target.
+putSeries: c_example/part3/CMakeFiles/putSeries.dir/rule
+.PHONY : putSeries
+
+# fast build rule for target.
+putSeries/fast:
+	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/putSeries.dir/build.make c_example/part3/CMakeFiles/putSeries.dir/build
+.PHONY : putSeries/fast
 
 # Convenience name for target.
 c_example/part3/CMakeFiles/qsort.dir/rule:
@@ -696,6 +724,30 @@ enumExample.c.s:
 	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/enumExample.dir/build.make c_example/part3/CMakeFiles/enumExample.dir/enumExample.c.s
 .PHONY : enumExample.c.s
 
+fflushEx.o: fflushEx.c.o
+.PHONY : fflushEx.o
+
+# target to build an object file
+fflushEx.c.o:
+	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/fflushEx.dir/build.make c_example/part3/CMakeFiles/fflushEx.dir/fflushEx.c.o
+.PHONY : fflushEx.c.o
+
+fflushEx.i: fflushEx.c.i
+.PHONY : fflushEx.i
+
+# target to preprocess a source file
+fflushEx.c.i:
+	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/fflushEx.dir/build.make c_example/part3/CMakeFiles/fflushEx.dir/fflushEx.c.i
+.PHONY : fflushEx.c.i
+
+fflushEx.s: fflushEx.c.s
+.PHONY : fflushEx.s
+
+# target to generate assembly for a file
+fflushEx.c.s:
+	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/fflushEx.dir/build.make c_example/part3/CMakeFiles/fflushEx.dir/fflushEx.c.s
+.PHONY : fflushEx.c.s
+
 fileDescriptor.o: fileDescriptor.c.o
 .PHONY : fileDescriptor.o
 
@@ -863,6 +915,30 @@ pointerConcept.s: pointerConcept.c.s
 pointerConcept.c.s:
 	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/pointerConcept.dir/build.make c_example/part3/CMakeFiles/pointerConcept.dir/pointerConcept.c.s
 .PHONY : pointerConcept.c.s
+
+putSeries.o: putSeries.c.o
+.PHONY : putSeries.o
+
+# target to build an object file
+putSeries.c.o:
+	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/putSeries.dir/build.make c_example/part3/CMakeFiles/putSeries.dir/putSeries.c.o
+.PHONY : putSeries.c.o
+
+putSeries.i: putSeries.c.i
+.PHONY : putSeries.i
+
+# target to preprocess a source file
+putSeries.c.i:
+	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/putSeries.dir/build.make c_example/part3/CMakeFiles/putSeries.dir/putSeries.c.i
+.PHONY : putSeries.c.i
+
+putSeries.s: putSeries.c.s
+.PHONY : putSeries.s
+
+# target to generate assembly for a file
+putSeries.c.s:
+	cd /home/aa/Big2025 && $(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/putSeries.dir/build.make c_example/part3/CMakeFiles/putSeries.dir/putSeries.c.s
+.PHONY : putSeries.c.s
 
 qsort.o: qsort.c.o
 .PHONY : qsort.o
@@ -1121,6 +1197,7 @@ help:
 	@echo "... dynamicAllocation"
 	@echo "... endian"
 	@echo "... enumExample"
+	@echo "... fflushEx"
 	@echo "... fileDescriptor"
 	@echo "... filePointer"
 	@echo "... functionPointer"
@@ -1128,6 +1205,7 @@ help:
 	@echo "... helloStr"
 	@echo "... pointer2"
 	@echo "... pointerConcept"
+	@echo "... putSeries"
 	@echo "... qsort"
 	@echo "... selection"
 	@echo "... strcatExample"
@@ -1165,6 +1243,9 @@ help:
 	@echo "... enumExample.o"
 	@echo "... enumExample.i"
 	@echo "... enumExample.s"
+	@echo "... fflushEx.o"
+	@echo "... fflushEx.i"
+	@echo "... fflushEx.s"
 	@echo "... fileDescriptor.o"
 	@echo "... fileDescriptor.i"
 	@echo "... fileDescriptor.s"
@@ -1186,6 +1267,9 @@ help:
 	@echo "... pointerConcept.o"
 	@echo "... pointerConcept.i"
 	@echo "... pointerConcept.s"
+	@echo "... putSeries.o"
+	@echo "... putSeries.i"
+	@echo "... putSeries.s"
 	@echo "... qsort.o"
 	@echo "... qsort.i"
 	@echo "... qsort.s"
