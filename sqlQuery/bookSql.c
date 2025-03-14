@@ -59,6 +59,7 @@ int main(void){
         // printf("1번, 2번 고르세요\n");
         print_menu();
         scanf("%d", &choice);
+        while(getchar() != '\n');
         switch (choice){
             case SELECT:
                 fetch_books(conn);

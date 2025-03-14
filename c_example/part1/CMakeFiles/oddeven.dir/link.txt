@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/oddeven.dir/oddeven.c.o -o oddeven 

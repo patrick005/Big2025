@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/staticLocalVariable.dir/staticLocalVariable.c.o -o staticLocalVariable 

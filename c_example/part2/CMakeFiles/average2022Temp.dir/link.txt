@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/average2022Temp.dir/average2022Temp.c.o -o average2022Temp 

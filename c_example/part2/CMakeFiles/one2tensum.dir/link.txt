@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/one2tensum.dir/one2tensum.c.o -o one2tensum 

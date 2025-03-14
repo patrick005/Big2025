@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/sumMartix.dir/sumMartix.c.o -o sumMartix 

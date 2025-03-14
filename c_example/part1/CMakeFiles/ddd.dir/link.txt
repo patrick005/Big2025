@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/ddd.dir/ddd.c.o -o ddd 

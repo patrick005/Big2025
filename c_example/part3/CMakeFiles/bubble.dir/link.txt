@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/bubble.dir/bubble.c.o -o bubble 
