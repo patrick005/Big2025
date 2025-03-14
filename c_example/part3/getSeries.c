@@ -15,8 +15,8 @@ int main(void){
     printf("입력한 문자는 %c 입니다.\n", ch);
 
     scanf("%s", str);
-    // printf("입력한 문자는 %s 입니다.\n", str);
-    printf("입력한 문자는 %s%*c 입니다.\n", str);
+    printf("입력한 문자열는 %s 입니다.\n", str);
+    // printf("입력한 문자는 %s%*c 입니다.\n", str);
     //%*c를 추가하면 개행문자를 무시할 수 있다.
 
     //버퍼에 개행문자가 있다.

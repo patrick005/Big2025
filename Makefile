@@ -871,6 +871,19 @@ enumExample/fast:
 .PHONY : enumExample/fast
 
 #=============================================================================
+# Target rules for targets named fflushEx
+
+# Build rule for target.
+fflushEx: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fflushEx
+.PHONY : fflushEx
+
+# fast build rule for target.
+fflushEx/fast:
+	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/fflushEx.dir/build.make c_example/part3/CMakeFiles/fflushEx.dir/build
+.PHONY : fflushEx/fast
+
+#=============================================================================
 # Target rules for targets named fileDescriptor
 
 # Build rule for target.
@@ -960,6 +973,19 @@ pointerConcept: cmake_check_build_system
 pointerConcept/fast:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/pointerConcept.dir/build.make c_example/part3/CMakeFiles/pointerConcept.dir/build
 .PHONY : pointerConcept/fast
+
+#=============================================================================
+# Target rules for targets named putSeries
+
+# Build rule for target.
+putSeries: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 putSeries
+.PHONY : putSeries
+
+# fast build rule for target.
+putSeries/fast:
+	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/putSeries.dir/build.make c_example/part3/CMakeFiles/putSeries.dir/build
+.PHONY : putSeries/fast
 
 #=============================================================================
 # Target rules for targets named qsort
@@ -1136,6 +1162,7 @@ help:
 	@echo "... endian"
 	@echo "... enumExample"
 	@echo "... far2celsius"
+	@echo "... fflushEx"
 	@echo "... fileDescriptor"
 	@echo "... filePointer"
 	@echo "... findMax"
@@ -1167,6 +1194,7 @@ help:
 	@echo "... posZeroNeg"
 	@echo "... power"
 	@echo "... procScore"
+	@echo "... putSeries"
 	@echo "... qsort"
 	@echo "... randomTwonit"
 	@echo "... returnValue"

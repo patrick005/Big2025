@@ -10,7 +10,8 @@
         "string": "c",
         "mysql.h": "c",
         "time.h": "c",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "booksql.h": "c"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025"

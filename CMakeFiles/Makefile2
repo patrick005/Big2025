@@ -218,6 +218,7 @@ c_example/part3/all: c_example/part3/CMakeFiles/charPointerOperation.dir/all
 c_example/part3/all: c_example/part3/CMakeFiles/dynamicAllocation.dir/all
 c_example/part3/all: c_example/part3/CMakeFiles/endian.dir/all
 c_example/part3/all: c_example/part3/CMakeFiles/enumExample.dir/all
+c_example/part3/all: c_example/part3/CMakeFiles/fflushEx.dir/all
 c_example/part3/all: c_example/part3/CMakeFiles/fileDescriptor.dir/all
 c_example/part3/all: c_example/part3/CMakeFiles/filePointer.dir/all
 c_example/part3/all: c_example/part3/CMakeFiles/functionPointer.dir/all
@@ -225,6 +226,7 @@ c_example/part3/all: c_example/part3/CMakeFiles/getSeries.dir/all
 c_example/part3/all: c_example/part3/CMakeFiles/helloStr.dir/all
 c_example/part3/all: c_example/part3/CMakeFiles/pointer2.dir/all
 c_example/part3/all: c_example/part3/CMakeFiles/pointerConcept.dir/all
+c_example/part3/all: c_example/part3/CMakeFiles/putSeries.dir/all
 c_example/part3/all: c_example/part3/CMakeFiles/qsort.dir/all
 c_example/part3/all: c_example/part3/CMakeFiles/selection.dir/all
 c_example/part3/all: c_example/part3/CMakeFiles/strcatExample.dir/all
@@ -252,6 +254,7 @@ c_example/part3/clean: c_example/part3/CMakeFiles/charPointerOperation.dir/clean
 c_example/part3/clean: c_example/part3/CMakeFiles/dynamicAllocation.dir/clean
 c_example/part3/clean: c_example/part3/CMakeFiles/endian.dir/clean
 c_example/part3/clean: c_example/part3/CMakeFiles/enumExample.dir/clean
+c_example/part3/clean: c_example/part3/CMakeFiles/fflushEx.dir/clean
 c_example/part3/clean: c_example/part3/CMakeFiles/fileDescriptor.dir/clean
 c_example/part3/clean: c_example/part3/CMakeFiles/filePointer.dir/clean
 c_example/part3/clean: c_example/part3/CMakeFiles/functionPointer.dir/clean
@@ -259,6 +262,7 @@ c_example/part3/clean: c_example/part3/CMakeFiles/getSeries.dir/clean
 c_example/part3/clean: c_example/part3/CMakeFiles/helloStr.dir/clean
 c_example/part3/clean: c_example/part3/CMakeFiles/pointer2.dir/clean
 c_example/part3/clean: c_example/part3/CMakeFiles/pointerConcept.dir/clean
+c_example/part3/clean: c_example/part3/CMakeFiles/putSeries.dir/clean
 c_example/part3/clean: c_example/part3/CMakeFiles/qsort.dir/clean
 c_example/part3/clean: c_example/part3/CMakeFiles/selection.dir/clean
 c_example/part3/clean: c_example/part3/CMakeFiles/strcatExample.dir/clean
@@ -309,12 +313,12 @@ sqlQuery/clean: sqlQuery/CMakeFiles/bookSql.dir/clean
 sqlQuery/CMakeFiles/bookSql.dir/all:
 	$(MAKE) $(MAKESILENT) -f sqlQuery/CMakeFiles/bookSql.dir/build.make sqlQuery/CMakeFiles/bookSql.dir/depend
 	$(MAKE) $(MAKESILENT) -f sqlQuery/CMakeFiles/bookSql.dir/build.make sqlQuery/CMakeFiles/bookSql.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=14,15 "Built target bookSql"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=14 "Built target bookSql"
 .PHONY : sqlQuery/CMakeFiles/bookSql.dir/all
 
 # Build rule for subdir invocation for target.
 sqlQuery/CMakeFiles/bookSql.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sqlQuery/CMakeFiles/bookSql.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : sqlQuery/CMakeFiles/bookSql.dir/rule
@@ -361,12 +365,12 @@ c_example/part1/CMakeFiles/arithemectics.dir/clean:
 c_example/part1/CMakeFiles/celsius2fah.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/celsius2fah.dir/build.make c_example/part1/CMakeFiles/celsius2fah.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/celsius2fah.dir/build.make c_example/part1/CMakeFiles/celsius2fah.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=17 "Built target celsius2fah"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=16,17 "Built target celsius2fah"
 .PHONY : c_example/part1/CMakeFiles/celsius2fah.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part1/CMakeFiles/celsius2fah.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part1/CMakeFiles/celsius2fah.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part1/CMakeFiles/celsius2fah.dir/rule
@@ -387,12 +391,12 @@ c_example/part1/CMakeFiles/celsius2fah.dir/clean:
 c_example/part1/CMakeFiles/charNumber.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/charNumber.dir/build.make c_example/part1/CMakeFiles/charNumber.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/charNumber.dir/build.make c_example/part1/CMakeFiles/charNumber.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=19,20 "Built target charNumber"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=19 "Built target charNumber"
 .PHONY : c_example/part1/CMakeFiles/charNumber.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part1/CMakeFiles/charNumber.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part1/CMakeFiles/charNumber.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part1/CMakeFiles/charNumber.dir/rule
@@ -439,12 +443,12 @@ c_example/part1/CMakeFiles/compare.dir/clean:
 c_example/part1/CMakeFiles/compare2.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/compare2.dir/build.make c_example/part1/CMakeFiles/compare2.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/compare2.dir/build.make c_example/part1/CMakeFiles/compare2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=23,24 "Built target compare2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=23 "Built target compare2"
 .PHONY : c_example/part1/CMakeFiles/compare2.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part1/CMakeFiles/compare2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part1/CMakeFiles/compare2.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part1/CMakeFiles/compare2.dir/rule
@@ -465,7 +469,7 @@ c_example/part1/CMakeFiles/compare2.dir/clean:
 c_example/part1/CMakeFiles/ddd.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/ddd.dir/build.make c_example/part1/CMakeFiles/ddd.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/ddd.dir/build.make c_example/part1/CMakeFiles/ddd.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=25 "Built target ddd"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=24 "Built target ddd"
 .PHONY : c_example/part1/CMakeFiles/ddd.dir/all
 
 # Build rule for subdir invocation for target.
@@ -491,7 +495,7 @@ c_example/part1/CMakeFiles/ddd.dir/clean:
 c_example/part1/CMakeFiles/far2celsius.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/far2celsius.dir/build.make c_example/part1/CMakeFiles/far2celsius.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/far2celsius.dir/build.make c_example/part1/CMakeFiles/far2celsius.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=31,32 "Built target far2celsius"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=30,31 "Built target far2celsius"
 .PHONY : c_example/part1/CMakeFiles/far2celsius.dir/all
 
 # Build rule for subdir invocation for target.
@@ -543,12 +547,12 @@ c_example/part1/CMakeFiles/fourBit.dir/clean:
 c_example/part1/CMakeFiles/fourBit2.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/fourBit2.dir/build.make c_example/part1/CMakeFiles/fourBit2.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/fourBit2.dir/build.make c_example/part1/CMakeFiles/fourBit2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=39 "Built target fourBit2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=39,40 "Built target fourBit2"
 .PHONY : c_example/part1/CMakeFiles/fourBit2.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part1/CMakeFiles/fourBit2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part1/CMakeFiles/fourBit2.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part1/CMakeFiles/fourBit2.dir/rule
@@ -699,12 +703,12 @@ c_example/part1/CMakeFiles/literal.dir/clean:
 c_example/part1/CMakeFiles/oddeven.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/oddeven.dir/build.make c_example/part1/CMakeFiles/oddeven.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part1/CMakeFiles/oddeven.dir/build.make c_example/part1/CMakeFiles/oddeven.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=59 "Built target oddeven"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=58,59 "Built target oddeven"
 .PHONY : c_example/part1/CMakeFiles/oddeven.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part1/CMakeFiles/oddeven.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part1/CMakeFiles/oddeven.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part1/CMakeFiles/oddeven.dir/rule
@@ -881,12 +885,12 @@ c_example/part2/CMakeFiles/ascii.dir/clean:
 c_example/part2/CMakeFiles/average2022Temp.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/average2022Temp.dir/build.make c_example/part2/CMakeFiles/average2022Temp.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/average2022Temp.dir/build.make c_example/part2/CMakeFiles/average2022Temp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=10,11 "Built target average2022Temp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=10 "Built target average2022Temp"
 .PHONY : c_example/part2/CMakeFiles/average2022Temp.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/average2022Temp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/average2022Temp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/average2022Temp.dir/rule
@@ -907,12 +911,12 @@ c_example/part2/CMakeFiles/average2022Temp.dir/clean:
 c_example/part2/CMakeFiles/baseball.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/baseball.dir/build.make c_example/part2/CMakeFiles/baseball.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/baseball.dir/build.make c_example/part2/CMakeFiles/baseball.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=12 "Built target baseball"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=11,12 "Built target baseball"
 .PHONY : c_example/part2/CMakeFiles/baseball.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/baseball.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/baseball.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/baseball.dir/rule
@@ -959,12 +963,12 @@ c_example/part2/CMakeFiles/bigletter.dir/clean:
 c_example/part2/CMakeFiles/dice.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/dice.dir/build.make c_example/part2/CMakeFiles/dice.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/dice.dir/build.make c_example/part2/CMakeFiles/dice.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=26 "Built target dice"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=25,26 "Built target dice"
 .PHONY : c_example/part2/CMakeFiles/dice.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/dice.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/dice.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/dice.dir/rule
@@ -985,7 +989,7 @@ c_example/part2/CMakeFiles/dice.dir/clean:
 c_example/part2/CMakeFiles/findMax.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/findMax.dir/build.make c_example/part2/CMakeFiles/findMax.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/findMax.dir/build.make c_example/part2/CMakeFiles/findMax.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=35 "Built target findMax"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=36 "Built target findMax"
 .PHONY : c_example/part2/CMakeFiles/findMax.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1011,12 +1015,12 @@ c_example/part2/CMakeFiles/findMax.dir/clean:
 c_example/part2/CMakeFiles/findValueinArray.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/findValueinArray.dir/build.make c_example/part2/CMakeFiles/findValueinArray.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/findValueinArray.dir/build.make c_example/part2/CMakeFiles/findValueinArray.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=36,37 "Built target findValueinArray"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=37 "Built target findValueinArray"
 .PHONY : c_example/part2/CMakeFiles/findValueinArray.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/findValueinArray.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/findValueinArray.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/findValueinArray.dir/rule
@@ -1167,12 +1171,12 @@ c_example/part2/CMakeFiles/meand.dir/clean:
 c_example/part2/CMakeFiles/multiplyTable.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/multiplyTable.dir/build.make c_example/part2/CMakeFiles/multiplyTable.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/multiplyTable.dir/build.make c_example/part2/CMakeFiles/multiplyTable.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=57,58 "Built target multiplyTable"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=57 "Built target multiplyTable"
 .PHONY : c_example/part2/CMakeFiles/multiplyTable.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/multiplyTable.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/multiplyTable.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/multiplyTable.dir/rule
@@ -1219,12 +1223,12 @@ c_example/part2/CMakeFiles/one2Ten.dir/clean:
 c_example/part2/CMakeFiles/one2TenDoWhile.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/one2TenDoWhile.dir/build.make c_example/part2/CMakeFiles/one2TenDoWhile.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/one2TenDoWhile.dir/build.make c_example/part2/CMakeFiles/one2TenDoWhile.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=61,62 "Built target one2TenDoWhile"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=61 "Built target one2TenDoWhile"
 .PHONY : c_example/part2/CMakeFiles/one2TenDoWhile.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/one2TenDoWhile.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/one2TenDoWhile.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/one2TenDoWhile.dir/rule
@@ -1245,12 +1249,12 @@ c_example/part2/CMakeFiles/one2TenDoWhile.dir/clean:
 c_example/part2/CMakeFiles/one2TenWhile.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/one2TenWhile.dir/build.make c_example/part2/CMakeFiles/one2TenWhile.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/one2TenWhile.dir/build.make c_example/part2/CMakeFiles/one2TenWhile.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=63 "Built target one2TenWhile"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=62,63 "Built target one2TenWhile"
 .PHONY : c_example/part2/CMakeFiles/one2TenWhile.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/one2TenWhile.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/one2TenWhile.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/one2TenWhile.dir/rule
@@ -1297,12 +1301,12 @@ c_example/part2/CMakeFiles/one2tensum.dir/clean:
 c_example/part2/CMakeFiles/passFail.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/passFail.dir/build.make c_example/part2/CMakeFiles/passFail.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/passFail.dir/build.make c_example/part2/CMakeFiles/passFail.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=65,66 "Built target passFail"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=65 "Built target passFail"
 .PHONY : c_example/part2/CMakeFiles/passFail.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/passFail.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/passFail.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/passFail.dir/rule
@@ -1349,12 +1353,12 @@ c_example/part2/CMakeFiles/posZeroNeg.dir/clean:
 c_example/part2/CMakeFiles/power.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/power.dir/build.make c_example/part2/CMakeFiles/power.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/power.dir/build.make c_example/part2/CMakeFiles/power.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=70,71 "Built target power"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=70 "Built target power"
 .PHONY : c_example/part2/CMakeFiles/power.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/power.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/power.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/power.dir/rule
@@ -1375,7 +1379,7 @@ c_example/part2/CMakeFiles/power.dir/clean:
 c_example/part2/CMakeFiles/procScore.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/procScore.dir/build.make c_example/part2/CMakeFiles/procScore.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/procScore.dir/build.make c_example/part2/CMakeFiles/procScore.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=72 "Built target procScore"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=71 "Built target procScore"
 .PHONY : c_example/part2/CMakeFiles/procScore.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1401,12 +1405,12 @@ c_example/part2/CMakeFiles/procScore.dir/clean:
 c_example/part2/CMakeFiles/randomTwonit.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/randomTwonit.dir/build.make c_example/part2/CMakeFiles/randomTwonit.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/randomTwonit.dir/build.make c_example/part2/CMakeFiles/randomTwonit.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=74,75 "Built target randomTwonit"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=75 "Built target randomTwonit"
 .PHONY : c_example/part2/CMakeFiles/randomTwonit.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/randomTwonit.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/randomTwonit.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/randomTwonit.dir/rule
@@ -1427,12 +1431,12 @@ c_example/part2/CMakeFiles/randomTwonit.dir/clean:
 c_example/part2/CMakeFiles/returnValue.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/returnValue.dir/build.make c_example/part2/CMakeFiles/returnValue.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/returnValue.dir/build.make c_example/part2/CMakeFiles/returnValue.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=76 "Built target returnValue"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=76,77 "Built target returnValue"
 .PHONY : c_example/part2/CMakeFiles/returnValue.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/returnValue.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/returnValue.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/returnValue.dir/rule
@@ -1453,7 +1457,7 @@ c_example/part2/CMakeFiles/returnValue.dir/clean:
 c_example/part2/CMakeFiles/scoreGrade.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/scoreGrade.dir/build.make c_example/part2/CMakeFiles/scoreGrade.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/scoreGrade.dir/build.make c_example/part2/CMakeFiles/scoreGrade.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=77 "Built target scoreGrade"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=78 "Built target scoreGrade"
 .PHONY : c_example/part2/CMakeFiles/scoreGrade.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1479,12 +1483,12 @@ c_example/part2/CMakeFiles/scoreGrade.dir/clean:
 c_example/part2/CMakeFiles/star.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/star.dir/build.make c_example/part2/CMakeFiles/star.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/star.dir/build.make c_example/part2/CMakeFiles/star.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=81 "Built target star"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=81,82 "Built target star"
 .PHONY : c_example/part2/CMakeFiles/star.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/star.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/star.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/star.dir/rule
@@ -1505,12 +1509,12 @@ c_example/part2/CMakeFiles/star.dir/clean:
 c_example/part2/CMakeFiles/staticLocalVariable.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/staticLocalVariable.dir/build.make c_example/part2/CMakeFiles/staticLocalVariable.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/staticLocalVariable.dir/build.make c_example/part2/CMakeFiles/staticLocalVariable.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=82,83 "Built target staticLocalVariable"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=83 "Built target staticLocalVariable"
 .PHONY : c_example/part2/CMakeFiles/staticLocalVariable.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/staticLocalVariable.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/staticLocalVariable.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/staticLocalVariable.dir/rule
@@ -1557,12 +1561,12 @@ c_example/part2/CMakeFiles/sumArray.dir/clean:
 c_example/part2/CMakeFiles/sumMartix.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/sumMartix.dir/build.make c_example/part2/CMakeFiles/sumMartix.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part2/CMakeFiles/sumMartix.dir/build.make c_example/part2/CMakeFiles/sumMartix.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=87,88 "Built target sumMartix"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=88 "Built target sumMartix"
 .PHONY : c_example/part2/CMakeFiles/sumMartix.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part2/CMakeFiles/sumMartix.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part2/CMakeFiles/sumMartix.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part2/CMakeFiles/sumMartix.dir/rule
@@ -1661,7 +1665,7 @@ c_example/part3/CMakeFiles/arrayPointer.dir/clean:
 c_example/part3/CMakeFiles/bubble.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/bubble.dir/build.make c_example/part3/CMakeFiles/bubble.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/bubble.dir/build.make c_example/part3/CMakeFiles/bubble.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=16 "Built target bubble"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=15 "Built target bubble"
 .PHONY : c_example/part3/CMakeFiles/bubble.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1713,12 +1717,12 @@ c_example/part3/CMakeFiles/charAdress.dir/clean:
 c_example/part3/CMakeFiles/charPointerOperation.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/charPointerOperation.dir/build.make c_example/part3/CMakeFiles/charPointerOperation.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/charPointerOperation.dir/build.make c_example/part3/CMakeFiles/charPointerOperation.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=21 "Built target charPointerOperation"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=20,21 "Built target charPointerOperation"
 .PHONY : c_example/part3/CMakeFiles/charPointerOperation.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part3/CMakeFiles/charPointerOperation.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/charPointerOperation.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part3/CMakeFiles/charPointerOperation.dir/rule
@@ -1739,12 +1743,12 @@ c_example/part3/CMakeFiles/charPointerOperation.dir/clean:
 c_example/part3/CMakeFiles/dynamicAllocation.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/dynamicAllocation.dir/build.make c_example/part3/CMakeFiles/dynamicAllocation.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/dynamicAllocation.dir/build.make c_example/part3/CMakeFiles/dynamicAllocation.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=27,28 "Built target dynamicAllocation"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=27 "Built target dynamicAllocation"
 .PHONY : c_example/part3/CMakeFiles/dynamicAllocation.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part3/CMakeFiles/dynamicAllocation.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/dynamicAllocation.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part3/CMakeFiles/dynamicAllocation.dir/rule
@@ -1765,7 +1769,7 @@ c_example/part3/CMakeFiles/dynamicAllocation.dir/clean:
 c_example/part3/CMakeFiles/endian.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/endian.dir/build.make c_example/part3/CMakeFiles/endian.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/endian.dir/build.make c_example/part3/CMakeFiles/endian.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=29 "Built target endian"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=28 "Built target endian"
 .PHONY : c_example/part3/CMakeFiles/endian.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1791,7 +1795,7 @@ c_example/part3/CMakeFiles/endian.dir/clean:
 c_example/part3/CMakeFiles/enumExample.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/enumExample.dir/build.make c_example/part3/CMakeFiles/enumExample.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/enumExample.dir/build.make c_example/part3/CMakeFiles/enumExample.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=30 "Built target enumExample"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=29 "Built target enumExample"
 .PHONY : c_example/part3/CMakeFiles/enumExample.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1809,6 +1813,32 @@ enumExample: c_example/part3/CMakeFiles/enumExample.dir/rule
 c_example/part3/CMakeFiles/enumExample.dir/clean:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/enumExample.dir/build.make c_example/part3/CMakeFiles/enumExample.dir/clean
 .PHONY : c_example/part3/CMakeFiles/enumExample.dir/clean
+
+#=============================================================================
+# Target rules for target c_example/part3/CMakeFiles/fflushEx.dir
+
+# All Build rule for target.
+c_example/part3/CMakeFiles/fflushEx.dir/all:
+	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/fflushEx.dir/build.make c_example/part3/CMakeFiles/fflushEx.dir/depend
+	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/fflushEx.dir/build.make c_example/part3/CMakeFiles/fflushEx.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=32 "Built target fflushEx"
+.PHONY : c_example/part3/CMakeFiles/fflushEx.dir/all
+
+# Build rule for subdir invocation for target.
+c_example/part3/CMakeFiles/fflushEx.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/fflushEx.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
+.PHONY : c_example/part3/CMakeFiles/fflushEx.dir/rule
+
+# Convenience name for target.
+fflushEx: c_example/part3/CMakeFiles/fflushEx.dir/rule
+.PHONY : fflushEx
+
+# clean rule for target.
+c_example/part3/CMakeFiles/fflushEx.dir/clean:
+	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/fflushEx.dir/build.make c_example/part3/CMakeFiles/fflushEx.dir/clean
+.PHONY : c_example/part3/CMakeFiles/fflushEx.dir/clean
 
 #=============================================================================
 # Target rules for target c_example/part3/CMakeFiles/fileDescriptor.dir
@@ -1843,12 +1873,12 @@ c_example/part3/CMakeFiles/fileDescriptor.dir/clean:
 c_example/part3/CMakeFiles/filePointer.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/filePointer.dir/build.make c_example/part3/CMakeFiles/filePointer.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/filePointer.dir/build.make c_example/part3/CMakeFiles/filePointer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=34 "Built target filePointer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=34,35 "Built target filePointer"
 .PHONY : c_example/part3/CMakeFiles/filePointer.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part3/CMakeFiles/filePointer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/filePointer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part3/CMakeFiles/filePointer.dir/rule
@@ -1869,12 +1899,12 @@ c_example/part3/CMakeFiles/filePointer.dir/clean:
 c_example/part3/CMakeFiles/functionPointer.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/functionPointer.dir/build.make c_example/part3/CMakeFiles/functionPointer.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/functionPointer.dir/build.make c_example/part3/CMakeFiles/functionPointer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=40,41 "Built target functionPointer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=41 "Built target functionPointer"
 .PHONY : c_example/part3/CMakeFiles/functionPointer.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part3/CMakeFiles/functionPointer.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/functionPointer.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part3/CMakeFiles/functionPointer.dir/rule
@@ -1947,7 +1977,7 @@ c_example/part3/CMakeFiles/helloStr.dir/clean:
 c_example/part3/CMakeFiles/pointer2.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/pointer2.dir/build.make c_example/part3/CMakeFiles/pointer2.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/pointer2.dir/build.make c_example/part3/CMakeFiles/pointer2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=67 "Built target pointer2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=66 "Built target pointer2"
 .PHONY : c_example/part3/CMakeFiles/pointer2.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1973,12 +2003,12 @@ c_example/part3/CMakeFiles/pointer2.dir/clean:
 c_example/part3/CMakeFiles/pointerConcept.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/pointerConcept.dir/build.make c_example/part3/CMakeFiles/pointerConcept.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/pointerConcept.dir/build.make c_example/part3/CMakeFiles/pointerConcept.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=68 "Built target pointerConcept"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=67,68 "Built target pointerConcept"
 .PHONY : c_example/part3/CMakeFiles/pointerConcept.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part3/CMakeFiles/pointerConcept.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/pointerConcept.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part3/CMakeFiles/pointerConcept.dir/rule
@@ -1993,13 +2023,39 @@ c_example/part3/CMakeFiles/pointerConcept.dir/clean:
 .PHONY : c_example/part3/CMakeFiles/pointerConcept.dir/clean
 
 #=============================================================================
+# Target rules for target c_example/part3/CMakeFiles/putSeries.dir
+
+# All Build rule for target.
+c_example/part3/CMakeFiles/putSeries.dir/all:
+	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/putSeries.dir/build.make c_example/part3/CMakeFiles/putSeries.dir/depend
+	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/putSeries.dir/build.make c_example/part3/CMakeFiles/putSeries.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=72,73 "Built target putSeries"
+.PHONY : c_example/part3/CMakeFiles/putSeries.dir/all
+
+# Build rule for subdir invocation for target.
+c_example/part3/CMakeFiles/putSeries.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/putSeries.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
+.PHONY : c_example/part3/CMakeFiles/putSeries.dir/rule
+
+# Convenience name for target.
+putSeries: c_example/part3/CMakeFiles/putSeries.dir/rule
+.PHONY : putSeries
+
+# clean rule for target.
+c_example/part3/CMakeFiles/putSeries.dir/clean:
+	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/putSeries.dir/build.make c_example/part3/CMakeFiles/putSeries.dir/clean
+.PHONY : c_example/part3/CMakeFiles/putSeries.dir/clean
+
+#=============================================================================
 # Target rules for target c_example/part3/CMakeFiles/qsort.dir
 
 # All Build rule for target.
 c_example/part3/CMakeFiles/qsort.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/qsort.dir/build.make c_example/part3/CMakeFiles/qsort.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/qsort.dir/build.make c_example/part3/CMakeFiles/qsort.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=73 "Built target qsort"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=74 "Built target qsort"
 .PHONY : c_example/part3/CMakeFiles/qsort.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2025,12 +2081,12 @@ c_example/part3/CMakeFiles/qsort.dir/clean:
 c_example/part3/CMakeFiles/selection.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/selection.dir/build.make c_example/part3/CMakeFiles/selection.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/selection.dir/build.make c_example/part3/CMakeFiles/selection.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=78,79 "Built target selection"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=79 "Built target selection"
 .PHONY : c_example/part3/CMakeFiles/selection.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part3/CMakeFiles/selection.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/selection.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part3/CMakeFiles/selection.dir/rule
@@ -2077,12 +2133,12 @@ c_example/part3/CMakeFiles/strcatExample.dir/clean:
 c_example/part3/CMakeFiles/sumArrayFunction.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/sumArrayFunction.dir/build.make c_example/part3/CMakeFiles/sumArrayFunction.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/sumArrayFunction.dir/build.make c_example/part3/CMakeFiles/sumArrayFunction.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=86 "Built target sumArrayFunction"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=86,87 "Built target sumArrayFunction"
 .PHONY : c_example/part3/CMakeFiles/sumArrayFunction.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part3/CMakeFiles/sumArrayFunction.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/sumArrayFunction.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part3/CMakeFiles/sumArrayFunction.dir/rule
@@ -2129,12 +2185,12 @@ c_example/part3/CMakeFiles/sumMatrixFunction.dir/clean:
 c_example/part3/CMakeFiles/sumMatrixFunction2.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/sumMatrixFunction2.dir/build.make c_example/part3/CMakeFiles/sumMatrixFunction2.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/sumMatrixFunction2.dir/build.make c_example/part3/CMakeFiles/sumMatrixFunction2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=90 "Built target sumMatrixFunction2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=90,91 "Built target sumMatrixFunction2"
 .PHONY : c_example/part3/CMakeFiles/sumMatrixFunction2.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part3/CMakeFiles/sumMatrixFunction2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/sumMatrixFunction2.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part3/CMakeFiles/sumMatrixFunction2.dir/rule
@@ -2155,12 +2211,12 @@ c_example/part3/CMakeFiles/sumMatrixFunction2.dir/clean:
 c_example/part3/CMakeFiles/swap.dir/all:
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/swap.dir/build.make c_example/part3/CMakeFiles/swap.dir/depend
 	$(MAKE) $(MAKESILENT) -f c_example/part3/CMakeFiles/swap.dir/build.make c_example/part3/CMakeFiles/swap.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=91,92 "Built target swap"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/aa/Big2025/CMakeFiles --progress-num=92 "Built target swap"
 .PHONY : c_example/part3/CMakeFiles/swap.dir/all
 
 # Build rule for subdir invocation for target.
 c_example/part3/CMakeFiles/swap.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 c_example/part3/CMakeFiles/swap.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/aa/Big2025/CMakeFiles 0
 .PHONY : c_example/part3/CMakeFiles/swap.dir/rule
