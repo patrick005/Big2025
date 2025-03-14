@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/functionPointer.dir/functionPointer.c.o -o functionPointer 

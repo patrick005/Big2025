@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/swap.dir/swap.c.o -o swap 

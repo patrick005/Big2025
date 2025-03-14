@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/functionSum.dir/functionSum.c.o -o functionSum 

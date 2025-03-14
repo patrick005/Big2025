@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/bigletter.dir/bigletter.c.o -o bigletter 

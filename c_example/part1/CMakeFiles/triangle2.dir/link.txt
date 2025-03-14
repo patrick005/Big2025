@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/triangle2.dir/triangle2.c.o -o triangle2 

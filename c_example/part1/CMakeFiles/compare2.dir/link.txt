@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/compare2.dir/compare2.c.o -o compare2 
