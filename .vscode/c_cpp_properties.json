@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/include/**",
-                "${workspaceFolder}/sqlQuery/include"
+                "${workspaceFolder}/sqlQuery/include",
+                "/usr/include/mysql"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
