@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/celsius2fah.dir/celsius2fah.c.o -o celsius2fah 

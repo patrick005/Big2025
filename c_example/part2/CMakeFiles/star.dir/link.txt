@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/star.dir/star.c.o -o star 

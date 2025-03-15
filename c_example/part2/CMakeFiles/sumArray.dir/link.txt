@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/sumArray.dir/sumArray.c.o -o sumArray 

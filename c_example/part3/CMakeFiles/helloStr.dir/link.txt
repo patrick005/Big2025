@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/helloStr.dir/helloStr.c.o -o helloStr 

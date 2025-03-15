@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/multiplyTable.dir/multiplyTable.c.o -o multiplyTable 

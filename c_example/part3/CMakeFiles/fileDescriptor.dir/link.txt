@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/fileDescriptor.dir/fileDescriptor.c.o -o fileDescriptor 
