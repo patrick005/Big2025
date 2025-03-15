@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/one2TenWhile.dir/one2TenWhile.c.o -o one2TenWhile 

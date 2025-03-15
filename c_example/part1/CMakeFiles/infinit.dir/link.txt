@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/infinit.dir/infinit.c.o -o infinit 

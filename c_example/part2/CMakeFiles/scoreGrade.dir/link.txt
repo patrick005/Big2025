@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/scoreGrade.dir/scoreGrade.c.o -o scoreGrade 

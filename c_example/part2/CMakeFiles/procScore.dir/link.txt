@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/procScore.dir/procScore.c.o -o procScore 

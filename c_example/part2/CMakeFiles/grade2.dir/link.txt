@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/grade2.dir/grade2.c.o -o grade2 

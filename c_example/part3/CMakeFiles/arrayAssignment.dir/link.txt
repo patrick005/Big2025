@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/arrayAssignment.dir/arrayAssignment.c.o -o arrayAssignment 

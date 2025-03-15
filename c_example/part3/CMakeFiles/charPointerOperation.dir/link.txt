@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/charPointerOperation.dir/charPointerOperation.c.o -o charPointerOperation 

@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/far2celsius.dir/far2celsius.c.o -o far2celsius 

@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/one2Ten.dir/one2Ten.c.o -o one2Ten 

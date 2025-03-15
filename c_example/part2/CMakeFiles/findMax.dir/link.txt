@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/findMax.dir/findMax.c.o -o findMax 
