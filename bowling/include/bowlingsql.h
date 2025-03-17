@@ -14,8 +14,7 @@
 #endif
 
 // MySQL 연결 정보
-typedef struct
-{
+typedef struct{
     MYSQL *conn;
     char *host;
     char *user;
@@ -46,8 +45,7 @@ void printTopScores(MySQLConnection *mysql, int limit);
 void printMonthlyStats(MySQLConnection *mysql, const char *username);
 
 
-bool initMySQL(MySQLConnection *mysql)
-{
+bool initMySQL(MySQLConnection *mysql){
     // 기본 연결 정보 설정
     mysql->host = "localhost";
     mysql->user = "myuser";
@@ -57,16 +55,13 @@ bool initMySQL(MySQLConnection *mysql)
 
     // MySQL 초기화
     mysql->conn = mysql_init(NULL);
-    if (mysql->conn == NULL)
-    {
+    if (mysql->conn == NULL){
         fprintf(stderr, "MySQL 초기화 실패\n");
         return false;
     }
 
     // MySQL 서버 연결
-    if (!mysql_real_connect(mysql->conn, mysql->host, mysql->user, mysql->pass,
-                            mysql->db, mysql->port, NULL, 0))
-    {
+    if (!mysql_real_connect(mysql->conn, mysql->host, mysql->user, mysql->pass, mysql->db, mysql->port, NULL, 0)){
         fprintf(stderr, "MySQL 연결 실패: %s\n", mysql_error(mysql->conn));
         return false;
     }
@@ -75,18 +70,15 @@ bool initMySQL(MySQLConnection *mysql)
     return true;
 }
 
-void closeMySQL(MySQLConnection *mysql)
-{
-    if (mysql->conn != NULL)
-    {
+void closeMySQL(MySQLConnection *mysql){
+    if (mysql->conn != NULL){
         mysql_close(mysql->conn);
         mysql->conn = NULL;
         printf("MySQL 연결이 종료되었습니다.\n");
     }
 }
 
-bool saveScore(MySQLConnection *mysql, const char *username, int score)
-{
+bool saveScore(MySQLConnection *mysql, const char *username, int score){
     char query[255];
 
     // 현재 날짜 가져오기
@@ -100,8 +92,7 @@ bool saveScore(MySQLConnection *mysql, const char *username, int score)
             username, date, score);
 
     // 쿼리 실행
-    if (mysql_query(mysql->conn, query))
-    {
+    if (mysql_query(mysql->conn, query)){
         fprintf(stderr, "점수 저장 실패: %s\n", mysql_error(mysql->conn));
         return false;
     }
@@ -110,8 +101,7 @@ bool saveScore(MySQLConnection *mysql, const char *username, int score)
     return true;
 }
 
-bool updateMonthlyStats(MySQLConnection *mysql)
-{
+bool updateMonthlyStats(MySQLConnection *mysql){
     char query[512];
 
     // 월별 통계 업데이트 쿼리
@@ -122,8 +112,7 @@ bool updateMonthlyStats(MySQLConnection *mysql)
                     "ON DUPLICATE KEY UPDATE play_count = VALUES(play_count)");
 
     // 쿼리 실행
-    if (mysql_query(mysql->conn, query))
-    {
+    if (mysql_query(mysql->conn, query)){
         fprintf(stderr, "월별 통계 업데이트 실패: %s\n", mysql_error(mysql->conn));
         return false;
     }
@@ -132,8 +121,7 @@ bool updateMonthlyStats(MySQLConnection *mysql)
     return true;
 }
 
-void printUserHistory(MySQLConnection *mysql, const char *username)
-{
+void printUserHistory(MySQLConnection *mysql, const char *username){
     MYSQL_RES *res;
     MYSQL_ROW row;
     char query[255];
@@ -143,16 +131,14 @@ void printUserHistory(MySQLConnection *mysql, const char *username)
             username);
 
     // 쿼리 실행
-    if (mysql_query(mysql->conn, query))
-    {
+    if (mysql_query(mysql->conn, query)){
         fprintf(stderr, "기록 조회 실패: %s\n", mysql_error(mysql->conn));
         return;
     }
 
     // 결과 가져오기
     res = mysql_store_result(mysql->conn);
-    if (res == NULL)
-    {
+    if (res == NULL){
         fprintf(stderr, "결과 가져오기 실패: %s\n", mysql_error(mysql->conn));
         return;
     }
@@ -162,16 +148,14 @@ void printUserHistory(MySQLConnection *mysql, const char *username)
     printf("날짜\t\t점수\n");
     printf("-------------------\n");
 
-    while ((row = mysql_fetch_row(res)))
-    {
+    while ((row = mysql_fetch_row(res))){
         printf("%s\t%s\n", row[0], row[1]);
     }
 
     mysql_free_result(res);
 }
 
-void printTopScores(MySQLConnection *mysql, int limit)
-{
+void printTopScores(MySQLConnection *mysql, int limit){
     MYSQL_RES *res;
     MYSQL_ROW row;
     char query[255];
@@ -180,16 +164,14 @@ void printTopScores(MySQLConnection *mysql, int limit)
     sprintf(query, "SELECT username, score, play_date FROM score_records ORDER BY score DESC LIMIT %d", limit);
 
     // 쿼리 실행
-    if (mysql_query(mysql->conn, query))
-    {
+    if (mysql_query(mysql->conn, query)){
         fprintf(stderr, "최고 점수 조회 실패: %s\n", mysql_error(mysql->conn));
         return;
     }
 
     // 결과 가져오기
     res = mysql_store_result(mysql->conn);
-    if (res == NULL)
-    {
+    if (res == NULL){
         fprintf(stderr, "결과 가져오기 실패: %s\n", mysql_error(mysql->conn));
         return;
     }
@@ -200,8 +182,7 @@ void printTopScores(MySQLConnection *mysql, int limit)
     printf("----------------------------------\n");
 
     int rank = 1;
-    while ((row = mysql_fetch_row(res)))
-    {
+    while ((row = mysql_fetch_row(res))){
         printf("%d\t%s\t\t%s\t%s\n", rank++, row[0], row[1], row[2]);
     }
 
@@ -209,21 +190,17 @@ void printTopScores(MySQLConnection *mysql, int limit)
 }
 
 // 사용자 월별 통계 출력 함수 구현
-void printMonthlyStats(MySQLConnection *mysql, const char *username)
-{
+void printMonthlyStats(MySQLConnection *mysql, const char *username){
     MYSQL_RES *res;
     MYSQL_ROW row;
     char query[512];
 
-    // username이 NULL이면 모든 사용자에 대한 통계 조회
-    if (username == NULL || username[0] == '\0')
-    {
+    // name이 NULL이면 모든 사용자에 대한 통계 조회
+    if (username == NULL || username[0] == '\0'){
         // 모든 사용자의 월별 통계 조회
         sprintf(query, "SELECT username, year, month, play_count FROM user_monthly_stats "
                         "ORDER BY year DESC, month DESC, username");
-    }
-    else
-    {
+    }else{
         // 특정 사용자의 월별 통계 조회
         sprintf(query, "SELECT year, month, play_count FROM user_monthly_stats "
                         "WHERE username = '%s' ORDER BY year DESC, month DESC",
@@ -231,23 +208,20 @@ void printMonthlyStats(MySQLConnection *mysql, const char *username)
     }
 
     // 쿼리 실행
-    if (mysql_query(mysql->conn, query))
-    {
+    if (mysql_query(mysql->conn, query)){
         fprintf(stderr, "월별 통계 조회 실패: %s\n", mysql_error(mysql->conn));
         return;
     }
 
     // 결과 가져오기
     res = mysql_store_result(mysql->conn);
-    if (res == NULL)
-    {
+    if (res == NULL){
         fprintf(stderr, "결과 가져오기 실패: %s\n", mysql_error(mysql->conn));
         return;
     }
 
     // 결과가 없는 경우
-    if (mysql_num_rows(res) == 0)
-    {
+    if (mysql_num_rows(res) == 0){
         if (username == NULL || username[0] == '\0')
             printf("\n=== 전체 사용자 월별 통계 ===\n");
         else
@@ -259,27 +233,22 @@ void printMonthlyStats(MySQLConnection *mysql, const char *username)
     }
 
     // 테이블 헤더 출력
-    if (username == NULL || username[0] == '\0')
-    {
+    if (username == NULL || username[0] == '\0'){
         printf("\n=== 전체 사용자 월별 통계 ===\n");
         printf("사용자명\t년도\t월\t플레이 횟수\n");
         printf("-----------------------------------\n");
 
         // 결과 출력 - 모든 사용자
-        while ((row = mysql_fetch_row(res)))
-        {
+        while ((row = mysql_fetch_row(res))){
             printf("%s\t%s\t%s\t%s\n", row[0], row[1], row[2], row[3]);
         }
-    }
-    else
-    {
+    }else{
         printf("\n=== %s님의 월별 통계 ===\n", username);
         printf("년도\t월\t플레이 횟수\n");
         printf("----------------------------\n");
 
         // 결과 출력 - 특정 사용자
-        while ((row = mysql_fetch_row(res)))
-        {
+        while ((row = mysql_fetch_row(res))){
             printf("%s\t%s\t%s\n", row[0], row[1], row[2]);
         }
 
@@ -291,15 +260,13 @@ void printMonthlyStats(MySQLConnection *mysql, const char *username)
                         "FROM score_records WHERE username = '%s'",
                 username);
 
-        if (mysql_query(mysql->conn, query))
-        {
+        if (mysql_query(mysql->conn, query)){
             fprintf(stderr, "통계 집계 조회 실패: %s\n", mysql_error(mysql->conn));
             return;
         }
 
         res = mysql_store_result(mysql->conn);
-        if (res && (row = mysql_fetch_row(res)))
-        {
+        if (res && (row = mysql_fetch_row(res))){
             printf("\n총 게임 수: %s\n", row[0]);
             printf("평균 점수: %.2f\n", row[1] ? atof(row[1]) : 0);
         }
@@ -308,21 +275,18 @@ void printMonthlyStats(MySQLConnection *mysql, const char *username)
     mysql_free_result(res);
 
     // 전체 통계 요약 (특정 사용자가 아닌 경우)
-    if (username == NULL || username[0] == '\0')
-    {
+    if (username == NULL || username[0] == '\0'){
         // 전체 게임 수와 평균 점수 조회
         sprintf(query, "SELECT COUNT(*) as total_games, AVG(score) as avg_score, "
                         "COUNT(DISTINCT username) as total_users FROM score_records");
 
-        if (mysql_query(mysql->conn, query))
-        {
+        if (mysql_query(mysql->conn, query)){
             fprintf(stderr, "통계 집계 조회 실패: %s\n", mysql_error(mysql->conn));
             return;
         }
 
         res = mysql_store_result(mysql->conn);
-        if (res && (row = mysql_fetch_row(res)))
-        {
+        if (res && (row = mysql_fetch_row(res))){
             printf("\n총 사용자 수: %s\n", row[2]);
             printf("총 게임 수: %s\n", row[0]);
             printf("전체 평균 점수: %.2f\n", row[1] ? atof(row[1]) : 0);
@@ -330,47 +294,4 @@ void printMonthlyStats(MySQLConnection *mysql, const char *username)
 
         mysql_free_result(res);
     }
-}
-
-// 게임 실행 함수
-void runGame(MySQLConnection *mysql)
-{
-    Score player;
-    char name[10];
-
-    // 시작 시 화면 지우기
-    system(CLEAR_SCREEN);
-
-    printf("볼링 게임을 시작합니다!\n");
-    printf("플레이어 이름을 입력하세요 (최대 9글자): ");
-    scanf("%9s%*c", name);
-
-    // 점수 초기화
-    initScore(&player, name);
-
-    // 보드 출력
-    printBoard(&player);
-
-    // 1-9 프레임 진행
-    for (int i = 1; i <= 9; i++)
-    {
-        playGame(&player, i);
-    }
-
-    // 10 프레임 진행 (특별 규칙 적용)
-    playGame10Frame(&player);
-
-    // 종료 시 화면 지우고 최종 결과 표시
-    system(CLEAR_SCREEN);
-    printBoard(&player);
-    printf("\n게임이 종료되었습니다!\n");
-    printf("최종 점수: %d\n", player.frameScore[10]);
-
-    // MySQL에 점수 저장
-    if (mysql->conn != NULL)
-    {
-        saveScore(mysql, player.name, player.frameScore[10]);
-        updateMonthlyStats(mysql);
-    }
-    waitEnter();
 }

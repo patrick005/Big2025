@@ -2,18 +2,16 @@
 #define BOWLING_H
 
 // 메뉴 상수 정의를 enum으로 변경
-typedef enum
-{
+typedef enum{
     PLAY_GAME = 1,
     VIEW_HISTORY,
     TOP_SCORES,
-    MONTHLY_STATS, // 새 메뉴 옵션
+    MONTHLY_STATS,
     EXIT = 0
 } MenuOption;
 
 
-typedef struct
-{
+typedef struct{
     int score[12][3];
     int frameScore[11];
     char name[10];
