@@ -1,79 +1,6 @@
-#include <mysql.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <time.h>
+#include "bowling.h"
 
-// cc -o bowling bowling.c -I/usr/include/mysql -L/usr/lib/mysql -lmysqlclient
-
-typedef struct {
-    char player[40];
-    int score;
-    int count;
-} Bowling;
-
-enum menu {
-    START,  // 1인용 시작
-    RANKING, // 기록된 플레이 내역 확인
-    VISIT, // 월별 플레이 횟수 확인
-    EXIT    // 게임 종료
-};
-
-void startgame(MYSQL *conn);    // 게임 실행
-void ranking(MYSQL *conn);      // 랭킹 확인
-void visit(MYSQL *conn);        // 월별 플레이 횟수 확인
-void exit_game(MYSQL *conn);    // 게임 종료
-void print_menu(void);  // 실행 메뉴판
-int Gametime(char *date); //날짜 반환
-
-// 게임 실행에 대한 main 정리 완
-int main(void) {
-    // MYSQL 서버 접속
-    MYSQL *conn;
-    char *host = "localhost";
-    char *user = "root";
-    char *pass = "0000";
-    char *db = "bowling"; // 데이터베이스 이름 변경
-    int port = 3306;
-
-    conn = mysql_init(NULL); // db 연결 요청 준비
-    if (mysql_real_connect(conn, host, user, pass, db, port, NULL, 0)) {
-        printf("MySQL 연결 성공\n");
-    } else {
-        printf("MySQL 연결 실패\n");
-        return 1;
-    }
-
-    // 게임 메뉴 실행
-    int choice;
-    while (true) {
-        print_menu();
-        scanf("%d", &choice);
-        while (getchar() != '\n');
-        switch (choice) {
-            case START:
-                startgame(conn);
-                break;
-            case RANKING:
-                ranking(conn);
-                break;
-            case VISIT:
-                visit(conn);
-                break;
-            case EXIT:
-                exit_game(conn);
-                break;
-            default:
-                printf("잘못된 접근입니다.\n");
-                break;
-        }
-    }
-    mysql_close(conn);
-    return 0;
-}
-
-// 실행 메뉴판 - 완
+// 실행 메뉴판
 void print_menu(void) {
     system("clear");
     printf("=== 볼링 게임 ===\n");
@@ -151,6 +78,8 @@ void startgame(MYSQL *conn) {
             total_score += scores[i];
         }
         printf("최종 점수: %d\n", total_score);
+        getchar();
+        
     }
     // 최종 점수 계산
     total_score = 0;
@@ -177,8 +106,9 @@ void startgame(MYSQL *conn) {
     getchar();
 }
     
-    // 랭킹 확인
+// 랭킹 확인
 void ranking(MYSQL *conn) {
+    system("clear");//test
     MYSQL_RES *res;
     MYSQL_ROW row;
     char query[255];
@@ -204,8 +134,10 @@ void ranking(MYSQL *conn) {
     getchar();
     getchar();
 }
+
 // 월별 플레이 횟수 확인
 void visit(MYSQL *conn) {
+    system("clear");//test
     MYSQL_RES *res;
     MYSQL_ROW row;
     char query[255];
@@ -230,12 +162,13 @@ void visit(MYSQL *conn) {
     getchar();
     getchar();
 }
-// 게임 종료 - 완
+
+// 게임 종료
 void exit_game(MYSQL *conn) {
     exit(0);
 }
     
-//날짜 관련 작성 요망
+//날짜 관련
 int Gametime(char *date){
     time_t t = time(NULL);
     struct tm tm = *localtime(&t);
