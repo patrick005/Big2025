@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <dotenv.h>
 
 // 운영체제 확인을 위한 매크로 추가
 #ifdef _WIN32
@@ -47,11 +48,12 @@ void printMonthlyStats(MySQLConnection *mysql, const char *username);
 
 bool initMySQL(MySQLConnection *mysql){
     // 기본 연결 정보 설정
-    mysql->host = "localhost";
-    mysql->user = "myuser";
-    mysql->pass = "0000";
-    mysql->db = "bowling_db";
-    mysql->port = 3306;
+    emv_load(".", false);
+    mysql->host = "DB_HOST";
+    mysql->user = "DB_USER";
+    mysql->pass = "DB_PASS";
+    mysql->db = "DB_NAME";
+    mysql->port = "DB_PORT";
 
     // MySQL 초기화
     mysql->conn = mysql_init(NULL);

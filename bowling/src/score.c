@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+
 // 운영체제 확인을 위한 매크로 추가
 #ifdef _WIN32
 #define CLEAR_SCREEN "cls"

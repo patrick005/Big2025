@@ -17,6 +17,8 @@ add_executable(bowling ${SOURCES})
 target_include_directories(bowling PRIVATE /usr/include/mysql)
 target_link_directories(bowling PRIVATE /usr/lib/mysql)
 target_link_libraries(bowling PRIVATE mysqlclient)
+target_link_directories(bowling PRIVATE /usr/local/bin)
+target_link_libraries(bowling PRIVATE dotenv)
 
 
 
