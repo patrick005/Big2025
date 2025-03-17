@@ -14,55 +14,39 @@
 
 
 // 점수 정보 초기화 함수
-void initScore(Score *player, const char iname[])
-{
+void initScore(Score *player, const char iname[]){
     strcpy(player->name, iname);
     memset(player->score, 0, sizeof(player->score));
     memset(player->frameScore, 0, sizeof(player->frameScore));
 }
 
 // 프레임 점수 계산 함수
-void calScore(int *frameScore, const int (*score)[3])
-{
-    for (int i = 1; i <= 10; i++)
-    {
+void calScore(int *frameScore, const int (*score)[3]){
+    for (int i = 1; i <= 10; i++){
         frameScore[i] = frameScore[i - 1];
-        if (score[i][1] == 10) // 스트라이크
-        {
-            frameScore[i] += 10 + score[i + 1][1] + score[i + 2][1];
-        }
-        else if (score[i][1] + score[i][2] == 10) // 스페어
-        {
-            frameScore[i] += 10 + score[i + 1][1];
-        }
-        else
-        {
+        if (score[i][1] == 10){
+            frameScore[i] += 10 + score[i + 1][1] + score[i + 2][1]; // 스트라이크
+        }else if (score[i][1] + score[i][2] == 10){
+            frameScore[i] += 10 + score[i + 1][1];  // 스페어
+        }else{
             frameScore[i] += score[i][1] + score[i][2];
         }
     }
 }
 
 // 유효한 점수 입력 함수
-int getValidScore(int frame, int bow, int prevScore)
-{
+int getValidScore(int frame, int bow, int prevScore){
     int score;
-    while (1)
-    {
+    while (1){
         printf("%d프레임 %d번째 투구 점수 입력: ", frame, bow);
         scanf("%d", &score);
-        if (score >= 0 && score <= 10)
-        {
-            if (bow == 2 && prevScore + score > 10)
-            {
+        if (score >= 0 && score <= 10){
+            if (bow == 2 && prevScore + score > 10){
                 printf("잘못된 입력입니다. 다시 입력하세요.\n");
-            }
-            else
-            {
+            }else{
                 break;
             }
-        }
-        else
-        {
+        }else{
             printf("잘못된 입력입니다. 다시 입력하세요.\n");
         }
     }
@@ -70,14 +54,12 @@ int getValidScore(int frame, int bow, int prevScore)
 }
 
 // 게임 플레이 함수
-void playGame(Score *player, int i)
-{
+void playGame(Score *player, int i){
     player->score[i][1] = getValidScore(i, 1, 0);
     setScore(i, 1, player);
     printBoard(player);
 
-    if (player->score[i][1] != 10)
-    {
+    if (player->score[i][1] != 10){
         player->score[i][2] = getValidScore(i, 2, player->score[i][1]);
         setScore(i, 2, player);
         printBoard(player);
@@ -92,33 +74,25 @@ void playGame10Frame(Score *player){
     setScore(10, 1, player);
     printBoard(player);
 
-    if (player->score[10][1] == 10)
-    {
+    if (player->score[10][1] == 10){
         player->score[10][2] = getValidScore(10, 2, 0);
         setScore(10, 2, player);
         printBoard(player);
 
-        if (player->score[10][2] == 10)
-        {
+        if (player->score[10][2] == 10){
             player->score[10][3] = getValidScore(10, 3, 0);
             setScore(10, 3, player);
             printBoard(player);
-        }
-        else
-        {
+        }else{
             player->score[10][3] = getValidScore(10, 3, player->score[10][2]);
             setScore(10, 3, player);
             printBoard(player);
         }
-    }
-    else if (player->score[10][1] + player->score[10][2] == 10)
-    {
+    }else if (player->score[10][1] + player->score[10][2] == 10){
         player->score[10][3] = getValidScore(10, 3, 0);
         setScore(10, 3, player);
         printBoard(player);
-    }
-    else
-    {
+    }else{
         player->score[10][2] = getValidScore(10, 2, player->score[10][1]);
         setScore(10, 2, player);
         printBoard(player);
@@ -128,16 +102,14 @@ void playGame10Frame(Score *player){
     printBoard(player);
 }
 
-
 // 메뉴 출력 함수
-void printMenu()
-{
+void printMenu(){
     system(CLEAR_SCREEN);
     printf("=== 볼링 게임 시스템 ===\n");
     printf("1. 게임 플레이\n");
     printf("2. 내 기록 보기\n");
     printf("3. 최고 점수 보기\n");
-    printf("4. 월별 통계 보기\n"); // 새 메뉴 옵션 추가
+    printf("4. 월별 통계 보기\n"); 
     printf("0. 종료\n");
     printf("선택: ");
 }
