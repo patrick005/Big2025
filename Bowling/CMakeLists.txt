@@ -1,18 +1,25 @@
 cmake_minimum_required(VERSION 3.00)
 project(Bowling)
 
+# 헤더 파일 경로 설정
+include_directories(include)
+
+# 소스 파일 경로 설정
 set(SOURCES
     src/bowling.c
     src/main.c
-    )
-
+)
+# 실행 파일 생성
 add_executable(bowling ${SOURCES})
-target_include_directories(bowling PRIVATE include)
-# target_include_directories(bowling PRIVATE ${CMAKE_CURRENT_LIST_DIR}/src)
 
+# MySQL 헤더 및 라이브러리 경로 설정
 target_include_directories(bowling PRIVATE /usr/include/mysql)
 target_link_directories(bowling PRIVATE /usr/lib/mysql)
 target_link_libraries(bowling PRIVATE mysqlclient)
+
+
+
+# target_include_directories(bowling PRIVATE ${CMAKE_CURRENT_LIST_DIR}/src)
 
 # message(STATUS "Using compiler: ${CMAKE_C_COMPILER}")
 # message(STATUS "Include directories: /usr/include/mysql")

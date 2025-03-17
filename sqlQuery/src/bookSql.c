@@ -136,11 +136,11 @@ void query_books(MYSQL *conn){
     printf("쿼리를 입력하세요: ");
     getchar();
     
-    gets(query);    
-    // fgets(query, sizeof(query), stdin);
-    // query[strspn(query, "\n")] = 0;
+    //gets(query);    
+    fgets(query, sizeof(query), stdin);
+    query[strspn(query, "\n")] = 0;
     
-    // scanf("%s", query);
+    scanf("%s", query);
     // 쿼리 요청
     if (mysql_query(conn, query)){
         printf("쿼리 실패: %s\n", mysql_error(conn));
