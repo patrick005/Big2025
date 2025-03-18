@@ -13,7 +13,9 @@
         "unistd.h": "c",
         "booksql.h": "c",
         "bowling.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "io.h": "c",
+        "delay.h": "c"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025",
