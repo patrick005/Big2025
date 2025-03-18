@@ -10,9 +10,9 @@ int main(void) {
 
     while (1) {
         
-        if(led_data == 0x08){
+        if(led_data >= 0x08){
             shift = 0; 
-        }else if (led_data == 0x01){
+        }else if (led_data <= 0x01){
             shift = 1; 
         }
 
