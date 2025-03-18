@@ -16,5 +16,6 @@
         "string.h": "c"
     },
     "ros.distro": "humble",
-    "cmake.sourceDirectory": "/home/aa/Big2025"
+    "cmake.sourceDirectory": "/home/aa/Big2025",
+    "makefile.configureOnOpen": false
 }
