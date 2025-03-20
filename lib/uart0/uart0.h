@@ -10,7 +10,6 @@ unsigned char uart0Receive(void);
 void uart0PrintString(char *str);
 void uart0Print1ByteNumber(unsigned char n);
 
-
 FILE OUTPUT = FDEV_SETUP_STREAM(uart0Transmit, NULL, _FDEV_SETUP_WRITE);    //stdio사용설정
 FILE INPUT = FDEV_SETUP_STREAM(NULL, uart0Receive, _FDEV_SETUP_READ);       //stdio사용설정
 

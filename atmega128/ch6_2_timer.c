@@ -3,7 +3,7 @@
 #include <avr/interrupt.h>
 
 volatile uint8_t ledData = 0x01;
-volatile uint8_t timer2Cnt = 0;
+uint8_t timer2Cnt = 0;
 uint8_t shift = 0;
 
 ISR(TIMER0_OVF_vect);
