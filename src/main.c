@@ -1,28 +1,17 @@
-//
-#include "lcd.h"
+#include <avr/interrupt.h>
 #include <avr/io.h>
-#include <util/delay.h>
-#include <stdio.h>
+#include "uart0.h"
 
-int main(void) {
-    lcdInit();
-    lcdClear();
-    char lcdBuffer[17];
-    unsigned char switch_flag = 0;
-    DDRE = 0x00;    // 8개의 핀을 모두 인풋
-    PORTE = 0x00;   // 출력 설정 - 풀업설정
-    DDRC = 0x0F;    // 아웃풋;
+int main(){   
+    uart0Init();
+    unsigned char rxData;
+    uint8_t numbers[] = {0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x27, 0x7F, 0x67};
 
-    while (1) {
-        if (PINE >>4){
-            switch_flag = PINE >>4; //0b1000 0b0100
+    while (1){
+        rxData = uart0Receive();
+        if ((rxData >= 0x30) && (rxData <= 0x39)){
+            PORTA = numbers[rxData - 0x30];
         }
-
-        PORTC = switch_flag;
-        snprintf(lcdBuffer, sizeof(lcdBuffer), "SW: 0x%02X, %c", switch_flag, switch_flag);
-        lcdGotoXY(0, 0);
-        lcdPrint(lcdBuffer);
     }
-
     return 0;
 }
