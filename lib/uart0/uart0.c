@@ -2,12 +2,13 @@
 
 void uart0Init(void)
 {
-    UCSR0A |= _BV(U2X1); // 2배속 모드
+    UCSR0A |= 0x00; // 2배속 모드
     UCSR0B = 0x18;       // 0b00011000 Rx, Tx enable
-    UCSR0C |= 0x06;      // 0b00010110  비동기, no Parity, 1 stop bit
+    UCSR0C = 0x06;      // 0b00010110  비동기, no Parity, 1 stop bit
 
     UBRR0H = 0x00;
-    UBRR0L = 207; // 115200 bps --> 9600 bsp  
+    // UBRR0L = 207; // 115200 bps --> 9600 bsp  
+    UBRR0L = 0x07;
 }
 
 void uart0Transmit(char data)
@@ -19,7 +20,7 @@ void uart0Transmit(char data)
 }
 unsigned char uart0Receive(void)
 {
-    while ((UCSR0A & _BV(RXC0)) == 0) // 문자 버퍼에 있으면 루프 탈출
+    while (!(UCSR0A & _BV(RXC0))) // 문자 버퍼에 있으면 루프 탈출
         ;
     return UDR0;
 }
