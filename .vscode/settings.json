@@ -35,7 +35,8 @@
         "dotenv.h": "c",
         "io.h": "c",
         "delay.h": "c",
-        "lcd.h": "c"
+        "lcd.h": "c",
+        "interrupt.h": "c"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025",
