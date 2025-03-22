@@ -36,7 +36,9 @@
         "io.h": "c",
         "delay.h": "c",
         "lcd.h": "c",
-        "interrupt.h": "c"
+        "interrupt.h": "c",
+        "iom128.h": "c",
+        "uart0.h": "c"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025",

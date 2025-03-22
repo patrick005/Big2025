@@ -1,28 +1,29 @@
-#include <avr/io.h>
 #include <avr/interrupt.h>
-#include <avr/delay.h>
+#include <avr/io.h>
+#include <util/delay.h>
 
-ISR(TIMER0_OVF_vect);
-
-int main(void){
+int main(void)
+{
     DDRC = 0x00;
-    DDRB |= _BV(PB4);
+    DDRB |= _BV(PB4); // OC0 핀 PB4 출력 설정
 
-    TCCR0 = _BV(WGM00)| _BV(WGM01)| _BV(COM01)| _BV(CS01); // 1024 prescale Hz
-
+    TCCR0 = _BV(WGM00) | _BV(WGM01) | _BV(COM01) | _BV(CS01); // clock select 8 prescale
+    // fast PWM. compare -> clear (count)
+    // 16000000 Hz /8 --> 2MHz / 255 -> 7845Hz Duty cycle
+    // 0.00012 s -> 0.1ms | 0.02ms on 0.08ms off normal
     uint8_t brightness = 0;
     int8_t delta = 1;
 
-    while (1){
-        OCR0 = brightness; //0~255
+    while (1)
+    {
+        OCR0 = brightness; // 0~ 255 -> 이 숫자로 compare가 일어남.
         _delay_ms(10);
         brightness += delta;
-        if(brightness ==0 || brightness == 255){
+        if (brightness == 0 || brightness == 255)
+        {
             delta = -delta;
         }
-
     }
     return 0;
 }
-
 
