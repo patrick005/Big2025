@@ -1,3 +1,4 @@
+// PULSE값에 따른 -90 ~ 90도 설정 완료
 #include <avr/io.h>
 #include <util/delay.h>
 #include "lcd.h"
@@ -17,7 +18,7 @@ int main(void){
     char buffer[16];
 
     while(1){
-        for(uint16_t pulse = 2000; pulse <= 4000; pulse += 40){
+        for(uint16_t pulse = 800; pulse <= 4600; pulse += 40){
             OCR3A = pulse;
             itoa(pulse, buffer, 10);
             lcdGotoXY(0,0);
@@ -25,7 +26,7 @@ int main(void){
             
         }
         _delay_ms(20);
-        for(uint16_t pulse = 4000; pulse >= 2000; pulse -= 40){
+        for(uint16_t pulse = 4600; pulse >= 800; pulse -= 40){
             OCR3A = pulse;
             itoa(pulse, buffer, 10);
             lcdGotoXY(0,0);
