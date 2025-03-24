@@ -11,7 +11,6 @@
 #include <avr/io.h> // AVR 마이크로컨트롤러 입출력 레지스터 정의
 #include <avr/interrupt.h> // AVR 인터럽트 관련 함수 및 매크로 정의
 #include "uart0.h" // UART0 통신 라이브러리
-#include <stdint.h> //printf를 사용하기위한 라이브러리
 #include <util/delay.h>
 
 volatile uint8_t readFlag = 1, txFlag = 0;
