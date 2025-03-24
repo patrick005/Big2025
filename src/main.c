@@ -1,57 +1,74 @@
-//ch10_1_spi.c
-#include "lcd.h"
-#include <avr/delay.h>
+//
+#include "SHT2x.h" // i2c
+#include "TWI_driver.h"
 #include <avr/io.h>
-#include "at25160.h"
+#include <avr/interrupt.h>
+#include <util/delay.h>
+#include "lcd.h"
 
-#define ARRAY_SIZE(array)(sizeof(array)/ sizeof(array[0])) // 송수신 데이터 사이즈 구하는 매크로
-//보내볼 데이터에 대한 예시 1,2,3
-uint8_t msg1[] = "welcome!!";
-uint8_t msg2[] = "ATmega128-world";
-uint8_t msg3[] = "SPI-Flash Example";
+void printf_2dot1(uint8_t sense, uint16_t sense_temp);
+
+uint16_t temperaturC, humidityRH;
 
 int main(void)
 {   
-    //메시지를 주고받을 버퍼 생성
-    uint8_t i = 0;
-    uint8_t buf1[20] = {0};
-    uint8_t buf2[20] = {0};
-    uint8_t buf3[20] = {0};
+    Init_TWI();
+    lcdInit();  //lcd
+    SHT2x_Init(); //온습도
+    nt16 sRH;
+    nt16 sT;
+    uint8_t error; // SHT2x_MeasureHM가 선언된 헤더에서의 에러를 쓰기위해 그대로 가져옴
 
-    SPI_Init(); //SPI 사용준비 / PB0 1 2 3이 이 교육보드에 할당 되어있음
-    lcdInit(); // lcd 사용준비 / PC4 5 6 7 PG2이 이 교육보드에 할당 되어있음
-    
-    //송신 주소, 자료, 크기 설정
-    at25160_Write_Arry(0x0100, msg1, ARRAY_SIZE(msg1));
-    at25160_Write_Arry(0x0200, msg2, ARRAY_SIZE(msg2));
-    at25160_Write_Arry(0x0300, msg3, ARRAY_SIZE(msg3));
-
-    //수신
-    at25160_Read_Arry(0x0100, buf1, ARRAY_SIZE(buf1));
-    at25160_Read_Arry(0x0200, buf2, ARRAY_SIZE(buf2));
-    at25160_Read_Arry(0x0300, buf3, ARRAY_SIZE(buf3));
-    //buf 사이즈가 20으로 설정되어있기에 msg가 아무리 적어도 20개씩 들여옴
-
-    //3가지 방법으로 출력
     while (1)
     {
-        lcdGotoXY(0, 0);
-        for(i =0; i< 10 -1; i++){
-            lcdDataWrite(buf1[i]);
-            _delay_ms(100);
+        error |= SHT2x_MeasureHM(HUMIDITY, &sRH);
+        error |= SHT2x_MeasureHM(TEMP, &sT);
+        temperaturC = SHT2x_CalcTemperatureC(sT.u16)*10;
+        humidityRH = SHT2x_CalcRH(sRH.u16)* 10;
+        if(error == SUCCESS){
+            lcdGotoXY(0,0);
+            printf_2dot1(TEMP, temperaturC);
+            lcdGotoXY(0,1);
+            printf_2dot1(HUMIDITY, humidityRH);
+        }else{
+            lcdGotoXY(0,0);
+            lcdPrintData(" Temp: --.-C", 12);
+            lcdGotoXY(0,1);
+            lcdPrintData(" Humi: --.-%", 12);
         }
-        i=0;
-        lcdGotoXY(0,1);
-        while(buf2[i]){
-            lcdDataWrite(buf2[i]);
-            ++i;
-            _delay_ms(100);
-        }
-
-        lcdGotoXY(0, 0);
-        lcdPrint(buf3);
-        _delay_ms(2000);
-        lcdClear();
+        _delay_ms(300);
     }    
     return 0;
+}
+
+void printf_2dot1(uint8_t sense, uint16_t sense_temp){
+
+    uint8_t s100, s10;
+    if(sense == TEMP){
+        lcdPrintData(" Temp: ", 7);
+        s100 = sense_temp / 100; // 100의 자리
+        if(s100> 0){
+            lcdDataWrite(s100 + '0');
+        }
+        s10 = sense_temp / 10 - s100 * 10; // 10의 자리
+        if(s10> 0){
+            lcdDataWrite(s10 + '0');
+        }
+        lcdDataWrite('.');
+        lcdDataWrite(sense_temp % 10 + '0'); // 1의 자리
+        lcdDataWrite('C');
+    }else if(sense == HUMIDITY){
+        lcdPrintData(" Humi: ", 7);
+        s100 = sense_temp / 100; // 100의 자리
+        if(s100> 0){
+            lcdDataWrite(s100 + '0');
+        }
+        s10 = sense_temp / 10 - s100 * 10; // 10의 자리
+        if(s10> 0){
+            lcdDataWrite(s10 + '0');
+        }
+        lcdDataWrite('.');
+        lcdDataWrite(sense_temp % 10 + '0'); // 1의 자리
+        lcdDataWrite('%');
+    }
 }
