@@ -2,7 +2,6 @@
 #define UART0_H_
 #include <stdio.h>
 
-
 void uart0Init(void);
 void uart0Transmit(char data);
 unsigned char uart0Receive(void);

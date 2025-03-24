@@ -29,6 +29,7 @@ unsigned char uart0Receive(void)
         ;
     return UDR0;
 }
+
 void uart0PrintString(char *str){
     for(int i = 0; str[i]; ++i){ // char값이 있으면 true / 없으면 false이기에 조금 위험할 수 있음
         uart0Transmit(str[i]);
