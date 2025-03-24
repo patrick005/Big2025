@@ -1,4 +1,4 @@
-//
+//i2c 쓰는 코드는 아니고 i2c가 들어간 헤더를 썻음
 #include "SHT2x.h" // i2c
 #include "TWI_driver.h"
 #include <avr/io.h>
@@ -23,8 +23,8 @@ int main(void)
     {
         error |= SHT2x_MeasureHM(HUMIDITY, &sRH);
         error |= SHT2x_MeasureHM(TEMP, &sT);
-        temperaturC = SHT2x_CalcTemperatureC(sT.u16)*10;
-        humidityRH = SHT2x_CalcRH(sRH.u16)* 10;
+        temperaturC = SHT2x_CalcTemperatureC(sT.u16)*10; //해당 수식이 이미 sht2x.c 파일에 들어가있음
+        humidityRH = SHT2x_CalcRH(sRH.u16)* 10;          //이를 불러와 숫자로써 취급하여 출력
         if(error == SUCCESS){
             lcdGotoXY(0,0);
             printf_2dot1(TEMP, temperaturC);
