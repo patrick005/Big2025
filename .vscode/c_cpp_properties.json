@@ -10,6 +10,8 @@
             "includePath": [
                 "/home/aa/Big2025/src",
                 "/home/aa/Big2025/lib/lcd",
+                "/home/aa/Big2025/lib/st25",
+                "/home/aa/Big2025/lib/sht20",
                 "/home/aa/Big2025/lib/uart0",
                 ""
             ],
@@ -18,6 +20,8 @@
                 "path": [
                     "/home/aa/Big2025/src",
                     "/home/aa/Big2025/lib/lcd",
+                    "/home/aa/Big2025/lib/st25",
+                    "/home/aa/Big2025/lib/sht20",
                     "/home/aa/Big2025/lib/uart0",
                     ""
                 ]

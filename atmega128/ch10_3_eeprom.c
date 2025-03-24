@@ -1,4 +1,4 @@
-//ch10_1_spi.c
+//ch10_3_eeprom.c
 #include "lcd.h"
 #include <avr/delay.h>
 #include <avr/io.h>
@@ -36,7 +36,7 @@ int main(void)
     while (1)
     {
         lcdGotoXY(0, 0);
-        for(i =0; i< 10 -1; i++){
+        for(i =0; i< ARRAY_SIZE(msg1) -1; i++){
             lcdDataWrite(buf1[i]);
             _delay_ms(100);
         }
