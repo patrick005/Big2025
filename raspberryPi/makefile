@@ -1,13 +1,15 @@
-TARGET = helloRaspberry switch_led
-
+TARGET = helloRaspberry switch_led device_gpio interrupt
+LEGACY = -lwiringPi
 
 all : ${TARGET}
 
-helloRaspberry :
-	cc -o helloRaspberry helloRaspberry.c -lwiringPi
 
-switch_led :
-	cc -o switch_led switch_led.c -lwiringPi
+${TARGET} : $@ $< ${LEGACY}
+# helloRaspberry :
+# 	cc -o helloRaspberry helloRaspberry.c 
+
+# switch_led :
+# 	cc -o switch_led switch_led.c -lwiringPi
  
 clean : 
 	rm ${TARGET}

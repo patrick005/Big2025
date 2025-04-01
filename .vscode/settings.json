@@ -40,7 +40,10 @@
         "iom128.h": "c",
         "uart0.h": "c",
         "twi_driver.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "syscall.h": "c",
+        "kernel.h": "c",
+        "module.h": "c"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025",
