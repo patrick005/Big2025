@@ -1,3 +1,4 @@
+// led를 출력하는 예제
 #include <stdio.h>
 #include <wiringPi.h>
 
