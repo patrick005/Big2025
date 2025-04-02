@@ -20,23 +20,23 @@ int main(void){
     wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L+4, 0); //녹색
     wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L+8, 0); //퍼런색
     
-    //빨간색
-    wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L + 2, 4095);
-    delay(1000);
-    wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L + 2, 0);
-    delay(1000);
+    // //빨간색
+    // wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L + 2, 4095);
+    // delay(1000);
+    // wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L + 2, 0);
+    // delay(1000);
 
-    //녹색
-    wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L + 6, 4095);
-    delay(1000);
-    wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L + 6, 0);
-    delay(1000);
+    // //녹색
+    // wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L + 6, 4095);
+    // delay(1000);
+    // wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L + 6, 0);
+    // delay(1000);
 
-    //파란색
-    wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L + 10, 4095);
-    delay(1000);
-    wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L + 10, 0);
-    delay(1000);
+    // //파란색
+    // wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L + 10, 4095);
+    // delay(1000);
+    // wiringPiI2CWriteReg16(rgb_servo_fd, PCA9685_LED_ON_L + 10, 0);
+    // delay(1000);
 
     // 점점 밝아지는 코드
     for (int i = 0; i < 4096; i++){

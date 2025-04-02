@@ -45,7 +45,8 @@
         "kernel.h": "c",
         "module.h": "c",
         "softpwm.h": "c",
-        "wiringpi.h": "c"
+        "wiringpi.h": "c",
+        "wiringpii2c.h": "c"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025",
