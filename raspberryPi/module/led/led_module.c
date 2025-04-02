@@ -12,7 +12,7 @@
 int led[4] = {23, 24, 25, 1};
 
 static int led_module_init(void){
-    int ret, i;
+    int ret, i = 0;
     printk(KERN_INFO "led module init!\n");
     for(i = 0; i<4; i++){
         ret = gpio_request(led[i], "LED");
