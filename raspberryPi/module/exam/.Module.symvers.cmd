@@ -1,1 +1,0 @@
-savedcmd_/home/patrick/Big2025/raspberryPi/module/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/patrick/Big2025/raspberryPi/module/Module.symvers -T /home/patrick/Big2025/raspberryPi/module/modules.order -i Module.symvers -e 

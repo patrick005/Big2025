@@ -47,7 +47,8 @@
         "softpwm.h": "c",
         "wiringpi.h": "c",
         "wiringpii2c.h": "c",
-        "init.h": "c"
+        "init.h": "c",
+        "gpio.h": "c"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025",
