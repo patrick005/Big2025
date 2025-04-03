@@ -1,3 +1,8 @@
 build/
 dotenv-c/
 .env
+
+raspberryPi/WiringPi/build/
+raspberryPi/WiringPi/wiringPi/*.o
+raspberryPi/WiringPi/wiringPiD/*.o
+raspberryPi/WiringPi/.git/
