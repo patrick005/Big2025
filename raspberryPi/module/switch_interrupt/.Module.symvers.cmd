@@ -1,0 +1,1 @@
+savedcmd_/home/patrick/Big2025/raspberryPi/module/switch_interrupt/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/patrick/Big2025/raspberryPi/module/switch_interrupt/Module.symvers -T /home/patrick/Big2025/raspberryPi/module/switch_interrupt/modules.order -i Module.symvers -e 
