@@ -6,7 +6,7 @@
 int main(void){
     int dev;
     char buf = 1;
-    dev = open("/dev/driver_exam",O_RDWR);
+    dev = open("/dev/led_driver",O_RDWR);
     if(dev<0){
         printf("driver open failed!\n");
         return -1;
