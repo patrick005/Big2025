@@ -48,7 +48,9 @@
         "wiringpi.h": "c",
         "wiringpii2c.h": "c",
         "init.h": "c",
-        "gpio.h": "c"
+        "gpio.h": "c",
+        "stdlib.h": "c",
+        "compare": "c"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025",

@@ -12,15 +12,15 @@ int main(){
 
     wiringPiSetupGpio(); //BCM 기준 gpio 핀번호 (gpio)사용한다는 설정
     pinMode(LED1, OUTPUT);
-    //pinMode(LED2, OUTPUT);
-    //pinMode(LED3, OUTPUT);
-    //pinMode(LED4, OUTPUT);
+    pinMode(LED2, OUTPUT);
+    pinMode(LED3, OUTPUT);
+    pinMode(LED4, OUTPUT);
 
     while(1){
         digitalWrite(LED1, HIGH);
-        //digitalWrite(LED2, HIGH);
-        //digitalWrite(LED3, HIGH);
-        //digitalWrite(LED4, HIGH);
+        digitalWrite(LED2, HIGH);
+        digitalWrite(LED3, HIGH);
+        digitalWrite(LED4, HIGH);
     }
     printf("hello! RaspberryPi\n");
 
