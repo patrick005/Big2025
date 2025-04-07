@@ -1,0 +1,1 @@
+savedcmd_/home/patrick/Big2025/raspberryPi/module/led_switch_driver_toggle/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/patrick/Big2025/raspberryPi/module/led_switch_driver_toggle/Module.symvers -T /home/patrick/Big2025/raspberryPi/module/led_switch_driver_toggle/modules.order -i Module.symvers -e 
