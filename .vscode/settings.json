@@ -40,7 +40,17 @@
         "iom128.h": "c",
         "uart0.h": "c",
         "twi_driver.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "syscall.h": "c",
+        "kernel.h": "c",
+        "module.h": "c",
+        "softpwm.h": "c",
+        "wiringpi.h": "c",
+        "wiringpii2c.h": "c",
+        "init.h": "c",
+        "gpio.h": "c",
+        "stdlib.h": "c",
+        "compare": "c"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025",
