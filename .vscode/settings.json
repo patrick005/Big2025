@@ -50,7 +50,9 @@
         "init.h": "c",
         "gpio.h": "c",
         "stdlib.h": "c",
-        "compare": "c"
+        "compare": "c",
+        "assert.h": "c",
+        "stack.h": "c"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025",

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "stack.h"
+
 int main(void){
     Stack s1, s2;
     //struct stack stacks[10];
