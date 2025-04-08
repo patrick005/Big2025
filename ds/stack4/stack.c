@@ -1,7 +1,6 @@
 #include "stack.h"
 #include <stdlib.h>
 #include <assert.h>
-#include <stdio.h>
 
 void initStack(Stack *ps, int size){
     ps->pArr = malloc(sizeof(int)*size);
