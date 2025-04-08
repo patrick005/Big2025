@@ -6,36 +6,41 @@
 {
     "configurations": [
         {
-            "name": "Linux",
+            "name": "PlatformIO",
             "includePath": [
                 "/home/aa/Big2025/src",
+                "/home/aa/Big2025/lib/uart0",
                 "/home/aa/Big2025/lib/lcd",
                 "/home/aa/Big2025/lib/sht20",
                 "/home/aa/Big2025/lib/st25",
-                "/home/aa/Big2025/lib/uart0",
                 ""
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
                     "/home/aa/Big2025/src",
+                    "/home/aa/Big2025/lib/uart0",
                     "/home/aa/Big2025/lib/lcd",
                     "/home/aa/Big2025/lib/sht20",
                     "/home/aa/Big2025/lib/st25",
-                    "/home/aa/Big2025/lib/uart0",
                     ""
                 ]
             },
             "defines": [
-                "__KERNEL__",
-                "MODULE"
+                "F_CPU=16000000L",
+                "PLATFORMIO=60118",
+                "ARDUINO_AVR_ATmega128",
+                "__AVR_ATmega128__",
+                ""
             ],
-            "compilerPath": "/usr/bin/gcc",
-            "cStandard": "c17",
-            "cppStandard": "c++14",
-            "intelliSenseMode": "linux-gcc-x64"
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++11",
+            "compilerPath": "/home/aa/.platformio/packages/toolchain-atmelavr/bin/avr-gcc",
+            "compilerArgs": [
+                "-mmcu=atmega128",
+                ""
+            ]
         }
     ],
-    
     "version": 4
 }
