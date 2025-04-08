@@ -1,9 +1,0 @@
-✅ 1. a.out, infinit.c을 Git에 추가하고 커밋하기
-만약 이 파일들을 Git에 포함하고 싶다면:
-
-bash
-복사
-편집
-git add a.out infinit.c
-git commit -m "Add a.out and infinit.c"
-git push origin main
