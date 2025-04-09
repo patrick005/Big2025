@@ -12,8 +12,6 @@ void my_strcpy(char *des, const char *src){
     }
 }
 
-
- 
 int main(void){
     char str[100];
     char *str2 = "hello, world";
