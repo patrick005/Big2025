@@ -11,6 +11,7 @@ int main(void) {
     printList(&list);
     insertFirstNode(&list, 1);
     printList(&list);
+
     insertNode(&list, 1, 2);
     printList(&list);
     
