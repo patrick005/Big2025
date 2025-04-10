@@ -3,10 +3,20 @@
 #include <assert.h>
 #include <stdio.h>
 
+static Node *createNode(int data, Node *next){
+    Node *ptr = malloc(sizeof(Node));
+    assert(ptr);
+    ptr->data = data;
+    ptr->next = next;
+
+    return ptr;
+}
+
 void initList(List *pList){
-    pList->ptr = malloc(sizeof(Node));
-    assert(pList->ptr);
-    pList->ptr->next = NULL;
+    // pList->ptr = malloc(sizeof(Node));
+    // assert(pList->ptr);
+    // pList->ptr->next = NULL;
+    pList->ptr = createNode(-1, NULL);
 }
 
 void cleanupList(List *pList){
@@ -22,18 +32,20 @@ void printList(const List *pList){
     Node *ptr = pList->ptr->next;
     printf("[");
     while (ptr){
-        printf("%d, ", ptr->data);
+        printf("%d", ptr->data);
+        printf((ptr->next ) ? ", " : "");
         ptr = ptr->next;
     }
     printf("]\n");
 }
 
 void insertFirstNode(List *pList, int data){
-    Node *tmp = malloc(sizeof(Node));
-    assert(tmp);
-    tmp->data = data;
-    tmp->next = pList->ptr->next;
-    pList->ptr->next = tmp;
+    // Node *tmp = malloc(sizeof(Node));
+    // assert(tmp);
+    // tmp->data = data;
+    // tmp->next = pList->ptr->next;
+    // pList->ptr->next = tmp;
+    pList->ptr->next = createNode(data, pList->ptr->next);
 }
 
 void insertNode(List *pList, int prevData, int data){
@@ -45,11 +57,12 @@ void insertNode(List *pList, int prevData, int data){
         ptr = ptr->next;
     }
     if (ptr){
-        Node *tmp = malloc(sizeof(Node));
-        assert(tmp);
-        tmp->data = data;
-        tmp->next = ptr->next;
-        ptr->next = tmp;
+        // Node *tmp = malloc(sizeof(Node));
+        // assert(tmp);
+        // tmp->data = data;
+        // tmp->next = ptr->next;
+        // ptr->next = tmp;
+        ptr->next = createNode(data, ptr->next);
     }
 }
 
