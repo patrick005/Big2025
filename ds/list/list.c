@@ -22,7 +22,8 @@ void printList(const List *pList){
     Node *ptr = pList->ptr->next;
     printf("[");
     while (ptr){
-        printf("%d, ", ptr->data);
+        printf("%d", ptr->data);
+        printf((ptr->next ) ? ", " : "");
         ptr = ptr->next;
     }
     printf("]\n");
@@ -68,5 +69,4 @@ void deletNode(List *pList, int data){
         free(ptr);
     }
 }
-
 

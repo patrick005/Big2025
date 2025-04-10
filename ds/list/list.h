@@ -8,7 +8,7 @@ typedef struct{
 } Date;
 
 
-typedef struct{
+typedef struct node{
     int data;
     struct node *next;
 } Node;
