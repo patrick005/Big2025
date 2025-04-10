@@ -62,11 +62,11 @@ void deletNode(List *pList, int data){
             break;
         }
         ptr = ptr->next;
-        ptr2 = ptr2->next;
+        ptr2 = ptr2->next; // 따라감
     }
     if (ptr){
-        ptr2->next = ptr->next;
-        free(ptr);
+        ptr2->next = ptr->next; //앞서가던놈이 뒤로한칸 오면서 지워짐
+        free(ptr); // 지워진거 할당 해제
     }
 }
 
