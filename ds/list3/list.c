@@ -4,17 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 
-// static Node *createNode(int data, Node *next){
-//     Node *ptr = malloc(sizeof(Node));
-//     assert(ptr);
-//     ptr->data = data;
-//     ptr->next = next;
-
-//     return ptr;
-// }
-
-void initList(List *pList, int eleSize){
-    pList->ptr = malloc(sizeof(Node) + pList->eleSize); //dummy
+void initList(List *pList, int eleSize){        //dummy
+    pList->ptr = malloc(sizeof(Node) /*+ pList->eleSize*/); 
     assert(pList->ptr);
     pList->eleSize = eleSize;
 
@@ -36,7 +27,7 @@ void printList(const List *pList, void (*print)(const void *)){
     printf("[");
     while (ptr){
         // printf("%d", ptr->data);
-        print(ptr + 1);;
+        print(ptr + 1);
         printf((ptr->next ) ? ", " : "");
         ptr = ptr->next;
     }
@@ -47,6 +38,7 @@ void insertFirstNode(List *pList, const void *pData){
     Node *tmp = malloc(sizeof(Node) + pList->eleSize);
     assert(tmp);
     // tmp->data = data;
+    // memcpy((unsigned char *)tmp + sizeof(Node), pData, pList->eleSize);
     memcpy(tmp + 1, pData, pList->eleSize);
     tmp->next = pList->ptr->next;
     pList->ptr->next = tmp;
