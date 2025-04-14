@@ -9,6 +9,13 @@ public:
     Complex(double re, double im);
     ~Complex();
 
+    // void operator=(const Complex c);
+    // void operator=(const Complex *pc);
+    void operator=(const Complex& rc); //const = read only
+
+    // int operator==(const Complex& rc); -> c type
+    bool operator==(const Complex& re); // -> cpp type
+
     double real();
     double imag();
 
