@@ -3,29 +3,21 @@
 
 
 class Complex{
-public:
-    Complex();                  //default constructor 기본입력이 없는 애들을 기본생성자/기저생성자 라고 부름
-    Complex(double re);         // convert. constructor 변환 생성자
-    Complex(double re, double im);
-    ~Complex();
-
-    // void operator=(const Complex c);
-    // void operator=(const Complex *pc);
-    void operator=(const Complex& rc); //const = read only
-
-    // int operator==(const Complex& rc); -> c type
-    bool operator==(const Complex& re); // -> cpp type
-
-    double real();
-    double imag();
-
-    void real(double re);
-    void imag(double im);
-
-
-private:
+private: // 멤버 변수를 Attribute(속성)이라고 함
     double re;
     double im;
+
+public: // 멤버 함수를 method라고 함
+    //one interface multi method
+    Complex(double re = 0.0, double im = 0.0); //default argument
+    Complex(const Complex& rhs);               //const = read only / copy constructor 복사인자는 const t타입의 인자가 된다
+    ~Complex();
+
+    Complex& operator=(const Complex& rhs);     //daisy-chain에 의해서 결국 출력값이 void가 아닌 출력 타입이 있긴함
+    bool operator==(const Complex& rhs);
+
+
+
 };
 
 #endif 
