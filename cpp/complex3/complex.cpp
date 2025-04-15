@@ -1,64 +1,30 @@
 #include "complex.h"
 
-
-Complex::Complex(){
-    this->re = 0.0;
-    this->im = 0.0;
-}
-Complex::Complex(double re){
-    this->re = re;
-    this->im = 0.0;
-}
 Complex::Complex(double re, double im){
     this->re = re;
     this->im = im;
 }
 
 Complex::~Complex(){
-
 }
 
-// void Complex::operator=(Complex c){
-//     this->re = c.re;
-//     this->im = c.im;
-// }
-
-// void Complex::operator=(const Complex *pc){
-//     this->re = pc->re;
-//     this->im = pc->im;
-// }
-void Complex::operator=(const Complex& rc){
-    this->re = rc.re;
-    this->im = rc.im;
+Complex::Complex(const Complex& rhs){        //right hand side 피연산자가 오른쪽에 온다는 의미
+    this->re = rhs.re;
+    this->im = rhs.im;              //reference로 받고 일반변수처럼 사용
 }
-// int Complex::operator==(const Complex& rc){
-//     if((this->re = rc.re )&& (this->im = rc.im)){
-//         return 1;
-//     }else{
-//         return 0;
-//     }
-// }
-bool Complex::operator==(const Complex& rc){
-    // if((this->re = rc.re )&& (this->im = rc.im)){
+
+Complex& Complex::operator=(const Complex& rhs){ //타입은 &를 붙여서 레퍼런스로 넘어감
+    this->re = rhs.re;
+    this->im = rhs.im;
+
+    return *this;
+}
+bool Complex::operator==(const Complex& rhs){
+    // if((this->re = rhs.re )&& (this->im = rhs.im)){
     //     return true;
     // }else{
     //     return false;
     // }
-    return (this->re == rc.re && this->im == rc.im);
+    return (this->re == rhs.re && this->im == rhs.im);
 }
 
-double Complex::real(){
-
-    return this->re;
-}
-double Complex::imag(){
-
-    return this->im;
-}
-
-void Complex::real(double re){
-    this->re = re;
-}
-void Complex::imag(double im){
-    this->im = im;
-}
