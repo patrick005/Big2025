@@ -14,6 +14,11 @@ public: //interface
     Rational();
     ~Rational();                  //destructor
 
+    void operator=(const Rational& rr); //const = read only
+
+    bool operator==(const Rational& other)const; // -> cpp type
+    void normalize();
+
     int getNum();
     int getDenom();
     
