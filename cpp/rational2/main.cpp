@@ -10,7 +10,9 @@ int main(){
     // r3.SetNum(r1.getNum());
     // r3.SetDenom(r1.getDenom());
 
-    // r3 = r1; //==> operator= 확인 완료, operator==확인을 위한 주석처리
+    // r3 = r1; 
+    // 이 줄은 오버로드된 대입 연산자를 사용하여 r3을 r1의 복사본으로 만드는 방법.
+    // 동등 비교 연산자를 테스트하기 위해 주석 처리.
 
     if(r1 == r3){// operator==(c1, c3) or c1.operator==(c3)
         std::cout << "r1 and r3 are equal" << std::endl;
