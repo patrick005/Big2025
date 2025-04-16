@@ -31,7 +31,7 @@ String::~String()
 }
 
 String::String(const String& rhs)
-: str_(new char[rhs.len_ + 1]) , len_(rhs.len_)
+: str_(new char[rhs.len_ + 1]) , len_(rhs.len_) //생성자 초기화 리스트 3경우중 콜론 사용( 굳이 안해도 되지만 이러한 표기가 가능하다는 것을 보여주기 위해 사용해봄)
 {
     // str_ new char[rhs.len_ + 1];
     assert(str_);
