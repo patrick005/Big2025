@@ -1,0 +1,46 @@
+cmake_minimum_required(VERSION 3.10)
+project(MainProject_CPP)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+set(CMAKE_BUILD_TYPE Debug)
+
+# # 하나씩 설정하려면 이와 같이
+# add_executable(complex complex/main.cpp complex/complex.cpp)
+# include_directories(complex)
+
+# 내부 CMakeLists.txt 포함
+# add_subdirectory(sqlQuery)
+# add_subdirectory(c_example/part1)
+# add_subdirectory(c_example/part2)
+# add_subdirectory(c_example/part3)
+# add_subdirectory(ds)
+# add_subdirectory(cpp)
+
+# 모든 폴더 자동 감지
+file(GLOB SUBDIRS RELATIVE "${CMAKE_CURRENT_LIST_DIR}" "${CMAKE_CURRENT_LIST_DIR}/*")
+set(SUBDIRS_FILTERED "")
+foreach(SUBDIR ${SUBDIRS})
+    if(IS_DIRECTORY "${CMAKE_CURRENT_LIST_DIR}/${SUBDIR}")
+        list(APPEND SUBDIRS_FILTERED "${CMAKE_CURRENT_LIST_DIR}/${SUBDIR}")
+    endif()
+endforeach()
+set(SUBDIRS ${SUBDIRS_FILTERED})
+
+# 각 서브디렉토리의 main.cpp 파일을 찾아서 실행 파일 생성
+
+foreach(SUBDIR ${SUBDIRS})
+    file(GLOB EXECUTABLES "${SUBDIR}/main.cpp")
+    foreach(EXECUTABLE ${EXECUTABLES})
+        get_filename_component(EXECUTABLE_NAME ${SUBDIR} NAME_WE)
+        get_filename_component(EXECUTABLE_DIR ${EXECUTABLE} DIRECTORY)
+        file(GLOB_RECURSE SOURCES "${EXECUTABLE_DIR}/*.cpp")
+        add_executable(${EXECUTABLE_NAME} ${SOURCES})
+    endforeach()
+endforeach()
+
+# 컴파일 플래그 설정
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
+endif()
