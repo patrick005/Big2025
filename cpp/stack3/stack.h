@@ -1,5 +1,6 @@
 #ifndef STACK_H
 #define STACK_H
+#include "array.h"
 
 // #define STACK_SIZE 100
 // extern const int STACK_SIZE; // 다른 파일에서 가져다 쓸 수 있게 파일 전역 변수로 설정: extern
