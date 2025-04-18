@@ -2,7 +2,7 @@
 #define SHAPE_H
 
 class Shape{        //Abstract Base Class 추상 기저(기반) 클래스 --> 순수 가상 함수를 한개 이상 갖는 클래스를 지칭
-private:
+// private:
 
 protected:
     int x_;
