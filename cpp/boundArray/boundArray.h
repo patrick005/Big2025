@@ -5,7 +5,8 @@
 
 class BoundArray : public SafeArray{
 private:
-
+    int low_;
+    int up_;
 
 public:
     // // SafeArray(){}

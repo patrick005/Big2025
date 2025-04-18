@@ -22,7 +22,7 @@ public:
     explicit SafeArray(int size = Array::getDefaultArraySize());
     SafeArray(const int *pArr , int size);
     SafeArray(const SafeArray& rhs);
-    // ~SafeArray(){}
+    // virtual ~SafeArray(){} -> 부모가 해놔서 안써도는 되지만 명시하기 위한 목적으로 주석으로 달아둠
     SafeArray& operator=(const SafeArray& rhs);
 
     bool operator==(const SafeArray& rhs)const;
