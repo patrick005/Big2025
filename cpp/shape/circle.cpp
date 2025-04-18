@@ -8,8 +8,8 @@ Circle::Circle(int x, int y, int r)
 }
 
 double Circle::area() const{
-    return radius_ * radius_ * 3.14;
+    return 3.141592 * (radius_ * radius_);
 }
 double Circle::getCircumference() const{
-    return radius_ * 2 * 3.14;
+    return 3.141592 * (radius_ * 2);
 }

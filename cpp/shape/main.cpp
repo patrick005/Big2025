@@ -1,9 +1,18 @@
 #include <iostream>
+#include <typeinfo>
 #include "shape.h"
 #include "rectangle.h"
 #include "circle.h"
 
-void printShape(const Shape *ps){
+void printShape(const Shape *ps){//------------------->이거 상속받은거 포인터써서 출력하는거라 중요하다
+    if (typeid(*ps) == typeid(Rectangle)){
+        const Rectangle *pr = (const Rectangle *)ps;
+        std::cout << "     rectangle diagonal : " << pr->getDiagonal() << "  ";
+    }else if (typeid(*ps) == typeid(Circle)){
+        const Circle * pc = (const Circle *)ps;
+        std::cout << "circle getCircumference : " << pc->getCircumference() << "  ";
+    }
+    
     std::cout << "area : " << ps->area() << std::endl;
 }
 
