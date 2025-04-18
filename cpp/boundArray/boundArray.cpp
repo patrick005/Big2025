@@ -43,21 +43,21 @@ bool BoundArray::operator==(const BoundArray& rhs)const
 
 int& BoundArray::operator[](int index)
 {
-    assert(index >= this->low_ && index < (this->low_ + this->SafeArray::size()));
-    return this->SafeArray::operator[](index - this->low_);
+    assert(index >= low_ && index < (low_ + this->SafeArray::size()));
+    return this->SafeArray::operator[](index - low_);
 }
 const int& BoundArray::operator[](int index) const
 {
-    assert(index >= this->low_ && index < (this->low_ + this->SafeArray::size()));
-    return this->SafeArray::operator[](index - this->low_);
+    assert(index >= low_ && index < (low_ + this->SafeArray::size()));
+    return this->SafeArray::operator[](index - low_);
 }
 
 int BoundArray::upper() const{
     // 유효 인덱스 범위는 [low_, low_ + SafeArray::size()) 이므로 상한은 low_ + SafeArray::size()
-    return this->low_ + this->SafeArray::size();
+    return low_ + this->SafeArray::size();
 }
 
 // lower() 함수 구현: 저장된 하한(low_) 반환 (const)
 int BoundArray::lower() const{
-    return this->low_;
+    return low_;
 }

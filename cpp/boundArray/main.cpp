@@ -13,16 +13,15 @@ int main(){
         arr1[i] = i;
     }
     
-    // const BoundArray arr4 = arr1;
-    BoundArray arr4 = arr1;
-
-    arr4 = arr1;
-
-    arr4 == arr1;
+    arr3 = arr1;
+    arr3 == arr1;
+    
+    const BoundArray arr4 = arr1;
 
     for (int i = arr4.lower(); i != arr4.upper(); ++i){
         std::cout << arr4[i] << std::endl;
     }
+
     std::cout << "arr2 test" << std::endl;
     for (int i = arr2.lower(); i != arr2.upper(); ++i){
         std::cout << arr2[i] << std::endl;
