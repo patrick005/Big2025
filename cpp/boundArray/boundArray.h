@@ -16,16 +16,17 @@ public:
     // // const SafeArray* operator&() const {return this};
 
     explicit BoundArray(int size = SafeArray::getDefaultArraySize());    //-> 할아버지에 defaultsize 명시 되어있음
-    // BoundArray(int size);
-    BoundArray(const int *pArr , int size);
     // 하한(low)과 상한 직전 값(high)으로 초기화하는 생성자: 크기는 high - low
-    BoundArray(int low, int high);
+    BoundArray(int low, int upper);
     BoundArray(const BoundArray& rhs);
-    // ~BoundArray(){}
+    virtual ~BoundArray();
+    
     BoundArray& operator=(const BoundArray& rhs);
     bool operator==(const BoundArray& rhs)const;
+    
     int& operator[](int index);
     const int& operator[](int index) const;
+
     int upper() const;
     int lower() const;
 
