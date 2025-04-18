@@ -6,46 +6,39 @@
 BoundArray::BoundArray(int size)
 : SafeArray(size), low_(0)
 {
-    for (int i = 0; i < this->SafeArray::size(); ++i) {
-        this->SafeArray::operator[](i) = i; // SafeArray의 i번째 요소에 값 i 할당
-    }
-}
-BoundArray::BoundArray(const int *pArr , int size)
-: SafeArray(pArr, size), low_(0)
-{
 
 }
-// 하한(low)과 상한 직전 값(high)으로 초기화하는 생성자 구현
-BoundArray::BoundArray(int low, int high)
-: SafeArray(high - low) // SafeArray 부분은 필요한 크기 (high - low)로 초기화
+BoundArray::BoundArray(int low, int upper)
+: SafeArray(upper - low) // SafeArray 부분은 필요한 크기 (upper - low)로 초기화
 , low_(low)             // BoundArray의 하한은 low로 설정
 {
-    // 유효성 검사: high가 low보다 크거나 같아야 함
-    assert(high >= low);
-    /*
+    assert(upper >= low);
+    /* // 메인에 있는 숫자 자동 증감 할당을 하려면 이것 활성화
     for (int i = 0; i < this->SafeArray::size(); ++i) {
         this->SafeArray::operator[](i) = low_ + i;
     }
     */
 }
 BoundArray::BoundArray(const BoundArray& rhs)
-: SafeArray((SafeArray)rhs), low_(rhs.low_)
-{  
-    //slicing하여 array관련 내용만 남게 타입캐스팅
+: SafeArray((SafeArray)rhs), low_(rhs.low_) //slicing하여 array관련 내용만 남게 타입캐스팅
+{
+
+}
+BoundArray::~BoundArray(){
+
 }
 
 BoundArray& BoundArray::operator=(const BoundArray& rhs)
 {
         if (this != &rhs){
         this->SafeArray::operator=((SafeArray)rhs);
-        // safearray 쪽에서 추가된게 있으면 여기에 추가
-        this->low_ = rhs.low_;
+        low_ = rhs.low_;
     }
     return *this;
 }
 bool BoundArray::operator==(const BoundArray& rhs)const
 {
-    return (this->low_ == rhs.low_) && this->SafeArray::operator==((SafeArray)rhs);
+    return (low_ == rhs.low_) && this->SafeArray::operator==((SafeArray)rhs);
 }
 
 int& BoundArray::operator[](int index)
