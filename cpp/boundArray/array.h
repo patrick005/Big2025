@@ -22,7 +22,7 @@ public:
 
     Array(const int *pArr , int size);
     Array(const Array& rhs);
-    ~Array();
+    virtual ~Array();
 
     Array& operator=(const Array& rhs);
     bool operator==(const Array& rhs) const;
