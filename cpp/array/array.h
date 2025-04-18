@@ -4,7 +4,6 @@
 // #define ARRAY_SIZE 100
 // extern const int ARRAY_SIZE;
 
-
 class Array{
 
 private:
