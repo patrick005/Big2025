@@ -6,7 +6,6 @@
 class BoundArray : public SafeArray{
 private:
     int low_;
-    int up_;
 
 public:
     // // SafeArray(){}
@@ -16,20 +15,19 @@ public:
     // // SafeArray *operator&() {return this;}
     // // const SafeArray* operator&() const {return this};
 
-    // explicit SafeArray(int size = Array::getDefaultArraySize());
-    // SafeArray(const int *pArr , int size);
-    // SafeArray(const SafeArray& rhs);
-    // // ~SafeArray(){}
-    // SafeArray& operator=(const SafeArray& rhs);
-
-    // bool operator==(const SafeArray& rhs)const;
-
-    // virtual int& operator[](int index);
-    // virtual const int& operator[](int index) const;
-    // // int size(); // array쪽에 이미 있기에 가져오면 됨 -> Array::size() is inherited by public
-
-    void upper();
-    void lower();
+    explicit BoundArray(int size = SafeArray::getDefaultArraySize());    //-> 할아버지에 defaultsize 명시 되어있음
+    // BoundArray(int size);
+    BoundArray(const int *pArr , int size);
+    // 하한(low)과 상한 직전 값(high)으로 초기화하는 생성자: 크기는 high - low
+    BoundArray(int low, int high);
+    BoundArray(const BoundArray& rhs);
+    // ~BoundArray(){}
+    BoundArray& operator=(const BoundArray& rhs);
+    bool operator==(const BoundArray& rhs)const;
+    int& operator[](int index);
+    const int& operator[](int index) const;
+    int upper() const;
+    int lower() const;
 
 };
 
