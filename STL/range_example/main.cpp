@@ -23,7 +23,7 @@ int main(){
         cout << s << endl;
     }
     
-    // if contexpr 테스트
+    // if cosntexpr 테스트
     cout << "Compute tests: " << endl;
     cout << "Int 10 : " << proc.compute(10) << endl;
     cout << "Float 10.0 : " << proc.compute(10.0) << endl;
