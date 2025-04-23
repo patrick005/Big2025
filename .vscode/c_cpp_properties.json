@@ -13,6 +13,8 @@
                 "/home/aa/Big2025/lib/lcd",
                 "/home/aa/Big2025/lib/sht20",
                 "/home/aa/Big2025/lib/st25",
+                "${workspaceFolder}/**",
+                "/usr/include/**",
                 ""
             ],
             "browse": {
@@ -33,13 +35,17 @@
                 "__AVR_ATmega128__",
                 ""
             ],
-            "cStandard": "gnu11",
-            "cppStandard": "gnu++11",
-            "compilerPath": "/home/aa/.platformio/packages/toolchain-atmelavr/bin/avr-gcc",
+            // "cStandard": "gnu11",
+            // "cppStandard": "gnu++11",
+            // "compilerPath": "/home/aa/.platformio/packages/toolchain-atmelavr/bin/avr-gcc",
             "compilerArgs": [
                 "-mmcu=atmega128",
                 ""
-            ]
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "linux-gcc-x64"
         }
     ],
     "version": 4

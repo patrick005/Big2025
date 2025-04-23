@@ -53,7 +53,12 @@
         "compare": "c",
         "assert.h": "c",
         "stack.h": "c",
-        "list.h": "c"
+        "list.h": "c",
+        "deque": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "initializer_list": "cpp",
+        "string_view": "cpp"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025",
