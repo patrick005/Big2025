@@ -58,7 +58,13 @@
         "unordered_map": "cpp",
         "vector": "cpp",
         "initializer_list": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "iosfwd": "cpp",
+        "type_traits": "cpp",
+        "execution": "cpp",
+        "cmath": "cpp",
+        "algorithm": "cpp",
+        "iostream": "cpp"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025",
