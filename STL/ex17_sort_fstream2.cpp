@@ -32,6 +32,9 @@ public:
         cout << "총점 : " << averageScore() << endl;
         cout << "-----------------------------------------" << endl;
     }
+    bool operator<(const Student& other) const {
+        return totalScore() < other.totalScore(); // 총점이 낮은 학생이 "더 작다"
+    }
 };
 int main(){
     ifstream file("/home/aa/Big2025/STL/10.txt");
@@ -70,5 +73,13 @@ int main(){
     for (const auto &student : fail_students){
         student.print();
     }
-return 0;
+
+    // merge !!
+    vector<Student> merge_students;
+    merge(fail_students.begin(), fail_students.end(), success_students.begin(), success_students.end(), back_inserter(merge_students));
+    cout << "============합친V===========" << endl;
+    for (const auto &student : merge_students)
+        student.print();
+
+    return 0;
 }
