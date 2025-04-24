@@ -1,5 +1,5 @@
 //ex6_iterator.cpp
-// iterator는 배열의 요소를 가르키는 포인터이다/ C++에서는 포인터 쓰기가 애매해서 이걸쓰는데 그래서 중요함
+// iterator는 배열의 요소를 가르키는 포인터이다/ C++에서는 포인터 쓰기가 헷갈려서(널이 0으로도 쓰임) 이걸쓰는데 그래서 중요함
 #include <iostream>
 #include <vector> //-->iterator정의 포함되어있음
 using namespace std;
