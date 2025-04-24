@@ -2,24 +2,32 @@
 #include <iostream>
 #include <chrono>
 #include <future>
+#include <vector>
 using namespace std;
 
 // 오래 걸리는 더하기 함수 (비동기 실행 예시)
 int slowAdd(int a, int b){
-    this_thread::sleep_for(chrono::seconds(2));
+    for (int i = 0; i < 5; ++i){ // 2초에 대해 5등분
+        cout << "slowAdd 실행 중 " <</* i << " : "<<*/ a << endl;
+        this_thread::sleep_for(chrono::microseconds(40'000));
+    }
     return a + b;
 }
 
 int main(){
+    vector <future<int>> result;
     // async: slowAdd 함수를 새로운 스레드에서 비동기적으로 실행 시작
     // future<int> result: async의 실행 결과를 담을 미래(future) 객체
-    future<int> result = async(slowAdd, 2, 3);
+    for (int i = 0; i < 4; ++i){ // 2000초에 대해 5등분
+        result.push_back(async(slowAdd, i + 1, 3));
+    }
     cout << "계산 중 ..." << endl;
 
     // result.get(): future 객체에서 비동기 작업의 결과(int)를 가져옴
     // get()은 결과가 준비될 때까지 현재 스레드를 '대기'시킴 (동기적인 기다림)
-    cout << "결과 : " << result.get() << endl;
-
+    for (int i = 0; i < 4; ++i){ // 2000초에 대해 5등분
+        cout << "결과 : " << /*i << " : "<<*/ result[i].get() << endl;
+    }
 
     return 0;
 }
