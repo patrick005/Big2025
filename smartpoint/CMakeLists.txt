@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
 project(smartpoint)
 
-
+# c17을 사용하기 위한 2줄
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 file(GLOB EXECUTABLES "${CMAKE_CURRENT_LIST_DIR}/*.cpp")
 
