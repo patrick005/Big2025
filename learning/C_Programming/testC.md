@@ -157,9 +157,9 @@ ex) %.3f -> 소수점 3번째 자리까지 출력
   
 ┏code		┓	 ┏ cpu ┓  
 ┗information	┛  ->   ┗     ┛     세트로 cpu에 들어가서 처리되면 폰 노이만 구조  
-                        
+        	\[\code\]\             
 	[code]       ┏ cpu ┓  
- [information]  ->   ┗      ┛  	각 개별로 cpu에 들어가서 처리되면 하버드 구조  
+ \[information]  ->   ┗      ┛  	각 개별로 cpu에 들어가서 처리되면 하버드 구조  
   
 컴퓨터의 구조 CS(computer science) - 대학 과정일 정도로 복잡하니 알아서 찾아봐라  
 cpu / ram  / harddisk  
