@@ -19,7 +19,7 @@ void useUnique(unique_ptr<Myclass> ptr){
 }
 
 int main(){
-    auto p1 = make_unique<Myclass>(); // class의 test_a의 값의 권한을 가져옴
+    auto p1 = make_unique<Myclass>(); // class의 test_a의 값의 권한을 가져옴 // 유니크 포인터로 감쌋기 때문에 이동연산이 편하였음
     auto p2 = move(p1); // 이동
 
     useUnique(move(p2)); // main함수에서 권한이 이 함수로 들어오는데 이거 출력 끝나고 할당값이 해제됨
