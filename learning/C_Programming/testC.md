@@ -112,10 +112,10 @@ limit.c		------------------------------>  limit : CC(컴파일)과정
 - 타입 Type(형) (2진수)  
 운영체제에 따라 데이터 크기의 변동이 있을 수 있기 때문에 type의 형태를 외울게 아니라 이해가 필요함  
   
--- 숫자형 – 정수형	: int, char		ㄱ  
-	  |		  long, long long	 | -> 2의 보수를 통한 음수로 변경가능  
-	  ㄴ 부동소수형	: double, float		 」  
-  
+-- 숫자형 – 정수형	: int, char		/ㄱ  
+	  |		  long, long long	 /| -> 2의 보수를 통한 음수로 변경가능  
+	  ㄴ 부동소수형	: double, float		 /」  
+  /
 	- 음수의 표현 : unsigned int  
   
   
@@ -157,9 +157,9 @@ ex) %.3f -> 소수점 3번째 자리까지 출력
   
 ┏code		┓	 ┏ cpu ┓  
 ┗information	┛  ->   ┗     ┛     세트로 cpu에 들어가서 처리되면 폰 노이만 구조  
-        	\[\code\]\             
+ /         
 	[code]       ┏ cpu ┓  
- \[information]  ->   ┗      ┛  	각 개별로 cpu에 들어가서 처리되면 하버드 구조  
+ /[information]  ->   ┗      ┛  	각 개별로 cpu에 들어가서 처리되면 하버드 구조  
   
 컴퓨터의 구조 CS(computer science) - 대학 과정일 정도로 복잡하니 알아서 찾아봐라  
 cpu / ram  / harddisk  
