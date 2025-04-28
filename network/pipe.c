@@ -53,3 +53,10 @@ int main(void){
     
     return 0;
 }
+
+
+/*
+pipe가 shared_memory보다 장점이 많다
+정보전달을 목적으로 하기에 빠르기도 하고
+
+*/
