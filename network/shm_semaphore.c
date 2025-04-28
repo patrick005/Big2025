@@ -64,4 +64,6 @@ F S   UID     PID    PPID  C PRI  NI ADDR SZ WCHAN  TTY          TIME CMD
 4 R  1000    6659    6615  0  80   0 -  3516 -      pts/5    00:00:00 ps
 
 따로 돌기에 스레드처럼 쓸 수 있지만 그럴바엔 스레드를 쓰는것이 나을 것이다.
+
+책 223p
 */
