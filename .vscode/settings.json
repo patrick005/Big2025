@@ -105,7 +105,8 @@
         "queue": "cpp",
         "cstdbool": "cpp",
         "types.h": "c",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "socket.h": "c"
     },
     "ros.distro": "humble",
     "cmake.sourceDirectory": "/home/aa/Big2025",
