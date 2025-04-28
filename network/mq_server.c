@@ -21,9 +21,12 @@ int main(void){
     char buffer[MAX_MSG_SIZE + 1];
     ssize_t bytes_read;
 
-    bytes_read = mq_receive(mq, buffer, MAX_MSG_SIZE + 1, NULL);
-    buffer[bytes_read] = '\0';
-    printf("서버에서 받은 메세지: %s\n", buffer);
+    for (int i = 0; i < 5; i++){
+        bytes_read = mq_receive(mq, buffer, MAX_MSG_SIZE + 1, NULL);
+        buffer[bytes_read] = '\0';
+        printf("서버에서 받은 메세지: %s\n", buffer);
+    }
+    
 
     mq_close(mq);
     mq_unlink(QUEUE_NAME);
@@ -36,4 +39,8 @@ int main(void){
 위치: /dev/mqueue/myqueue
 echo 'form cli' >> /dev/mqueue/myqueue 버퍼형식이 아니라 안뜰거임
 cat myqueue하면 여기 쌓인 메세지 정보가 출력
+
+for문을 돌려서 여러개의 정보를 수용하게 묶어두고 ctrl + c로 강제종료하면 /dev/mqueue/myqueue에 쌓이는 것을 cat으로 확인할 수 있음
+여기서 다시 서버를 돌리면 쌓인거에 대한 일괄적인 처리가 시작이 됨
+
 */
