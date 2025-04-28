@@ -19,7 +19,7 @@ int main(void){
     strcpy(shm, "Hello shared memory FROM process 1!");
 
     char temp[10];
-    scanf("%s", temp);
+    scanf("%s", temp); // 입력 전까지 대기상태인 것을 활용한 대기열
 
     munmap(shm, 4096);       //mmap에 대한 해제
     shm_unlink("/myshm");    // cli에서의 unlink /dev/shm/myshm를 코드로 구현한 것
