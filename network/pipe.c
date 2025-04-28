@@ -39,6 +39,8 @@ int main(void){
         char *message = "Hello from Parent";
         write(pipe1_fd[1], message, strlen(message) + 1); // 이걸 버퍼에 채움
 
+        getchar(); // 엔터를 해야 넘어가게 break느낌으로 넣어둠
+
         read(pipe2_fd[0], buffer, BUFFER_SIZE); // 대기 : 버퍼가 비어있으면 채워지기 전까지 대기하는 기능 때문에 여기서 한번 멈춤
         printf("parent received: %s\n", buffer);
 
