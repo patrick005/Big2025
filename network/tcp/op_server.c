@@ -60,7 +60,6 @@ int main(int argc, char *argv[]){
         
         // 연결된 상태의 코드....
         read(clnt_sock, &opnd_cnt, 1); // 몇개 들어올지 1 byte로 받음
-        // printf("피연산자 갯수: %d \n", opnd_cnt);                           //debugging message --> 여기까진 오는디?
         recv_len = 0; // while에 남은 값 들어갈 수 있기에 초기화
 
         while((opnd_cnt * 4 + 1) > recv_len){
