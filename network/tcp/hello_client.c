@@ -21,7 +21,7 @@ int main(int argc, char *argv[]){
 
     memset(&serv_addr, 0, sizeof(serv_addr)); // 주소에 대한 초기화
     serv_addr.sin_family = AF_INET;
-    serv_addr.sin_addr.s_addr = inet_addr(argv[1]); // inet_addr : 중간 중간 .점들을 바꿔주는 함수
+    serv_addr.sin_addr.s_addr = inet_addr(argv[1]); // inet_addr : 중간 중간 .점들을 바꿔주는 함수 // 숫자로 받기에 localhost는 받을 수 없는 형태임 -> 바꾸면 가능
     serv_addr.sin_port = htons(atoi(argv[2]));
 
     connect(serv_sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr)); // connect: listen 상태인 서버에 접속

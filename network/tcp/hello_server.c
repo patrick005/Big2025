@@ -23,7 +23,7 @@ int main(int argc, char *argv[]){
 
     memset(&serv_addr, 0, sizeof(serv_addr)); // 주소에 대한 초기화
     serv_addr.sin_family = AF_INET;
-    serv_addr.sin_addr.s_addr = htonl(INADDR_ANY); // ip정보처럼 주소가 들어감 / 이건 뭐가 오든 소켓을 열어준다는 코드로 작성 htonl: 엔디안 구분해줌
+    serv_addr.sin_addr.s_addr = htonl(INADDR_ANY); // ip정보처럼 주소가 들어감 / 이건 뭐가 오든 소켓을 열어준다는 코드로 작성 htonl: 엔디안 구분해줌 / any 말고 호스트 주소를 지정할 수 있음 고정ip면 넣어도 되지만 와이파이 같은 동적할당ip 같은 경우는 이걸로 대체하기도함
     serv_addr.sin_port = htons(atoi(argv[1])); // htons: atoi로 배열을 인트로 바꿔서 해당 포트값 지정
 
     int option = 1;
