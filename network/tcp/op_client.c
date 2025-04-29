@@ -1,4 +1,4 @@
-//echo_client.c
+//op_client.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/socket.h>
@@ -12,7 +12,6 @@ void error_handling(char *message);
 
 int main(int argc, char *argv[]){
     int sock;
-    int str_len, recv_len, recv_cnt;
 
     struct sockaddr_in serv_addr;
 
@@ -38,24 +37,25 @@ int main(int argc, char *argv[]){
     }
     // 연결된 상태의 코드
     char message[BUF_SIZE];
-    while (1){
-        fputs("메시지를 넣으세요(Q 나가기): ",stdout);
-        fgets(message, BUF_SIZE, stdin);
-        if(!strcmp(message, "Q\n") || !strcmp(message, "q\n")){
-            break;
-        }
-        str_len = write(sock, message, strlen(message)); // 항상 max치인 1024를 보내면 낭비이니 strlen을 사용
-        while(recv_len < str_len){ // 송수신 데이터 양이 많을 경우
-            recv_len = read(sock, message, BUF_SIZE - 1); 
-            if(recv_len == -1){ // 무한루프 돌 수 있으니 유의
-                fputs("read() error", stderr);
-                break;
-            }
-            recv_len += recv_cnt; // 잘라서 받는 양이 총 받은 양과 같아질 때까지
-        }
-        message[str_len] = '\0'; // null termination
-        printf("서버에 보낸 메세지: %s\n", message); // debugging message
+    int str_len, recv_len, recv_cnt;
+    int result, opnd_cnt, i;
+
+    fputs("피연산자 갯수를 넣으세요: ",stdout);
+    scanf("%d", &opnd_cnt);
+    message[0] = (char)opnd_cnt; // 1byte
+
+    for(i = 0; i < opnd_cnt; ++i){
+        printf("%d번째 피연산자를 넣으세요: ", i + 1);
+        scanf("%d", (int*)&message[i * 4 + 1]); // 4byte + 1byte(피연산자의 수)
     }
+    fgetc(stdin); // 버퍼에 남아있는 개행문자 제거
+    fputs("연산자를 넣으세요: ", stdout);
+    scanf("%c", &message[opnd_cnt * 4 + 1]);
+
+    write(sock, message, opnd_cnt * 4 + 2); // 피연산자 갯수 + 피연산자 갯수 * 4 + 연산자
+    read(sock, &result, 4);
+
+    printf("연산 결과는: %d \n", result);
     close(sock);
 
     return 0;
@@ -66,10 +66,3 @@ void error_handling(char *message){
     fputc('\n', stderr);
     exit(1);
 }
-
-//./echo_client 192.168.0.89 8890
-
-/*
-
-
-*/
