@@ -116,5 +116,27 @@ int calculate(int opnum, int opnds[], char op){
   kill -9 29628
   history
 
+sudo tcpdump -i lo tcp port 8890
+
+aa@aa-virtual-machine:~$ sudo tcpdump -i lo tcp port 8890
+
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on lo, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+
+15:42:04.255293 IP localhost.50158 > localhost.8890: Flags [S], seq 1210329663, win 65495, options [mss 65495,sackOK,TS val 3638262932 ecr 0,nop,wscale 7], length 0
+15:42:04.255303 IP localhost.8890 > localhost.50158: Flags [S.], seq 1568119404, ack 1210329664, win 65483, options [mss 65495,sackOK,TS val 3638262932 ecr 3638262932,nop,wscale 7], length 0
+
+15:42:04.255313 IP localhost.50158 > localhost.8890: Flags [.], ack 1, win 512, options [nop,nop,TS val 3638262932 ecr 3638262932], length 0
+15:42:15.996132 IP localhost.50158 > localhost.8890: Flags [P.], seq 1:11, ack 1, win 512, options [nop,nop,TS val 3638274673 ecr 3638262932], length 10
+15:42:15.996146 IP localhost.8890 > localhost.50158: Flags [.], ack 11, win 512, options [nop,nop,TS val 3638274673 ecr 3638274673], length 0
+15:42:15.996190 IP localhost.8890 > localhost.50158: Flags [P.], seq 1:5, ack 11, win 512, options [nop,nop,TS val 3638274673 ecr 3638274673], length 4
+15:42:15.996199 IP localhost.50158 > localhost.8890: Flags [.], ack 5, win 512, options [nop,nop,TS val 3638274673 ecr 3638274673], length 0
+
+15:42:15.996208 IP localhost.8890 > localhost.50158: Flags [F.], seq 5, ack 11, win 512, options [nop,nop,TS val 3638274673 ecr 3638274673], length 0
+15:42:15.996238 IP localhost.50158 > localhost.8890: Flags [F.], seq 11, ack 6, win 512, options [nop,nop,TS val 3638274673 ecr 3638274673], length 0
+15:42:15.996250 IP localhost.8890 > localhost.50158: Flags [.], ack 12, win 512, options [nop,nop,TS val 3638274673 ecr 3638274673], length 0
+
+
+
 
 */
