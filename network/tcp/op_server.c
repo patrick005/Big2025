@@ -60,6 +60,7 @@ int main(int argc, char *argv[]){
         
         // 연결된 상태의 코드....
         read(clnt_sock, &opnd_cnt, 1); // 몇개 들어올지 1 byte로 받음
+        printf("피연산자 갯수: %d \n", opnd_cnt);                           //debugging message --> 여기까진 오는디?
         recv_len = 0; // while에 남은 값 들어갈 수 있기에 초기화
 
         while((opnd_cnt * 4 + 1) > recv_len){
@@ -68,6 +69,7 @@ int main(int argc, char *argv[]){
         }
         result = calculate(opnd_cnt, (int*)opinfo, opinfo[recv_len - 1]);
         write(clnt_sock, (char*)&result, sizeof(result));
+        printf("test: %d", result);                                          //debugging message --> 여기까지 안오는디?
         close(clnt_sock);
     }
 
@@ -82,20 +84,20 @@ void error_handling(char *message){
 }
 
 int calculate(int opnum, int opnds[], char op){
-    int result = opnds[0], i;
+    int result = opnds[0];
     switch(op){
         case '+':
-            for(i = 1; i < opnum; ++i){
+            for(int i = 1; i < opnum; ++i){
                 result += opnds[i];
             }
             break;
         case '-':
-            for(i = 1; i < opnum; ++i){
+            for(int i = 1; i < opnum; ++i){
                 result -= opnds[i];
             }
             break;
         case '*':
-            for(i = 1; i < opnum; ++i){
+            for(int i = 1; i < opnum; ++i){
                 result *= opnds[i];
             }
             break;
@@ -104,9 +106,17 @@ int calculate(int opnum, int opnds[], char op){
                 result /= opnds[i];
             }
             break;*/
-        default:
-            result = 0;
     }
     return result;
 }
 //./echo_server 8890
+/*
+  netstat -tulnp
+  kill 28534
+  kill -9 28534
+  kill -9 3180
+  kill -9 29628
+  history
+
+
+*/
