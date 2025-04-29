@@ -16,6 +16,7 @@ int main(int argc, char *argv[]){
     int str_len, recv_len, recv_cnt;
 
     struct sockaddr_in serv_addr, from_addr;
+    socklen_t form_addr_size;
 
     if (argc != 3){
         printf("사용법: %s <IP><PORT>\n", argv[0]);
@@ -41,11 +42,12 @@ int main(int argc, char *argv[]){
         if(!strcmp(message, "Q\n") || !strcmp(message, "q\n")){
             break;
         }
+        message[strlen(message) - 1] = '\0'; // null termination
         // 보내는 코드
         str_len = sendto(sock, message, strlen(message), 0, (struct sockaddr*)&serv_addr, sizeof(serv_addr));
         printf("서버로 보내는 메세지: %s\n", message); // debugging message
         // 받는 코드
-        str_len = recvfrom(sock, message, BUF_SIZE - 1, 0, (struct sockaddr*)&from_addr, sizeof(from_addr));        // recvfrom은 blocking mode
+        str_len = recvfrom(sock, message, strlen(message), 0, (struct sockaddr*)&from_addr, &form_addr_size);        // recvfrom은 blocking mode
         message[str_len] = '\0'; // null termination
         printf("서버의 IP: %s\t PORT: %d\n", inet_ntoa(from_addr.sin_addr), ntohs(from_addr.sin_port)); // IP와 PORT를 받아서 출력
         printf("서버에서 온 메세지: %s\n", message); // debugging message
