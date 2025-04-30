@@ -19,7 +19,7 @@ int main(void){
     }else{
         puts("End of Parent Process"); // 30초 후 종료
     }
-
+    // if use wait.h : holding state blocking when do not recieve program terminated signal from child process
 
     return 0;
 }
