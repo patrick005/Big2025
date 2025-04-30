@@ -1,5 +1,4 @@
 //echo_mpserver.c
-//echo_server.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/socket.h>
@@ -19,7 +18,7 @@ int main(int argc, char *argv[]){
     int serv_sock, clnt_sock;
     int str_len, state;
     char message[BUF_SIZE];
-
+    pid_t pid;
 
     struct sockaddr_in serv_addr, clnt_addr;
     socklen_t clnt_addr_size;
@@ -55,28 +54,37 @@ int main(int argc, char *argv[]){
         error_handling("listen() error");
     } // 5개의 클라이언트 대기
 
-    for(int i = 0; i < 5; ++i){
+    
+    // 연결된 상태의 코드....
+    while(1){
         clnt_addr_size = sizeof(clnt_addr);
         clnt_sock = accept(serv_sock, (struct sockaddr *)&clnt_addr, &clnt_addr_size);
+        // accept : waiting
         if (clnt_sock == -1){
-            error_handling("accept() error");
+            // error_handling("accept() error");
+            continue;
         }else{
-            printf("connected client %d : %s \n", i + 1, inet_ntoa(clnt_addr.sin_addr));
+            printf("connected client: %s \n", inet_ntoa(clnt_addr.sin_addr));
         }
-        // 연결된 상태의 코드....
         // fork, child : 기능: echo -> read -> write
-        while(1){
-            // when accept
-            
-
+        pid = fork();
+        if(pid == -1){
+            close(clnt_sock);
+            continue;
         }
-
-
-
-        close(clnt_sock);
+        if(pid == 0){
+            close(serv_sock);
+            while((str_len = read(clnt_sock, message, BUF_SIZE)) != 0){
+                puts(message);
+                write(clnt_sock, message, str_len);
+            }
+            close(clnt_sock);
+            printf("client disconnected form %s \n", inet_ntoa(clnt_addr.sin_addr));
+            return 0;
+        }else{
+            close(clnt_sock);
+        }
     }
-
-    close(serv_sock);
     return 0;
 }
 
@@ -85,4 +93,14 @@ void error_handling(char *message){
     fputc('\n', stderr);
     exit(1);
 }
+void read_childproc(int sig){
+    int status;
+    pid_t id = waitpid(-1, &status, WNOHANG); // 자식 프로세스의 종료 상태를 수집
+    if(WIFEXITED(status)){
+        printf("프로세스 제거 id: %d \n", id);
+        printf("자식이 보낸 번호: %d \n", WEXITSTATUS(status));
+    }
+}
+
+
 //./echo_server 8890
