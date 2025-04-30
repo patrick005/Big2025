@@ -75,6 +75,7 @@ int main(int argc, char *argv[]){
         if(pid == 0){
             close(serv_sock);
             while((str_len = read(clnt_sock, message, BUF_SIZE)) != 0){
+                message[str_len] = '\0'; 
                 puts(message);
                 write(clnt_sock, message, str_len);
             }
