@@ -12,7 +12,11 @@
             ],
             "defines": [
                 "__KERNEL__",
-                "MODULE"
+                "__USE_POSIX",
+                "__USE_GNU",
+                "MODULE",
+                "_POSIX_C_SOURCE=200809L", // POSIX.1-2008 표준 활성화
+                "_GNU_SOURCE" // GNU 확장 활성화
             ],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c23",
