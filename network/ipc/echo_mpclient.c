@@ -44,7 +44,9 @@ int main(int argc, char *argv[]){
         if(!strcmp(message, "Q\n") || !strcmp(message, "q\n")){
             break;
         }
+        message[strlen(message)] =  '\0'; // 개행문자 제거
         str_len = write(sock, message, strlen(message)); // 항상 max치인 1024를 보내면 낭비이니 strlen을 사용
+        recv_len = 0; // recv_len 초기화
         while(recv_len < str_len){ // 송수신 데이터 양이 많을 경우
             recv_len = read(sock, message, BUF_SIZE - 1); 
             if(recv_len == -1){ // 무한루프 돌 수 있으니 유의
