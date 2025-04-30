@@ -76,6 +76,7 @@ int main(int argc, char *argv[]){
             close(serv_sock);
             while((str_len = read(clnt_sock, message, BUF_SIZE)) != 0){
                 message[str_len] = '\0'; 
+                printf("%s: ", inet_ntoa(clnt_addr.sin_addr)); 
                 puts(message);
                 write(clnt_sock, message, str_len);
             }
