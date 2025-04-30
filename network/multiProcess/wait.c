@@ -26,8 +26,9 @@ int main(void){
             if(WIFEXITED(status)){
                 printf("Child process2 sent message %d\n", WEXITSTATUS(status));
             }
-            sleep(30); 
+            sleep(30); // holding parent process state blocking when recieve program terminated signal from child process 1,2.
         }
+        //if use waitpid : do not blocking
     }
     return 0;
 }
