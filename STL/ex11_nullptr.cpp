@@ -15,7 +15,7 @@ int main(){
 
     func(0L);                                       //long 명시해둠
     func(1);                                        //int
-    func(NULL); //널포인터로 안 가짐                 //long 취급이나 passing NULL to non-pointer argument 1 of ‘void func(long int)’ [-Wconversion-null]로 무시 된것을 볼 수 있음
+    // func(NULL); //널포인터로 안 가짐                 //long 취급이나 passing NULL to non-pointer argument 1 of ‘void func(long int)’ [-Wconversion-null]로 무시 된것을 볼 수 있음
     func(nullptr); //->이건 가짐                    //포인터
     func(ptr); // 선언해서 이것도 널의 포인터로 가짐  //포인터
     func(fp);                                       //포인터

@@ -1,4 +1,4 @@
-//pip_server_select.c
+//pipe_server_select.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

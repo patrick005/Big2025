@@ -2,17 +2,18 @@
 //10개 짜리 배열을 랜덤으로 0~100 만들어서 int를 하나 scanf로 받는다.
 // 같은 원소가 있는지 index가 몇 번째 인지 프린트 하시오
 #include <stdio.h>
- 
+#include <time.h>
+
 int main(void){
  
     int randomNumber [10];
     int num;
     
     //0~100의 범위의 랜덤한 숫자 10개 배열로 저장
-    srand((unsigned int)time(NULL));
+    // srand((unsigned int)time(NULL));
     for(int i = 0; i < 10; ++i){
-        randomNumber[i] = rand() % 101;
-        printf("%d, ",randomNumber[i]);
+        // randomNumber[i] = rand() % 101;
+        // printf("%d, ",randomNumber[i]);
         }
     printf("\n찾을 값을 입력하시오: ");
 

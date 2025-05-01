@@ -1,4 +1,4 @@
-//pip_server_select.c
+//pipe_server_select.c
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -105,6 +105,9 @@ int main(void){
 
 2. server 작동
  client 작동
+
+반복문을 통한 다중 클라이언트의 접속을 관리함
+
 
 
 */
