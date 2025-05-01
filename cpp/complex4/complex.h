@@ -39,7 +39,10 @@ public:
 
     // Complex *operator&() { return this; }
     // const Complex *operator&() const { return this; }
-
+    double real();
+    double imag();
+    double real(double re);
+    double imag(double im);
 
 };
 #endif
