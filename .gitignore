@@ -1,6 +1,13 @@
 build/
 dotenv-c/
 .env
+__pycache__/
+.mypy_cache/
+*.ko
+*.o
+*.mod.*
+.*.cmd
+
 
 raspberryPi/WiringPi/build/
 raspberryPi/WiringPi/wiringPi/*.o
