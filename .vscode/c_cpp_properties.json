@@ -1,28 +1,45 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
 {
     "configurations": [
         {
-            "name": "Linux",
+            "name": "PlatformIO",
             "includePath": [
-                "${workspaceFolder}/**",
-                "/usr/include/**",
-                "/usr/include/python3.10/**"
-                // "/lib/modules/6.6.51+rpt-rpi-v8/source/include",
-                // "/usr/src/linux-headers-6.6.51+rpt-rpi-v8//arch/arm64/include/generated",
-                // "/usr/src/linux-headers-6.6.51+rpt-rpi-v8//include",
-                // "/usr/src/linux-headers-6.6.51+rpt-common-rpi/arch/arm64/include"
+                "/home/aa/Big2025/src",
+                "/home/aa/Big2025/lib/uart0",
+                "/home/aa/Big2025/lib/lcd",
+                "/home/aa/Big2025/lib/sht20",
+                "/home/aa/Big2025/lib/st25",
+                ""
             ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "/home/aa/Big2025/src",
+                    "/home/aa/Big2025/lib/uart0",
+                    "/home/aa/Big2025/lib/lcd",
+                    "/home/aa/Big2025/lib/sht20",
+                    "/home/aa/Big2025/lib/st25",
+                    ""
+                ]
+            },
             "defines": [
-                "__KERNEL__",
-                "__USE_POSIX",
-                "__USE_GNU",
-                "MODULE",
-                "_POSIX_C_SOURCE=200809L", // POSIX.1-2008 표준 활성화
-                "_GNU_SOURCE" // GNU 확장 활성화
+                "F_CPU=16000000L",
+                "PLATFORMIO=60119",
+                "ARDUINO_AVR_ATmega128",
+                "__AVR_ATmega128__",
+                ""
             ],
-            "compilerPath": "/usr/bin/gcc",
-            "cStandard": "c23",
-            "cppStandard": "c++23",
-            "intelliSenseMode": "linux-gcc-x64"
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++11",
+            "compilerPath": "/home/aa/.platformio/packages/toolchain-atmelavr/bin/avr-gcc",
+            "compilerArgs": [
+                "-mmcu=atmega128",
+                ""
+            ]
         }
     ],
     "version": 4

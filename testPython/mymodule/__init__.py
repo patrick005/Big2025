@@ -1,1 +1,1 @@
-from .mymodule import Hello
+from mymodule import Hello
