@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from PySide6.QtWidgets import QApplication, QWidget, QGridLayout, QLabel
 from PySide6.QtCore import Qt
 
-def get_diet_menu_data(url="https://sejong.korea.ac.kr/koreaSejong/8028/subview.do", driver_path="chromedriver-linux64/chromedriver"):
+def get_diet_menu_data(url="https://sejong.korea.ac.kr/koreaSejong/8028/subview.do", driver_path="selenium/chromedriver-linux64/chromedriver"):
     """웹 페이지에서 식단표 데이터를 추출합니다."""
     service = Service(executable_path=driver_path)
     options = webdriver.ChromeOptions()
