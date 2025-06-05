@@ -1,0 +1,541 @@
+## 2일차-실습
+
+## 단일행 함수
+
+- UPPER, LOWER, INITCAP
+
+//이메일을 대문자, 소문자로 표기
+SELECT EMAIL, UPPER(EMAIL), LOWER(EMAIL)
+FROM EMP;
+
+//이메일 이름이 'Chen'인 사람
+SELECT *
+FROM EMP
+WHERE LAST_NAME = 'CHEN';
+==> 모두 대문자인 CHEN은 없기에 검색결과 없음
+
+SELECT *
+FROM EMP
+WHERE LAST_NAME = INITCAP('CHEN');
+===> LAST_NAME INITCAP 방식임을 인지하고 있을 때
+===> WHERE 옆에 오는 INDEX의 변형이 일어날 시, 추가적인 시간이 소요되기에 INITCAP 방식이 더 좋다
+
+SELECT *
+FROM EMP
+WHERE UPPER(LAST_NAME) = 'CHEN';
+
+SELECT *
+FROM EMP
+WHERE LOWER(LAST_NAME) = LOWER('CHEN');
+
+- SUBSRT(컴럼, 시작위치 [, 갯수])		A  B   C  D   ☆★☆★☆중요★☆★☆★
+  => 시작위치 >0 : 왼쪽기준			1   2   3  4
+  => 시작위치 <0 : 오른쪽기준		-4 -3 -2 -1
+
+SELECT EMAIL,
+	SUBSTR(EMAIL, 1, 2) AS 앞두자,
+	SUBSTR(EMAIL, -2) AS 뒷두자
+FROM EMP;
+
+EX)
+사원 ( 사번, 이름, 주민번호, ... )
+
+주민번호 : 001010-1234567
+//남자만 검색
+SELECT *,
+FROM 사원
+WHERE SUBSTR(주민번호, -7, 1) IN ('1', '3');
+
+- INSTR ( 컬럼명, '찾는 문자 또는 문자열')
+- INSTR ( 컬럼명, '찾는 문자', 시작위치, 몇번째것)
+=> 컬럼에서 찾는 문자의 시작위치 반환
+=> 없으면 0 반환
+=> 여러개 있으면 첫번째것 반환
+
+SELECT EMAIL, 
+	INSTR( EMAIL, 'E') AS 첫번째위치,
+	INSTR( EMAIL, 'E', 1, 2) AS 두번째위치
+FROM EMP;
+
+SELECT JOB_ID,
+	SUBSTR(JOB_ID, 1, INSTR(JOB_ID, '_') - 1) AS 앞글자,
+	SUBSTR(JOB_ID, INSTR(JOB_ID, '_') + 1) AS 뒷글자
+FROM EMP;
+
+-- test 테이블--- 연습용 테이블 추가
+CREATE TABLE TEST
+AS
+SELECT * FROM ST20.TEST;
+
+
+----------------------------------------------------------------------------------------------------
+- LENGTH (컬럼명)
+=> 영문, 한글, 특수문자, 숫자 모두 1
+
+//이메일의 글자수
+SELECT EMAIL, LENGTH (EMAIL) FROM EMP;
+
+//임시테이블 DUAL을 생성해서 ABC대한민국 #$%의 글자수
+SELECT LENGTH ('ABC대한민국 #$%') FROM DUAL;
+
+- LENGTHB (컬럼명)
+=>해당 자료의 BYTE 사이즈
+
+//임시테이블 DUAL을 생성해서 ABC대한민국 #$%의 바이트수(한글 3바이트)
+SELECT LENGTHB ('ABC대한민국 #$%') FROM DUAL;
+=>19바이트
+SELECT LENGTHB ('민국') FROM DUAL;
+=>6바이트
+
+-LPAD (문자열, 전체사이즈, '채울문자')
+//월급의 자릿수가 10자리가 안 된다면 왼쪽에 -를 부족 수량만큼 채움
+SELECT SALARY, LPAD(SALARY, 10, '-')
+FROM EMP;
+
+- TRIM('0' FROM '002234500')
+==>사이드에서 원하는 문자 제거
+
+//임시테이블 DUAL을 생성한 후, 00220034500에 대해 외각에 있는 0 값을 제거함
+SELECT TRIM('0' FROM '00220034500') FROM DUAL;
+// 사이드의 공백 제거, 중간 공백 유지!
+SELECT TRIM('    ASDF ASDF DFSD FD F    ') FROM DUAL;
+==> DB에 데이터를 집어 넣을때 주로 사용함
+
+- REPLACE(컬럼명, '찾는 문자', '새로운 문자')
+
+//이메일에서 모든 'S'를 찾아서 '***'로 변경
+SELECT EMAIL, REPLACE( EMAIL, 'S', '***') FROM EMP;
+
+//기입한 내용에서 모든 공백을 찾아서 제거
+SELECT REPLACE( '     AB   CD  FF     ', ' ', '') FROM DUAL;
+
+- 문제
+
+이메일 앞 3자리만 오픈하고 나머지는 히든으로 표시 (*)
+SKING -> SKI**
+
+SELECT EMAIL,
+	RPAD(SUBSTR(EMAIL, 1, 3), LENGTH (EMAIL), '*')
+FROM EMP;
+
+
+=========================================================
+
+# 숫자 함수
+
+- ROUND( 값, 자릿수 )
+=>반올림
+=> 자릿수 > 0 : 소수점 이하 자릿수 : 1, 2, 3, ...
+=> 자릿수 < 0 : 정수 자릿수 : -1, -2,-3, ...
+
+//123.4567에서 소수 2째 자리, 0째자리, 10의 자리에서 반올림한 값)
+SELECT ROUND(123.4567, 2),
+	ROUND(123.4567, 0),
+	ROUND(123.4567, -2)
+FROM DUAL;
+
+- TRUNC( 값, 자릿수 )
+=>버림
+=> 자릿수 > 0 : 소수점 이하 자릿수 : 1, 2, 3, ...
+=> 자릿수 < 0 : 정수 자릿수 : -1, -2,-3, ...
+
+//123.4567에서 소수 2째 자리, 0째자리, 10의 자리에서 버림한 값)
+SELECT TRUNC(123.4567, 2),
+	TRUNC(123.4567, 0),
+	TRUNC(123.4567, -2)
+FROM DUAL;
+
+//관공서 요금 책정 방식: 1의자리 버림
+SELECT TRUNC(58899, -1) FROM DUAL;
+
+- MOD(값, 나누는 숫자)
+=> 나머지
+SELECT MOD(10, 3) FROM DUAL;
+=>1
+
+=========================================================
+
+# 날짜 함수
+
+- 날짜 : 세기 년 월 일 시 분 초 => 7 가지 정보
+- 날짜는 연산 가능( +, - )
+ 날짜 + 숫자 => 일자에 연산
+ 날짜 - 날짜 => 일자로 결과 나옴
+
+//입사일과 입사일+10을 출력
+SELECT HIRE_DATE, HIRE_DATE+10
+FROM EMP;
+
+//이름과 근무한 일수
+SELECT LAST_NAME, SYSDATE - HIRE_DATE
+FROM EMP;
+
+- ADDMONTHS( 날짜, 숫자) => 몇개월 후
+- ADDMONTHS( 날짜, -숫자)=> 몇개월 전
+
+//근무한 5개월 후, 5개월 전
+SELECT HIRE_DATE, 
+	ADD_MONTHS(HIRE_DATE, 5)
+	ADD_MONTHS(HIRE_DATE, -5)
+FROM EMP;
+
+- MONTH_BETWEEN( 날짜1, 날짜2)
+=> 날짜 사이의 개월수 단위
+
+//근속월수 계산
+SELECT LAST_NAME, HIRE_DATE, 
+	TRUNC(MONTHS_BETWEEN(SYSDATE, HIRE_DATE)) AS 근속월수
+FROM EMP;
+
+- LAST_DAY(컬럼명)
+
+//입사 날짜와 입사한 달의 마지막날 출력
+SELECT HIRE_DATE, LAST_DAY(HIRE_DATE)
+FROM EMP;
+
+- NEXT_DAY(날짜컬럼, 요일)
+ => 요일 : '월요일', '월'
+ => 숫자요일 : 일월화수목금토 ->1 2 3 4 5 6 7
+
+//오늘 이후로 첫번째로 오는 요일의 날짜
+SELECT SYSDATE, NEXT_DAY(SYSDATE, 1)
+FROM DUAL;
+
+ex) 6개월 후 첫번째 수요일에 미팅합시다. 미팅날짜는?
+SELECT NEXT_DAY(ADD_MONTHS(SYSDATE, 6), 4) AS 미팅날
+FROM DUAL;
+
+- ROUND(날짜컬럼명, 기준)
+
+//기준 이전 단위에서 반올림한 날짜 데이터
+SELECT SYSDATE,
+	ROUND(SYSDATE, 'YY'),
+	ROUND(SYSDATE, 'MM')
+FROM DUAL;
+
+- TRUNC
+//기준 이전의 버림
+SELECT SYSDATE,
+	TRUNC(SYSDATE, 'YY'),
+	TRUNC(SYSDATE, 'MM')
+FROM DUAL;
+
+- EXTRACT(요소 FORM 날짜컬럼)
+=>요소 : 'YEAR', 'MONTH', ...  
+=>요소 추출
+
+//2005년도에 입사한 사원의 이름과 입사일
+SELECT LAST_NAME, HIRE_DATE
+FROM EMP
+WHERE EXTRACT( YEAR FROM HIRE_DATE) = 2005;
+
+//2월에 입사한 사원의 이름과 입사일
+SELECT LAST_NAME, HIRE_DATE
+FROM EMP
+WHERE EXTRACT( MONTH FROM HIRE_DATE) = 2;
+
+=========================================================
+
+# 형전환 함수
+
+- TO_NUMBER
+- TO_CHAR
+- TO_DATE
+
+=> TO_NUMBER은 잘 안 사용함
+
+//2005년10월10일 이후로 입사한 사원들의 전체데이터
+SELECT *
+FROM EMP
+WHERE HIRE_DATE > TO_DATE('20051010', 'YYYYMMDD');
+
+
+SELECT *
+FROM EMP
+WHERE HIRE_DATE > 2005-10-10;
+
+- 숫자 -> 문자로 전환
+
+SELECT SALARY, TO_CHAR(SALARY, '99,999')
+FROM EMP;
+=> 문자로 바뀌어서 연산능력이 사라짐
+
+SELECT SALARY, TO_CHAR(SALARY, '9,999')
+FROM EMP;
+=> 9,999로 해서 #####으로 나온다면 포멧(자리)수가 적어서 그런것이니 역으로 999,999로 늘려준다
+
+SELECT SALARY, TO_CHAR(SALARY, '00,000')
+FROM EMP;
+=>00,000으로 해줬을땐 빈자리에 0이 나온다 ex) 4,200 -> 04,200
+
+//소수점 아랫자리를 맞출때 사용
+SELECT LAST_NAME, TO_CHAR(COMMISSION_PCT, '0.00')
+FROM EMP
+WHERE COMMISSION_PCT IS NOT NULL;
+=> 0.0 소수점한자리 / 0.00 소수점 두자리 / 0.000 소수점 세자리
+
+SELECT SALARY, TO_CHAR(SALARY, '$99,999') 
+FROM EMP;
+//앞에 $을 붙여준다면 앞자리에 붙는다
+
+SELECT SALARY, TO_CHAR(SALARY, 'L99,999') 
+FROM EMP;
+//앞에 L을 붙여준다면 서버가 있는 지역의 화폐단위가 붙는다
+
+- 날짜 -> 문자로 전환
+
+SELECT TO_CHAR(SYSDATE, 'YY/MM/DD') 
+FROM DUAL;
+// 연/월/일 두자리씩 배정되어 날짜가 출력된다
+
+SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD-DY') 
+FROM DUAL;
+// 연/월/일/요일로 출력된다
+=>DY: 요일 축약 / DAY: 요일 풀네임
+
+SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD-DY HH:MI:SS') 
+FROM DUAL;
+// 연/월/일/요일/시간으로 출력된다
+// 이는 12시간 시간으로 출력된다
+
+SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD-DY HH24:MI:SS') 
+FROM DUAL;
+// HH 앞에 24를 붙여주면 12시간이 아닌 24시간 시계로 출력된다
+
+SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD-DY HH:MI:SS AM') 
+FROM DUAL;
+// AM을 붙여줄 경우, 12시간 시계에서 오전인지 오후인지 출력된다
+
+=========================================================
+
+# NULL 관련 함수
+- NVL(컬럼명, NULL일 경우 대체값)		☆★☆★☆중요★☆★☆★
+=> NULL VALUE LITERAL
+=> 리터럴이란 프로그램에서 직접 표현한 값, 대체한 값
+
+급여, 수당, 총지급액
+급여 : SALARY
+수당액 : SALARY * COMMISSION_PCT
+총지급액 : 급여 + 수당액
+
+SELECT LAST_NAME,
+	SALARY,
+	SALARY * COMMISSION_PCT AS 수당,
+	SALARY + (SALARY * COMMISSION_PCT) AS 총지급액
+FROM EMP;
+==> COMMISSION_PCT이 NULL인 경우 -> 수당, 총지급액도 NULL
+==> 수식 중간에 NULL이 포함되면 최종값이 NULL로 바뀜
+
+SELECT LAST_NAME,
+	SALARY,
+	SALARY * NVL(COMMISSION_PCT, 0) AS 수당,
+	SALARY + (SALARY * NVL(COMMISSION_PCT, 0)) AS 총지급액
+FROM EMP;
+=>NVL로 NULL(미입력 데이터)를 고정해서 수식에 이용함
+
+- NVL2(컬럼명, NULL일 경우 대체값, NULL이 아닐 경우)
+
+수당여부 출력 : YES, NO
+
+SELECT LAST_NAME,
+	COMMISSION_PCT,
+	NVL2(COMMISSION_PCT, 'YES', 'NO') 수당여부
+FROM EMP;
+
+- NULLIF(A,B)
+=> A와 B가 같으면 NULL, 다르면 A 값 출력
+
+- COALESCE(A,B,C,...)
+=>앞에서부터 우선출력
+=> A가 있으면 A, A가 없으면 B, B도 없으면 C
+
+=========================================================
+
+# CASE 문
+- 쿼리 안의 조건문
+- ELSE 필수 아님, 없으면 NULL 리턴(없으면 그 외에 '정해진게 없다(NULL)' 라고 올라갑니다)
+
+//부서명, 이름, 월급, 보너스
+보너스 : 월급 2배
+SELECT DEPARTMENT_ID, LAST_NAME,
+	SALARY, SALARY * 2 AS BONOUS
+FROM EMP
+ORDER BY 1;
+
+부서별로 보너스를 차등하여 지급코자 한다.
+30 -> 3배, 50 -> 4배, 나머지 -> 1배
+
+SELECT DEPARTMENT_ID,
+	 LAST_NAME,
+	 SALARY,
+	 CASE DEPARTMENT_ID
+		WHEN 30 THEN SALARY *3
+		WHEN 50 THEN SALARY *4
+	 ELSE
+		SALARY *1
+	END AS BONOUS
+FROM EMP
+ORDER BY 1;
+// CASE 뒤로 그대로 읽으면 됩니다. 30부서면 3배, 50부서면 4배, 그외 1배 끝 ->보너스로 명명
+
+->CASE -> DECODE함수 변환
+- ORACLE 전용함수지만 범용적인 프로그램이기에 많은 시험에 출제될 정도로 유명함
+- 등가조건(=)만 가능
+
+SELECT DEPARTMENT_ID,
+	 LAST_NAME,
+	 SALARY,
+	 DECODE ( DEPARTMENT_ID,
+		30, SALARY *3
+		50, SALARY *4
+		SALARY *1) AS BONOUS
+FROM EMP
+ORDER BY 1;
+// 객체명[DEPARTMENT_ID] 뒤에 묶음으로 들어오는 것이며 묶음이 없는것은 그 외입니다
+// 객체명[DEPARTMENT_ID] 안에 30, 50이 있기에 해당 월급의 배수 지정이 가능합니다
+
+
+
+-> CASE 등가조건이 아닌 경우 문법
+
+SELECT DEPARTMENT_ID,
+	 LAST_NAME,
+	 SALARY,
+
+	 CASE 
+		WHEN DEPARTMENT_ID IN(10, 20, 30) THEN SALARY *3
+		WHEN DEPARTMENT_ID IN(40, 50, 60) THEN SALARY *4
+	 ELSE
+		SALARY *1
+	END AS BONOUS
+
+FROM EMP
+ORDER BY 1;
+// 등가조건이 아닐경우 CASE 뒤의 객체명이 WHEN 뒤쪽으로 들어옵니다
+// IN은 등가조건이기에 DECODE로 적용할 수 있음
+// LIKE, BETWEEN 등은 비등가기에 DECODE를 적용할 수 없음
+
+
+==========================================================
+
+# 다중행 함수
+- SUM, COUNT, MAX, MIN, AVG ....
+- 통계함수는 NULL 값 제외!!
+
+//우리회사의 급여 총액, 평균(소수점버림), 최댓값, 최솟값
+SELECT SUM(SALARY), TRUNC(AVG(SALARY)), MAX(SALARY), MIN(SALARY)
+FROM EMP;
+
+//총 사원수
+
+COUNT(*)	  -> ROW 개수 (행 수)
+COUNT(컬럼)-> NULL 제외한 갯수
+
+SELECT COUNT(*) AS 총인원수, 
+	COUNT(COMMISSION_PCT) AS 수당받는사원수
+FROM EMP;
+
+=======================================================================
+
+# GROUP BY 절
+- 그룹 짓자고 할 때 -> 그룹별 통계
+
+//부서별 평균 급여, 
+SELECT DEPARTMENT_ID, TRUNC(AVG(SALARY)) AS 평균급여, COUNT(*) AS 근무인원수
+FROM EMP
+GROUP BY DEPARTMENT_ID
+ORDER BY 1;
+
+----문제
+//년도별 입사사원수
+SELECT EXTRACT( YEAR FROM HIRE_DATE) AS 입사년도, COUNT(TRUNC(HIRE_DATE)) AS 입사인원수
+FROM EMP
+GROUP BY EXTRACT( YEAR FROM HIRE_DATE)
+ORDER BY 1;
+==> SELECT에 등장한 그룹함수를 제외한 다른 컬럼은 GROUP BY절에 반드시 삽입
+
+//부서별, 직군별 근무인원수
+SELECT DEPARTMENT_ID, JOB_ID, COUNT(*) AS 근무인원수
+FROM EMP
+GROUP BY DEPARTMENT_ID, JOB_ID
+ORDER BY 1, 2;
+
+
+=======================================================================
+
+# HAVING 절
+- 취사선택한 그룹 표기
+- HAVING 조건식 AND 
+- GROUP BY 절 없이 단독 사용 불가
+
+//부서별 평균급여, 근무인원수, 단! 평균급여가 8000 이상인 부서만 출력
+SELECT DEPARTMENT_ID, TRUNC(AVG(SALARY)) AS 평균급여, COUNT(*) AS 근무인원수
+FROM EMP
+GROUP BY DEPARTMENT_ID
+	HAVING AVG(SALARY) >= 8000
+ORDER BY 1;
+
+=======================================================================
+
+문제
+주문 (주문번호, 주문자, 상풍명, 주문갯수, 주문 금액, 주문날짜)
+*주문 올해 주문 내역만 기록
+
+1. 상품별 주문 갯수의 합, 단 1000개 이상 팔린 상품만 검색, 많이 팔린 상품부터
+
+SELECT 상품명, SUM(주문갯수)
+FROM 주문
+GROUP BY 상품명
+	HAVING SUM(주문갯수)>=1000
+ORDER BY 2 DESC;
+
+2. 지난달 상품별 주문 갯수의 합, 단 1000개 이상 팔린 상품만 검색, 많이 팔린 상품부터
+
+SELECT 상품명, SUM(주문갯수)
+FROM 주문
+*WHERE EXTRACT ( MONTH FROM 주문날짜) = EXTRACT ( MONTH FROM SYSDATE) -1 //지금날짜의 -1달이라 상시로 적용
+GROUP BY 상품명
+	HAVING SUM(주문갯수)>=1000
+ORDER BY 2 DESC;
+
+
+=======================================================
+															|
+쿼리 기술 순서													|
+SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY ...			|
+															|
+쿼리 실행 순서													|
+FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY				|
+															|
+=======================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. 지난달 500000 원 이상 주문한 고객의 이름과 주문총액
+
+
+128P~194P
+
+
+
+
+
+
+
+
+
