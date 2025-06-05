@@ -1,0 +1,108 @@
+
+## 그룹함수
+- SCOTT 스키마 실습
+
+- ROLLUP
+- CUBE
+- GROUPING SETS
+
+//집계함수
+SELECT JOB 직무, SUM(SAL) 합계, COUNT(*) 인원수
+FROM EMP
+GROUP BY JOB
+ORDER BY 1;
+
+//그룹함수 - TOTAL정보 행으로 추가
+SELECT JOB 직무, SUM(SAL) 합계, COUNT(*) 인원수
+FROM EMP
+GROUP BY ROLLUP (JOB)
+ORDER BY 1;
+
+//집계함수
+SELECT DEPTNO 부서, JOB 직무, SUM(SAL) 합계, COUNT(*) 인원수
+FROM EMP
+GROUP BY DEPTNO, JOB
+ORDER BY 1;
+//그룹함수
+SELECT DEPTNO 부서, JOB 직무, SUM(SAL) 합계, COUNT(*) 인원수
+FROM EMP
+GROUP BY ROLLUP(DEPTNO, JOB)
+ORDER BY 1;
+
+**ROLLUP(A, B) 
+--> 뒤에서부터 하나씩 뺀다 
+-->(A, B), (A), 전체()
+
+**ROLLUP(A, B, C) 
+--> 뒤에서부터 하나씩 뺀다 
+-->(A, B, C), (A, B), (A), ()
+
+**ROLLUP((A, B), C) 
+--> 뒤에서부터 하나씩 뺀다 
+-->((A, B), C), (A, B), ()
+
+
+---------------------------------------------
+
+# CUBE
+- GROUP BY 항목간의 다차원적 소계
+- 모든그룹의 케이스를 다 계산
+- 집계 위쪽에 출력
+
+
+//집계함수
+SELECT DEPTNO 부서, JOB 직무, SUM(SAL) 합계, COUNT(*) 인원수
+FROM EMP
+GROUP BY DEPTNO, JOB
+ORDER BY 1;
+
+//그룹함수
+SELECT DEPTNO 부서, JOB 직무, SUM(SAL) 합계, COUNT(*) 인원수
+FROM EMP
+GROUP BY CUBE(DEPTNO, JOB)
+ORDER BY 1;
+
+** CUBE(A,B)
+--> (A,B), (A), (B), ()
+
+---------------------------------------------
+
+#GROUPING SETS
+- 원하는 집계만 출력
+
+//그룹함수
+SELECT DEPTNO 부서, JOB 직무, SUM(SAL) 합계, COUNT(*) 인원수
+FROM EMP
+GROUP BY GROUPING SETS(DEPTNO, JOB)
+ORDER BY 1;
+
+---------------------------------------------
+
+#GROUPING
+- 집계의 레이블을 사용하고 싶을 때
+
+SELECT JOB 직무, SUM(SAL) 합계, COUNT(*) 인원수
+FROM EMP
+GROUP BY ROLLUP(JOB)
+ORDER BY 1;
+
+SELECT CASE GROUPING(JOB)
+		WHEN 1 THEN 'ALL TOTAL'
+		ELSE JOB
+		END AS 직무,
+		SUM(SAL) 합계, COUNT(*) 인원수
+FROM EMP
+GROUP BY ROLLUP(JOB);
+
+SELECT 	CASE GROUPING(DEPTNO)
+			WHEN 1 THEN 'ALL DEPT'
+			ELSE TO_CHAR(DEPTNO)
+			END AS 부서,
+		CASE GROUPING(JOB)
+			WHEN 1 THEN 'ALL JOB'
+			ELSE JOB
+		END AS 직무,
+		COUNT(*) 인원수
+FROM EMP
+GROUP BY ROLLUP(DEPTNO, JOB);
+

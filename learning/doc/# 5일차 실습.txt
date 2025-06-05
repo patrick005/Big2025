@@ -1,0 +1,151 @@
+# 5일차 실습
+
+## SET 연산자
+
+# 실습에 필요한 테이블 복사
+CREATE TABLE JAB_HISTORY
+AS
+SELECT * FROM HR.JOB_HISTORY;
+
+# SET 연산자 실행하기 위한 기본 전제조건
+-JOIN은 양 옆으로 붙였음
+-반면, SET은 위 아래로 붙이기에 스키마가 같아야 한다
+	: 컬럼 갯수, 컬럼 타입
+- 컬럼명은 달라도 된다: 첫번째 쿼리결과의 컬럼명이 대표 컬럼명이 된다
+
+# UNION
+- 중복행 배제
+- 첫번째 컬럼의 값으로 오름차순 정렬로 출력
+- 첫번째 쿼리결과의 컬럼명이 대표 컬럼명이 된다
+
+SELECT EMPLOYEE_ID, JOB_ID
+FROM EMP
+UNION
+SELECT EMPLOYEE_ID, JOB_ID
+FROM JOB_HISTORY;
+==> 107 + 10 => 117 아니고 중복행 배제(2 ROW)하고 115 ROW
+//EMP와 JAB_HISTORY에 있는 사원번호와 직군 리스트
+
+# 유니온의 결과를 테이블로 저장
+CREATE TABLE UNION1
+AS
+SELECT EMPLOYEE_ID, JOB_ID
+FROM EMP
+UNION
+SELECT EMPLOYEE_ID, JOB_ID
+FROM JOB_HISTORY;
+
+
+# UNION ALL
+- 중복행 허용
+- 정렬 안 됨
+- 첫번째 쿼리결과의 컬럼명이 대표 컬럼명이 된다
+- 첫번째 쿼리결과와 두번째 쿼리결과를 위아래로붙여서 출력
+
+SELECT EMPLOYEE_ID, JOB_ID
+FROM EMP
+UNION ALL
+SELECT EMPLOYEE_ID, JOB_ID
+FROM JOB_HISTORY;
+// 합집합
+// 107 + 10 = 117 ROW 출력
+
+# INTERSECT
+- 교집합
+
+SELECT EMPLOYEE_ID, JOB_ID
+FROM EMP
+INTERSECT
+SELECT EMPLOYEE_ID, JOB_ID
+FROM JOB_HISTORY;
+//중복된 ROW 2개 항목 출력
+
+# MINUS
+- 첫번째 쿼리결과에서 두번째 쿼리결과를 제외한 나머지
+
+SELECT EMPLOYEE_ID, JOB_ID
+FROM EMP
+MINUS
+SELECT EMPLOYEE_ID, JOB_ID
+FROM JOB_HISTORY;
+//EMP - (EMP 교집합 JOB_HISTORY)
+//107-2=105 ROW
+
+---------------------------------------------
+
+# 스키마 맞지 않을 경우
+- 명시적으로 스키마 동일하게 작성
+- 컬럼의 갯수, 컬럼타입을 맞춰준다
+
+- 없는 자료값은 NULL로 채우는 방법
+SELECT DEPARTMENT_ID, TO_NUMBER(NULL) LOCATION, HIRE_DATE
+FROM EMP
+UNION
+SELECT DEPARTMENT_ID, LOCATION_ID, TO_DATE(NULL)
+FROM DEPT;
+//해당 TABLE에 없는 항목의 데이터 타입을 지정하며, NULL로 출력하게 작성
+
+- 없는 자료값을 특정값으로 채운 경우
+SELECT EMPLOYEE_ID, JOB_ID, SALARY
+FROM EMP
+UNION
+SELECT EMPLOYEE_ID, JOB_ID, 0
+FROM JOB_HISTORY;
+//해당 TABLE에 없는 항목의 데이터 값을 데이터 타입에 맞추어 직접 작성
+
+---------------------------------------------
+
+DROP TABLE TEST;
+
+CREATE TABLE TEST(NAME, BIRTH)
+AS
+SELECT LAST_NAME, HIRE_DATE
+FROM EMP
+UNION ALL
+SELECT LAST_NAME, ADD_MONTHS(HIRE_DATE, -500)
+FROM EMP
+UNION ALL
+SELECT LAST_NAME, ADD_MONTHS(HIRE_DATE, -400)
+FROM EMP
+UNION ALL
+SELECT LAST_NAME, ADD_MONTHS(HIRE_DATE, -300)
+FROM EMP
+UNION ALL
+SELECT LAST_NAME, ADD_MONTHS(HIRE_DATE, -200)
+FROM EMP
+UNION ALL
+SELECT LAST_NAME, ADD_MONTHS(HIRE_DATE, -100)
+FROM EMP
+UNION ALL
+SELECT LAST_NAME, ADD_MONTHS(HIRE_DATE, -150)
+FROM EMP
+UNION ALL
+SELECT LAST_NAME, ADD_MONTHS(HIRE_DATE, -50)
+FROM EMP;
+
+SELECT * FROM TEST;
+
+//연령대별 분포도
+//나이 -> 연령대
+
+SELECT NAME, BIRTH, 
+	TRUNC(EXTRACT( YEAR FROM SYSDATE) - EXTRACT (YEAR FROM BIRTH), 0) AS 나이,
+	TRUNC(EXTRACT( YEAR FROM SYSDATE) - EXTRACT (YEAR FROM BIRTH), -1) AS 연령대
+FROM TEST;
+//나이 = 현재 시간 (년) - 생일(년) , 소수점버림=나이 , 1의자리 버림= 연령대
+
+//연령대별로 그룹
+//연령대 연령대별고객수, 비율
+==>비율 : 해당연령대 고객수 / 전체 고객수
+
+SELECT 
+	TRUNC(EXTRACT( YEAR FROM SYSDATE) - EXTRACT (YEAR FROM BIRTH), -1) AS 연령대,
+	COUNT(*) 연령대별고객수,
+	TRUNC(COUNT(*) / (SELECT COUNT(*) FROM TEST), 2) AS 분포
+FROM TEST
+GROUP BY TRUNC(EXTRACT( YEAR FROM SYSDATE) - EXTRACT (YEAR FROM BIRTH), -1) 
+ORDER BY 1;
+
+
+
+

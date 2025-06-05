@@ -1,0 +1,497 @@
+## 3일차-실습
+
+TABLE 사원
+사번 이름 부서번호
+
+TABLE 부서
+부서번호 부서명
+
+SELECT 사원, 이름,부서명
+FROD 사원 JOIN 부서 ON (사원.부서번호 = 부서.부서번호)
+
+=> 사번, 이름, 부서번호, 부서명
+->등가 
+
+LEFT JOIN 안맞는것중 왼쪽 목록만 출력
+RIGHT JOIN 안맞는것중 오른쪽 목록만 출력
+
+## 조인 : JOIN
+
+# 실습을위한 테이블 복사
+
+CREATE TABLE DEPT
+AS
+SELECT * FROM HR.DEPT;
+
+CREATE TABLE JOB_GRADES
+AS
+SELECT * FROM HR.JOB_GRADES;
+
+
+---------------------------------------------------------------------------------------------------------
+
+# 조인
+- 하나 이상의 테이블을 옆으로 합치는 것
+- 오라클 전용조인, ANSI 표준조인
+
+# 조인 종류
+- CROSS JOIN
+- JOIN (등가조인, EQUI JOIN)
+- OUTER JOIN (LEFT, RIGHT, FULL)
+- SELF JOIN
+- NON EQUI JOIN(비등가조인)
+
+# CROSS JOIN
+- 조인 조건이 없다
+- 모든 경우의 수로 조인 : T1 ROW 3 * T2 ROW 3 => 9 ROW
+- 메모리에 악영향을 끼치므로 잘 사용하지 않는다
+
+//CROSS JOIN 예제 
+//FORM절에 ','로 들어오면 오라클 전용 JOIN
+SELECT *
+FROM EMP, DEPT;
+->2889행 생성
+
+//FROM절에 문장으로 CROSS JOIN이 들어오면 ANSI 표준
+SELECT *
+FROM EMP CROSS JOIN DEPT;
+
+# JOIN (등가조인, EQUI JOIN)
+- 조인 조건 있음(오라클:WHERE/ANSI: 	)
+- T1.컬럼명 = T2.컬럼명
+- 조인 조건을 만족하는 ROW만 검색됨
+
+//사번, 이름, 부서명 검색희망
+//오라클 전용
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP, DEPT
+	WHERE EMP.DEPARTMENT_ID = DEPT.DEPARTMENT_ID;
+
+//ANSI 표준 - 이 방법을 추천 ★
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP JOIN DEPT ON EMP.DEPARTMENT_ID = DEPT.DEPARTMENT_ID;
+
+- 일반 검색 조건 추가 시
+
+//사번, 이름, 부서명 검색에 부서번호 30번 조건
+//오라클 전용
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP, DEPT
+	WHERE EMP.DEPARTMENT_ID = DEPT.DEPARTMENT_ID
+		AND EMP.DEPARTMENT_ID = 30;
+
+//ANSI 표준  - 이 방법을 추천 ★
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP JOIN DEPT ON EMP.DEPARTMENT_ID = DEPT.DEPARTMENT_ID
+	WHERE EMP.DEPARTMENT_ID = 30;
+
+- 두 테이블에 조인 조건 컬럼이 다르면 => ON
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP JOIN DEPT ON EMP.DEPARTMENT_ID = DEPT.DEPARTMENT_ID;
+
+- 두 테이블의 조인 조건 컬럼명 같으면 => USING
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP JOIN DEPT USING (DEPARTMENT_ID);
+
+* 두 테이블의 동일한 컬럼명 검색시 오류가 발생할 수 있음
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP JOIN DEPT USING (DEPARTMENT_ID);
+
+*  성능을 고려한 조인
+=> 테이블의 컬럼 별칭 사용하여 SELECT 절에 컬럼명 앞에 기술할 것
+
+SELECT E.EMPLOYEE_ID, E.LAST_NAME, D.DEPARTMENT_ID, D.DEPARTMENT_NAME
+FROM EMP E JOIN DEPT D
+	ON ( E.DEPARTMENT_ID = D.DEPARTMENT_ID);
+
+SELECT E.EMPLOYEE_ID, E.LAST_NAME, D.DEPARTMENT_ID, D.DEPARTMENT_NAME
+FROM EMP E, DEPT D
+	WHERE E.DEPARTMENT_ID = D.DEPARTMENT_ID;
+
+
+11:11
+=============================================================================
+
+# OUTER JOIN
+- 조인 조건 있음
+- 조인 조건 만족하는 행 + 만족하지 않는 ROW 검색 
+- 추가정보로 삼을 것(FOLLOWING TABLE)을 선택하여 적용 / 기준으로 삼는 TABLE(DRIVING TABLE)을 잘 선택해야함
+- LEFT, RIGHT, FULL
+
+//LEFT, OUTER JOIN
+//오라클 전용
+//(+) 반대편 전체 출력, 빈 항목은 NULL로 출력
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP, DEPT
+	WHERE EMP.DEPARTMENT_ID = DEPT.DEPARTMENT_ID;
+==> 등가조인
+==> 검색 결과 106 ROW
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP, DEPT
+	WHERE EMP.DEPARTMENT_ID = DEPT.DEPARTMENT_ID(+);
+==> LEFT OUTER JOIN
+==> 검색결과 107 ROW
+
+//ANSI 표준 조인
+//LEFT, OUTER JOIN
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP LEFT OUTER JOIN DEPT USING(DEPARTMENT_ID);
+==> OUTER 생략 가능
+
+
+//RIGHT, OUTER JOIN
+//오라클 전용
+//(+) 반대편 전체 출력, 빈 항목은 NULL로 출력
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP, DEPT
+	WHERE EMP.DEPARTMENT_ID(+) = DEPT.DEPARTMENT_ID;
+==> RIGHT OUTER JOIN
+==> 검색결과 122 ROW
+
+//ANSI 표준 조인
+//LEFT, OUTER JOIN
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP RIGHT OUTER JOIN DEPT USING(DEPARTMENT_ID);
+==> OUTER 생략 가능
+
+
+// FULL OUTER JOIN
+//오라클 전용
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP, DEPT
+	WHERE EMP.DEPARTMENT_ID(+) = DEPT.DEPARTMENT_ID(+);
+==> 오라클 전용 조인에서는 FULL OUTER 지원하지 않는다
+
+//ANSI 표준 조인
+//FULL OUTER JOIN
+SELECT EMPLOYEE_ID, LAST_NAME, DEPARTMENT_NAME
+FROM EMP FULL OUTER JOIN DEPT USING(DEPARTMENT_ID);
+==> 검색결과 123 ROW
+
+
+# SELF JOIN
+- 같은 테이블끼리 조인
+- 테이블의 별칭을 이용하여 다른 테이블처럼 조인
+
+//사번, 이름, 직속상관이름(직속상관사번&사번))
+SELECT E.EMPLOYEE_ID "사번", E.LAST_NAME " 사원이름", M.LAST_NAME " 직속상관이름"
+FROM EMP E, EMP M
+	WHERE E.MANAGER_ID = M.EMPLOYEE_ID;
+
+
+# NON EQUI JOIN(비등가 조인)
+- 조인 조건이 (=)이 아닌 모든 조인
+
+//이름, 월급, 월급레벨
+//오라클 전용
+SELECT E.LAST_NAME, E.SALARY, J.GRADE_LEVEL
+FROM EMP E, JOB_GRADES J
+	WHERE E.SALARY BETWEEN J.LOWEST_SAL AND J.HIGHEST_SAL;
+
+//ANSI 표준
+SELECT E.LAST_NAME, E.SALARY, J.GRADE_LEVEL
+FROM EMP E JOIN JOB_GRADES J
+	ON (E.SALARY BETWEEN J.LOWEST_SAL AND J.HIGHEST_SAL);
+
+=====================================================
+
+# 여러 테이블 조인
+
+T1(AA,BB)
+T2(BB,CC)
+T3(CC,DD)
+
+
+//오라클 전용
+//동일 컬럼끼리 묶어서 계속 엮기
+SELECT *
+FROM T1, T2, T3
+	WHERE T1.BB = T2.BB AND T2.CC = T3.CC;
+
+//ANSI 표준
+SELECT *
+FROM T1 JOIN T2 USING(BB) JOIN T3 USING(CC)
+	-------------------------- 앞의 그룹 공통
+		     --------------------------------------- 뒤의 그룹 공통
+
+
+==================================================
+SQLD-조인문제.pdf
+
+//차트 생성
+inser intAS
+SELECT * FROM t2;
+
+CREATE TABLE T1
+AS
+SELECT * FROM ST20.T1;
+CREATE TABLE T2
+AS
+SELECT * FROM ST20.T2;
+
+=========================================
+SQLD-조인문제풀이
+
+//NATURAL JOIN한 결과의 TABLE
+SELECT * FROM T1 NATURAL JOIN T2;
+//문제에서 구하라는 거
+SELECT SUM(C1) FROM T1 NATURAL JOIN T2;
+
+=========================================
+
+## 서브쿼리
+
+- 쿼리 안의 쿼리
+- 서브쿼리 괄호 (서브쿼리) 감싼다
+- 수행: 서브쿼리 실행 후 결과값 -> 메인 리에 전달 -> 메인쿼리 실행
+- 서브쿼리의 리턴값이 NULL이면, 메인쿼리의 결과도 NULL
+- TOP-n 알고리즘을 서브쿼리에서 구현
+
+- 사용위치
+  -> SELECT 절: 스칼라 서브쿼리 -> 함수로 구현해서 제공하는 추세
+  -> WHERE/HAVING 절: 중첩 서브쿼리 -> 조건식의 우측에 반드시 사용 / 좌측에 사용시 에러
+  -> FROM 절: IN-LINE VIEW 
+
+//수당이 10000 이상인 사원이름, 급여
+SELECT LAST_NAME, SALARY
+FROM EMP
+WHERE SALARY >=10000;
+
+//'Chen'보다 많은 급여를 받는 사원이름, 급여
+SELECT LAST_NAME, SALARY
+FROM EMP
+WHERE SALARY >= (SELECT SALARY
+				FROM EMP
+				WHERE LAST_NAME = 'Chen') ;
+
+
+//우리회사에서 최고 급여를 받는 사원의 이름과 급여
+SELECT LAST_NAME, SALARY
+FROM EMP
+WHERE SALARY = (SELECT MAX(SALARY)
+				FROM EMP) ;
+
+
+=========================================
+
+# 단일행 비교연산자
+ - <, >, <=, >=, =, !=
+
+# 다중행 비교연산자
+ - IN, 비교연산자 ANY, 비교연산자 ALL
+
+//30부서에 근무하는 사원의 급여
+SELECT SALARY
+FROM EMP
+WHERE DEPARTMENT_ID = 30;
+
+SELECT LAST_NAME, SALARY
+FROM EMP
+WHERE SALARY >= (SELECT SALARY
+FROM EMP
+WHERE DEPARTMENT_ID = 30);
+->단일행 비교연산자 뒤에 비교군이 복수형이라 에러뜸
+
+//ANY를 적용한 30부서 근무자의 급여보다 많이 받는 인원
+SELECT LAST_NAME, SALARY
+FROM EMP
+WHERE SALARY >= ANY(SELECT SALARY
+FROM EMP
+WHERE DEPARTMENT_ID = 30);
+-> ANY, SOME 은 동일한 기능
+-> IN은 30부서 직원 월급과 동일한 사람들
+
+//ALL를 적용한 30부서 근무자의 급여보다 많이 받는 인원
+SELECT LAST_NAME, SALARY
+FROM EMP
+WHERE SALARY >= ALL(SELECT SALARY
+FROM EMP
+WHERE DEPARTMENT_ID = 30);
+
+
+
+=========================================
+
+# TOP-n 알고리즘
+
+- FROM절의 서브쿼리를 사용한다
+- 의사컬럼(PSEUDO COLUMN) -> ROWNUM
+  => 실제 스키마에 없는 컬럼이지만 늘 사용가능한 컬럼
+
+//월급을 가장 많이 받는 10명의 이름과 급여
+SELECT LAST_NAME, SALARY
+FROM  (SELECT LAST_NAME, SALARY
+	FROM EMP
+	ORDER BY 2 DESC)
+WHERE ROWNUM <= 10;
+-> DESC로 위에서부터 정렬해서 상위/ DESC를 안쓰면 아래서부터기에 하위 10명
+
+
+=========================================
+
+주문 (주문번호, 주문자, 상풍명, 주문갯수, 주문 금액, 주문날짜)
+*주문 올해 주문 내역만 기록
+
+//가장 많이 팔린 베스트상품 10개의 상품과 팔린 갯수
+SELECT 상품명, 팔린갯수
+FROM (
+	SELECT 상품명, SUM(주문갯수) AS 팔린갯수
+	FROM 주문
+	GROUP BY 상품명
+	ORDER BY 2 DESC)
+WHERE ROWNUM <= 10;
+
+
+=========================================
+
+
+# WITH 절
+
+- FROM 절에 사용하는 서브쿼리가 길고 복잡할 때 미리 선언해 놓는 것
+
+- WITH 절 미사용
+SELECT LAST_NAME, DEPARTMENT_NAME
+FROM (SELECT * FROM EMP WHERE DEPARTMENT_ID = 30)
+	JOIN (SELECT * DEPARTMENT_ID, DEPARTMENT_NAME
+		FROM DEPT)
+		USING(DEPARTMENT_ID);
+
+- WITH 절 사용
+WITH
+E AS (SELECT * FROM EMP WHERE DEPARTMENT_ID = 30),
+D AS (SELECT DEPARTMENT_ID, DEPARTMENT_NAME FROM DEPT)
+
+SELECT LAST_NAME, DEPARTMENT_NAME
+FROM E JOIN D USING (DEPARTMENT_ID);
+
+
+- EXISTS 연산자
+WHERE 좌항 연산자 우항
+         <------------>
+	 EXISTS 연산자
+
+//Chen의 부서에 속한 모든 자료
+SELECT *
+FROM EMP
+WHERE DEPARTMENT_ID IN ( SELECT DEPARTMENT_ID
+					FROM EMP
+					WHERE LAST_NAME = 'Chen');
+
+//자료를 정리하는 것이 아닌, 자료 유무를 판단하는 것이기에 빠름
+SELECT *
+FROM EMP
+WHERE EXISTS ( SELECT DEPARTMENT_ID
+					FROM EMP
+					WHERE LAST_NAME = 'Chen');
+
+
+=========================================
+
+## DML
+
+# 데이터베이스 언어
+- 정의어 : DDL => CREATE, ALTER, DROP, .....
+- 조작어 : DML => INSERT, UPDATE, DELETE
+- 제어어 : DCL => GRANT, REVOKE, .....
++
+- 검색어 : DQL => SELECT, .....
+
+# 데이터 조작어 : DML
+- DDL을 통해 정의가 되어야함(CREATE -> DML)
+- 로그가 남는다 => 작업기록 => 작업 취소를 위해서
+
+=========================================
+
+//학과 : ST_DEPT ( D_NO, D_NAME) 테이블 생성
+
+CREATE TABLE ST_DEPT(
+	D_NO	NUMBER(4),
+	D_NAME 	VARCHAR2(30)
+);
+
+# 자료 입력 - 1
+- INSERT INTO 테이블명(컬럼명, 컬럼명, ...) VALUES (값1, 값2, ....);
+
+INSERT INTO ST_DEPT(D_NO, D_NAME) VALUES(10, '국문과');
+INSERT INTO ST_DEPT(D_NO, D_NAME) VALUES(20, '수학과');
+INSERT INTO ST_DEPT(D_NO, D_NAME) VALUES(30, '물리과');
+
+# 자료 입력 - 2
+- 컬럼명 생략하기 => 테이블 생성 한 스키마 순으로 자료입력
+
+INSERT INTO ST_DEPT VALUES(40, '영문과');
+
+INSERT INTO ST_DEPT VALUES('체육과', 50);
+-> 스키마 순서에 맞지 않으므로 오류 (NUMBER형 자료자리에 CHAR이 왔기에 오류)
+
+# 자료 입력 -3
+- 컬럼명 생략하고, 일부 컬럼에만 자료 입력
+
+INSERT INTO ST_DEPT VALUES(60, NULL);
+-> 빈자리에 NULL을 넣어서 수량을 맞춰줘야함
+
+INSERT INTO ST_DEPT VALUES(70);
+->not enough values / 값의 갯수가 맞지 않으므로 오류
+
+# 자료 입력 - 4
+- 다른 테이블의 자료를 읽어서 대량으로 입력하는 방법
+
+INSERT INTO ST_DEPT
+	쿼리문;
+
+//DEPT 테이블에서 DEPARTMENT_ID의 값 중 80, 90, 100에 해당하는 인원만 긁어오기
+INSERT INTO ST_DEPT
+	SELECT DEPARTMENT_ID, DEPARTMENT_NAME
+FROM DEPT
+WHERE DEPARTMENT_ID IN ( 80, 90, 100) ;
+
+
+=================================================
+
+# 자료 수정
+
+UPDATE 테이블명
+SET 컬럼명 = 값 [, 컬럼명 = 값, ....] ;
+==>모든 ROW의 컬럼의 값이 수정된다 ---조심!!!
+
+UPDATE 테이블명
+SET 컬럼명 = 값 [, 컬럼명 = 값, ....] 
+WHERE 조건식 ;
+==> 원하는 특정 행의 자료를 수정
+
+UPDATE 테이블명
+SET 컬럼명 = 값 [, 컬럼명 = 값, ....] 
+WHERE 조건식 ;
+//값 자리에 서브쿼리가 올 수도 있음
+
+UPDATE ST_DEPT
+SET	   D_NAME = '생물과'
+WHERE D_NO = 30 ;
+
+=================================================
+
+# 자료 삭제
+
+DELETE 
+FROM 테이블명 ;
+==> 해당 테이블에 입력한 모든 자료가 전부 삭제됨 --- 조심!!!
+
+DELETE
+FROM ST_DEPT
+WHERE D_NO IN (40, 60); 
+//학과 40, 60에 해당되는 데이터 삭제
+
+
+* 30학과의 학과명을 삭제
+UPDATE ST_DEPT
+SET D_NAME = NULL
+WHERE D_NO = 30;
+ 
+
+
+
+
+
+
+
+
