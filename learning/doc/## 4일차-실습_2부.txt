@@ -1,0 +1,334 @@
+## 4일차-실습_2부
+
+## DCL
+
+SELECT * FROM T_EMP;
+
+- 권한부여
+
+//GRANT 권한명 ON 테이블명 TO 권한수령자;
+SELECT * FROM ST20.T_EMP;
+//권한이 없어 읽기 안됨
+==>ORA-00942: table or view does not exist
+
+GRANT SELECT ON T_EMP TO PUBLIC;
+//모든이에게 읽는 권한 주기
+
+GRANT SELECT, INSERT, DELETE ON T_EMP TO PUBLIC;
+//모든이에게 읽기, 추가, 제거 권한 주기
+
+--------------------------------------------------------------------------------
+
+- 권한부여 - 옵션
+
+GRANT SELECT ON T_EMP TO ST16 WITH GRANT OPTION;
+//ST16에게 T_EMP테이블 읽기권한을 부여권한과 함께 부여
+
+GRANT SELECT ON ST14.T_EMP TO ST20 WITH GRANT OPTION;
+//ST14에게 받은 읽기권한을 ST20에게도 읽기권한 부여
+
+--------------------------------------------------------------------------------
+
+- 권한회수
+
+//REVOKE 권한명 ON 테이블명 FORM 권한수령자;
+REVOKE SELECT ON T_EMP FROM PUBLIC;
+// 권한을 받았던 이들에게서 읽기 권한 회수
+
+REVOKE SELECT ON ST14.T_EMP FROM ST20;
+//(ST14에게 받은 읽기권한을 ST20에게도 읽기권한 부여) 권한 회수
+
+REVOKE SELECT ON ST14.T_EMP FROM ST20 CASCADE;
+//(ST14에게 받은 읽기권한을 ST20에게도 읽기권한 부여) 권한 회수+꼬리회수
+//부여받은이가 추가로 다른이에게 부여했다면 그 다른이에게서도 회수
+
+=============================================
+
+## ROLE
+
+- 권한 묶음
+
+# ROLE 생성
+CREATE ROLE MY_ROLE15;
+
+#ROLE에 권한 부여하기
+GRANT SELECT ON EMP TO MY_ROLE15;
+GRANT SELECT ON DEPT TO MY_ROLE15;
+
+# ROLE을 원하는 유저에게 권한주기
+GRANT MY_ROLE15 TO PUBLIC;
+
+# ROLE을 원하는 유저 준 권한 회수
+REVOKE MY_ROLE15 FROM PUBLIC;
+
+--------------------------------------------------------------------------------
+
+CREATE SESSION
+
+
+=============================================
+
+
+## 트랜잭션 의미
+- 업무처리의 최소 업무단위
+- DML의 묶음
+- DDL, DCL, ... => 단독 트랜잭션 -> 단독이기에 롤백이 없고 DICTIONARY작업을통한 기록을함
+
+- 일관성
+// COMMIT 후부터 수정된 데이터로 읽어짐
+SELECT * FROM ST20.T_EMP;
+GRANT SELECT ON T_EMP TO PUBLIC;
+COMMIT;
+
+SELECT * FROM T_EMP;
+UPDATE T_EMP
+SET NAME='김우빈'
+WHERE E_NO = 11111;
+COMMIT;
+
+- 고립성(= 독립성)
+// 동시성 제어 = LOCK 정책( ROW LOCK )
+// 사용자가 아닌 DBMS에서 제공
+
+- 연속성
+//변경 전까지는 불변
+
+
+# 트랜잭션 연산
+
+- COMMIT
+ -> 트랜잭션 종료, DB에 영구 저장
+ -> LOCK 해제
+
+- ROLLBACK
+ -> 트랜잭션 종료, 트랜잭션 안에서의 작업들을 모두 취소
+ -> 트랜잭션 시작 이전 상태로 돌아가는 것
+
+- ROLLBACK 실습
+SELECT * FROM T_EMP;
+COMMIT;
+DELETE T_EMP
+WHERE E_NO = 11111;
+UPDATE T_EMP
+SET GENDER = 'F'
+WHERE E_NO = 22222;
+ROLLBACK;
+
+
+=============================================
+
+# 트랜잭션 시작
+	- 로그인 
+	- COMMIT, ROLLBACK 이후
+	- DDL, DCL(단독 트랜잭션) 실행 이후
+
+# 트랜잭션 종료
+	- COMMIT, ROLLBACK 시점
+	- DDL, DCL 이전 -> 자동 커밋으로 인한 종료
+	- 장애와 같은 예상치 못한 상황 -> ROLLBACK으로 종료됨
+	- 정상적 로그아웃 -> COMMIT 종료
+
+
+=============================================
+
+
+# SAVE POINT
+- 트랜잭션의 작업 중 일부만 취소하고자 할 때
+
+COMMIT;
+SELECT * FROM T_EMP;
+DELETE T_EMP
+WHERE E_NO = 11111;
+SAVEPOINT SP1;
+
+UPDATE T_EMP
+SET GENDER = 'F'
+WHERE E_NO = 22222;
+ROLLBACK TO SP1;
+//아래서부터 SP1 시점까지 ROLLBACK 됨
+COMMIT;
+//위에서부터 COMMIT이기에 DELETE문은 COMMIT 됨
+SELECT * FROM T_EMP;
+
+
+
+-- 문제
+
+COMMIT;
+INSERT ....
+INSERT ....			//여기까지 AUTO COMMIT
+CREATE ...			--------------------여기 기준 위아래로 트랜잭션 작업구분
+INSERT ....
+SAVEPOINT SP1;
+INSERT ....
+ROLLBACK TO SP1;	//SAVEPOINT 이전거 COMMIT
+INSERT ....
+COMMINT;			//롤백후 INSERT된 1건 COMMIT
+
+INSERT 된 수량 : 4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
