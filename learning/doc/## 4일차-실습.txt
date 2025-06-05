@@ -1,0 +1,289 @@
+
+## 데이터 정의어 : DDL(Data Definition Language)
+
+
+관리할 대상인 데이터들은 저장 객체로 데이터베이스에 저장한다
+데이터베이스에 저장된 객체를 오브젝트라고 한다.(EX. 테이블-2차원표)
+데이터를 저장하기 위한 저장 공간을 세그먼트라고한다.
+오브젝트들을 생성, 수정 삭제 등 관리하기 위해서 사용하는 언어를 DDL이라고 한다
+
+DDL을 통해 테이블 생성 시, 지정해야 할 요소
+테이블 이름 / 컬럼 이름 / 컬럼 데이터 타입 / 컬럼 데이터 크기 / 제약조건
+
+# 데이터 타입
+# 문자
+- CHAR(N)
+ -> 고정길이 문자 데이터 / 2000 BYTE / 기본 1 BYTE
+ -> 학번, 사번, 우편번호, 주민번호 등과 같이 길이가 같은 것에 CHAR을 사용
+ -> Y/N, O/X, A/B/C
+
+- VARCHAR2(N), VARCHAR
+ -> 가변길이 문자 데이터 / 4000 BYTE / 기본 1 BYTE
+ -> 일반적인 문자 데이터 
+
+- LONG(N)
+ -> 가변길이 문자 데이터 / 2 GB 
+ -> 테이블에서 한 번만 사용가능
+ -> 사용자제를 권고 --> CLOB 사용 권장
+
+- CLOB
+ -> 대용량 텍스트 데이터 타입 / 4 GB 
+ -> LONG 타입 개선한 데이터 타입
+
+
+# 숫자
+- 정수
+ -> (컬럼명) NUMBER ( 전체자릿수)
+ -> A NUMBER(3) : 0~999
+
+- 실수
+ -> (컬럼명) NUMBER ( 전체자릿수, 소숫이하자릿수)
+ -> A NUMBER(5, 2) : 0.0 ~ 999.99
+//100점 점수 항목 3개를 소숫점 2자리까지 표기
+ -> B NUMBER(2, 2) : 0.0 ~ 0.99
+// 0.0~ 0.99까지 표기하고 싶을 때 -> 1의 자리가 상시 0이라 제외 가능
+
+
+# 날짜
+- DATE
+ -> 세기, 년, 월, 일, 시, 분, 초
+ -> 생일, 기념일, 특별한 날짜...
+
+-  TIMESTAMP
+ -> 세기, 년, 월, 일, 시, 분, 초 + 초의 밀리세컨 단위
+ ->로그성 날짜 데이터
+
+# 이진데이터(Ex. 사진)
+- 이런게 있다~정도
+
+
+#######################################################
+
+# 테이블 생성 : CREATE - 이름 지정 규칙
+- 문자로 시작
+- 문자의 길이는 1~30 이내
+- 보편적으로 A~Z, a~z, 0~9, _ 를 사용($, # 도 있지만 거의 사용하지 않음)
+- 동일한 사용자가 소유한 객체 이름은 중복 불가
+- 예약어는 사용 불가
+
+CREATE TABLE 테이블명(
+	컬럼명 데이터타입(크기) 제약조건 제약조건 제약조건,
+	컬럼명 데이터타입(크기) 제약조건,
+	컬럼명 데이터타입(크기) 제약조건 제약조건,
+	...
+);
+
+//샘플
+CREATE TABLE ST(
+	S_NO		CHAR(8), 
+	NAME	VARCHAR2(100),
+	BIRTH	DATE
+);
+
+//데이터 스키마 확인
+DESC ST;
+
+--------------------------------------------------------------------------------
+
+# 테이블 구조 변경 : ALTER
+- ADD: 컬럼 추가
+- MODIFY: 컬럼의 타입이나 사이즈 수정, 보통의 경우 사이즈 확대
+- DROP: 컬럼 삭제
+- RENAME COLUM: 컬럼명 변경
+
+//ST테이블에 이메일과 전화번호 추가
+//EMAIL, PHONE 컬럼 추가
+ALTER TABLE ST
+ADD ( EMAIL VARCHAR2(100) , PHONE VARCHAR2(13));
+-> 컬럼 여러개 추가시, 적은 순으로 추가됨
+
+//ST테이블 학번 8자리-> 10자리 변경
+//S_NO 컬럼의 사이즈 확대
+ALTER TABLE ST
+MODIFY(S_NO CHAR(10));
+
+//전화번호 컬럼 삭제
+//필요 없는 컬럼 삭제
+ALTER TABLE ST
+DROP (PHONE);
+
+ALTER TABLE ST
+DROP COLUMN PHONE;
+
+//학번의 컬럼명 변경
+//컬럼명 변경
+ALTER TABLE ST
+RENAME COLUMN S_NO TO S_ID;
+->RENAME COLUMN (A) TO (B)
+--------------------------------------------------------------------------------
+
+# 테이블 삭제 : DROP
+DROP TABLE 테이블명;
+-> 테이블 구조 + 입력 데이터 모두 삭제
+
+# 테이블 이름 변경 : RENAME
+RENAME ST TO ST1;
+->RENAME (A) TO (B)
+
+=============================================
+
+# KEY
+- 튜플을 식별
+//내가 사장이라면 사원의 무엇을 알아야 하는가
+사원: 사번, 이름, 생일, 실적수?, 주소, 직급, 연봉, 부서, 입사일, 학력, 경력, 부양가족, 취미, 전공, .... , 이메일, 전화, 주민번호, ...
+
+//유니크해서 식별하는데 도움이 되는것(후보키)
+사번
+주민번호
+이메일
+전화번호
+
+- (슈퍼키)SUPERKEY: 식별가능한 키의 조합
+- (후보키)CANDIDATEKEY: 식별 가능한데 짧다, 최서성
+- (기본키)PRIMARYKEY: DBA가 후보키 중에 선택한 키 / NOT NULL, UNIQUE
+- (대체키)ALTERNATEKEY: 후보키-기본키
+- (외래키)FOREIGNKEY: 참조키/참조하는 테이블의 PK 중에 하나가 오거나 NULL이 온다
+
+--------------------------------------------------------------------------------
+
+# 테이블 생성 시 제약조건
+- PRIMARY KEY : 키본키, 테이블당 하나만 가능
+- FOREIGN KEY : 외래키, 테이블에 여러개 가능
+- NOT NULL : 생략불가, 필수입력
+- UNIQUE : 중복불가
+- CHECK (조건식) : 조건에 맞는 값만 입력
+
+- DEFAULT : 생략시 기본값으로 입력사용
+
+--------------------------------------------------------------------------------
+
+//부서테이블 : T_DEPT
+T_DEPT(D_NO, D_NAME)
+//사원테이블 : T_EMP
+T_EMP(E_NO, NAME, GENDER, SALARY, EMAIL, HIRE_DATE, D_NO)
+
+CREATE TABLE T_DEPT(
+	D_NO 	NUMBER(2) 	PRIMARY KEY,
+	D_NAME 	VARCHAR2(50) 	NOT NULL
+);
+
+CREATE TABLE T_EMP(
+	E_NO		NUMBER(5)	PRIMARY KEY,
+	NAME	VARCHAR2(50)	NOT NULL,
+	GENDER	CHAR(1)		CHECK (GENDER IN ('F', 'M')) NOT NULL,
+	SALARY	NUMBER(10)	DEFAULT 0, 
+	EMAIL	VARCHAR2(100)	UNIQUE,
+	HIRE_DATE	DATE			DEFAULT SYSDATE,
+	D_NO	NUMBER(2)	REFERENCES T_DEPT(D_NO)
+);
+
+--------------------------------------------------------------------------------
+
+# 제약조건 확인
+INSERT INTO T_DEPT VALUES ( 10, '운영부');
+INSERT INTO T_DEPT VALUES ( 20, '생산부');
+INSERT INTO T_DEPT VALUES ( 30, '교육부');
+
+//이미 생성된 컬럼값을 다시 재삽입을 하였을 경우
+INSERT INTO T_DEPT VALUES ( 10, '운영부');
+-->오류 보고 -ORA-00001: unique constraint (ST15.SYS_C00534472) violated
+-->SYS_C00534472 : 제약조건
+
+# 제약조건 확인
+- 제약조건 딕셔너리 : USER_CONSTRAINTS
+
+SELECT * FROM USER_CONSTRAINTS
+WHERE TABLE_NAME = 'T_DEPT';
+==> 테이블명은 대문자
+
+//NOT NULL자리에 NULL을 넣었을 때
+INSERT INTO T_DEPT VALUES ( 40, NULL);
+==>SQL 오류: ORA-01400: cannot insert NULL into ("ST15"."T_DEPT"."D_NAME")
+
+- T_EMP 테이블에 자료 입력
+INSERT INTO T_EMP VALUES( 11111, '김이박', 'M', 50000000, 'A@A.COM', '2000-10-10', 20);
+
+//'M', 'F'를 CHECK하는 곳에 다른것을 넣었을 때
+INSERT INTO T_EMP VALUES( 22222, '박최정', 'B', 50000000, 'B@A.COM', '2000-10-10', 20);
+==>오류 보고 -ORA-02290: check constraint (ST15.SYS_C00534535) violated
+
+//외래키 값 잘못 입력
+INSERT INTO T_EMP VALUES( 33333, '아무개', 'M', 70000000, 'C@A.COM', '2000-10-10', 50);
+==>오류 보고 - ORA-02291: integrity constraint (ST15.SYS_C00534538) violated - parent key not found
+
+--------------------------------------------------------------------------------
+
+# 테이블 생성 방법
+
+1. 정석
+CREATE TABLE 테이블명 (, , , , );
+
+2. 복사하는 방법
+CREATE TABLE 테이블명
+AS
+SELECT * FROM HR.EMP;
+==> 스키마 + 자료 복사
+==> 제약조건은 NOT NULL만 복사
+
+//TTT테이블을 만드는데 구성으로 T_EMP 테이블을 가져옴
+CREATE TABLE TTT
+AS
+SELECT * FROM T_EMP;
+
+//TTT테이블의 제약조건 확인
+SELECT *
+FROM USER_CONSTRAINTS
+WHERE TABLE_NAME = 'TTT';
+==> NOT NULL 제외하고 복사 안 됨
+
+3. 조건에 맞는 내용만 다른 테이블로 복사
+//EMP테이블에서 월급 10000 이상인 구성을 TTT1 테이블로 가져옴
+CREATE TABLE TTT1
+AS
+SELECT * FROM EMP
+WHERE SALARY >= 10000;
+
+4.
+기존 테이블의 스키마만 복사
+//조건으로 엉뚱한 FALSE만 나오게함
+CREATE TABLE TTT2
+AS
+SELECT * FROM EMP
+WHERE 1 = 0;
+==> 모두 거짓이므로 내용없이 스키마만 복사
+
+--------------------------------------------------------------------------------
+# 제약조건 기술 위치에 따른 구분
+
+- 컬럼레벨 제약조건
+//컬럼 옆에 제약조건 기술
+CREATE TABLE T_DEPT1(
+	D_NO 	NUMBER(2) 	,
+	D_NAME 	VARCHAR2(100) 	NOT NULL
+);
+==>NOT NULL은 반드시 컬럼레벨에 기술
+
+- 테이블레벨 제약조건
+//컬럼 아래에 제약조건 기술
+//TTTT1(A, B, C) : PK -> A+B
+CREATE TABLE TTTT1(
+ D_NO NUMBER(2) ,
+ D_NAME VARCHAR2(100) NOT NULL,
+
+CONSTRAINT T_EMP PRIMARY KEY(D_NO)
+);
+==> ORA-02260 : table can have only one primary key
+
+CREATE TABLE TTTT2(
+A CHAR(2),
+B CHAR(3),
+C NUMBER(5),
+CONSTRAINT T_DEPT PRIMARY KEY (A)
+);
+
+//CONSTRAINT TDEPT_PK PRIMARY KEY (D_NO)
+//CONSTRAINT TDEPT_PK 	0000KEY 	( A)
+TDEPT_PK (모계)에서 (A)에 해당하는 컬럼의 00000KEY를 가져옴
+
+--------------------------------------------------------------------------------
+
