@@ -13,8 +13,6 @@
                 "/home/aa/Big2025/lib/lcd",
                 "/home/aa/Big2025/lib/sht20",
                 "/home/aa/Big2025/lib/st25",
-                "/usr/include/**",
-                "/usr/local/include/**",  
                 ""
             ],
             "browse": {
