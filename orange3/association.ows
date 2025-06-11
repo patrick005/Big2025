@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<scheme version="2.0" title="" description="">
+	<nodes>
+		<node id="0" name="CSV File Import" qualified_name="Orange.widgets.data.owcsvimport.OWCSVFileImport" project_name="Orange3" version="" title="csv_true_false" position="(166.0, 107.0)" />
+		<node id="1" name="Data Table" qualified_name="Orange.widgets.data.owtable.OWTable" project_name="Orange3" version="" title="Data Table" position="(307.0, 100.0)" />
+		<node id="2" name="File" qualified_name="Orange.widgets.data.owfile.OWFile" project_name="Orange3" version="" title="transposed_csv_File" position="(171.0, 334.0)" />
+		<node id="3" name="Data Table" qualified_name="Orange.widgets.data.owtable.OWTable" project_name="Orange3" version="" title="Data Table (1)" position="(287.0, 240.0)" />
+	</nodes>
+	<links>
+		<link id="0" source_node_id="0" sink_node_id="1" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="1" source_node_id="2" sink_node_id="3" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+	</links>
+	<annotations />
+	<thumbnail />
+	<node_properties>
+		<properties node_id="0" format="literal">{'_session_items': [], '_session_items_v2': [({'type': 'AbsPath', 'path': '/home/aa/Big2025/orange3/basket_analysis.csv'}, {'encoding': 'utf-8', 'delimiter': ',', 'quotechar': '"', 'doublequote': True, 'skipinitialspace': True, 'quoting': 0, 'columntypes': [{'start': 0, 'stop': 17, 'value': 'Auto'}], 'rowspec': [{'start': 0, 'stop': 1, 'value': 'Header'}], 'decimal_separator': '.', 'group_separator': ''})], 'compatibility_mode': False, 'controlAreaVisible': True, 'dialog_state': {'directory': '/home/aa/Big2025/orange3', 'filter': 'Text - comma separated (*.csv, *)'}, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x03=\x00\x00\x01\x03\x00\x00\x04t\x00\x00\x02q\x00\x00\x03&gt;\x00\x00\x01)\x00\x00\x04s\x00\x00\x02p\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80\x00\x00\x03&gt;\x00\x00\x01)\x00\x00\x04s\x00\x00\x02p', '__version__': 3}</properties>
+		<properties node_id="1" format="literal">{'auto_commit': True, 'color_by_class': True, 'controlAreaVisible': True, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00F\x00\x00\x00\x1b\x00\x00\x07u\x00\x00\x02\x1f\x00\x00\x00F\x00\x00\x00@\x00\x00\x07u\x00\x00\x02\x1f\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80\x00\x00\x00F\x00\x00\x00@\x00\x00\x07u\x00\x00\x02\x1f', 'select_rows': True, 'show_attribute_labels': True, 'show_distributions': False, 'stored_selection': {'rows': [], 'columns': []}, 'stored_sort': [], '__version__': 1}</properties>
+		<properties node_id="2" format="pickle">gASVbwgAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAxyZWNlbnRfcGF0aHOUXZQojB5v
+cmFuZ2V3aWRnZXQudXRpbHMuZmlsZWRpYWxvZ3OUjApSZWNlbnRQYXRolJOUKYGUfZQojAdhYnNw
+YXRolIwzL2hvbWUvYWEvQmlnMjAyNS9vcmFuZ2UzL2Jhc2tldF9hbmFseXNpc19udW1iZXIuY3N2
+lIwGcHJlZml4lIwHYmFzZWRpcpSMB3JlbHBhdGiUjBpiYXNrZXRfYW5hbHlzaXNfbnVtYmVyLmNz
+dpSMBXRpdGxllIwAlIwFc2hlZXSUaBCMC2ZpbGVfZm9ybWF0lE51YmgGKYGUfZQoaAmMRS9ob21l
+L2FhLy5sb2NhbC9saWIvcHl0aG9uMy4xMC9zaXRlLXBhY2thZ2VzL09yYW5nZS9kYXRhc2V0cy9p
+cmlzLnRhYpRoC4wPc2FtcGxlLWRhdGFzZXRzlGgNjAhpcmlzLnRhYpRoD2gQaBFoEGgSTnViaAYp
+gZR9lChoCYxIL2hvbWUvYWEvLmxvY2FsL2xpYi9weXRob24zLjEwL3NpdGUtcGFja2FnZXMvT3Jh
+bmdlL2RhdGFzZXRzL3RpdGFuaWMudGFilGgLaBZoDYwLdGl0YW5pYy50YWKUaA9oEGgRaBBoEk51
+YmgGKYGUfZQoaAmMSC9ob21lL2FhLy5sb2NhbC9saWIvcHl0aG9uMy4xMC9zaXRlLXBhY2thZ2Vz
+L09yYW5nZS9kYXRhc2V0cy9ob3VzaW5nLnRhYpRoC2gWaA2MC2hvdXNpbmcudGFilGgPaBBoEWgQ
+aBJOdWJoBimBlH2UKGgJjE4vaG9tZS9hYS8ubG9jYWwvbGliL3B5dGhvbjMuMTAvc2l0ZS1wYWNr
+YWdlcy9PcmFuZ2UvZGF0YXNldHMvaGVhcnRfZGlzZWFzZS50YWKUaAtoFmgNjBFoZWFydF9kaXNl
+YXNlLnRhYpRoD2gQaBFoEGgSTnViaAYpgZR9lChoCYxPL2hvbWUvYWEvLmxvY2FsL2xpYi9weXRo
+b24zLjEwL3NpdGUtcGFja2FnZXMvT3JhbmdlL2RhdGFzZXRzL2Jyb3duLXNlbGVjdGVkLnRhYpRo
+C2gWaA2MEmJyb3duLXNlbGVjdGVkLnRhYpRoD2gQaBFoEGgSTnViaAYpgZR9lChoCYxEL2hvbWUv
+YWEvLmxvY2FsL2xpYi9weXRob24zLjEwL3NpdGUtcGFja2FnZXMvT3JhbmdlL2RhdGFzZXRzL3pv
+by50YWKUaAtoFmgNjAd6b28udGFilGgPaBBoEWgQaBJOdWJljAtyZWNlbnRfdXJsc5RdlIwTc2F2
+ZWRXaWRnZXRHZW9tZXRyeZROjAtzaGVldF9uYW1lc5R9lIwGc291cmNllEsAjAN1cmyUaBCMDWRv
+bWFpbl9lZGl0b3KUfZSMC19fdmVyc2lvbl9flEsBjBBjb250ZXh0X3NldHRpbmdzlF2UKIwVb3Jh
+bmdld2lkZ2V0LnNldHRpbmdzlIwHQ29udGV4dJSTlCmBlH2UKIwGdmFsdWVzlH2UKIwJdmFyaWFi
+bGVzlF2UaDN9lGg/XZQoXZQojAVBcHBsZZSMFE9yYW5nZS5kYXRhLnZhcmlhYmxllIwQRGlzY3Jl
+dGVWYXJpYWJsZZSTlEsAjAExlIhlXZQojAVCcmVhZJRoR0sAaEiIZV2UKIwGQnV0dGVylGhHSwBo
+SIhlXZQojAZDaGVlc2WUaEdLAGhIiGVdlCiMBENvcm6UaEdLAGhIiGVdlCiMBERpbGyUaEdLAGhI
+iGVdlCiMBEVnZ3OUaEdLAGhIiGVdlCiMCUljZSBjcmVhbZRoR0sAaEiIZV2UKIwMS2lkbmV5IEJl
+YW5zlGhHSwBoSIhlXZQojARNaWxrlGhHSwBoSIhlXZQojAZOdXRtZWeUaEdLAGhIiGVdlCiMBU9u
+aW9ulGhHSwBoSIhlXZQojAVTdWdhcpRoR0sAaEiIZV2UKIwHVW5pY29ybpRoR0sAaEiIZV2UKIwG
+WW9ndXJ0lGhHSwBoSIhlXZQojAljaG9jb2xhdGWUaEdLAGhIiGVlc2g1SwF1jAphdHRyaWJ1dGVz
+lChoRF2UaEhhhpRoSl2UaEhhhpRoTF2UaEhhhpRoTl2UaEhhhpRoUF2UaEhhhpRoUl2UaEhhhpRo
+VF2UaEhhhpRoVl2UaEhhhpRoWF2UaEhhhpRoWl2UaEhhhpRoXF2UaEhhhpRoXl2UaEhhhpRoYF2U
+aEhhhpRoYl2UaEhhhpRoZF2UaEhhhpRoZl2UaEhhhpR0lIwFbWV0YXOUKYwKY2xhc3NfdmFyc5Qp
+jBJtb2RpZmllZF92YXJpYWJsZXOUXZR1Ymg6KYGUfZQoaD19lChoP12UaDN9lGg/XZQoXZQojAxz
+ZXBhbCBsZW5ndGiUaEWMEkNvbnRpbnVvdXNWYXJpYWJsZZSTlEsAaBCIZV2UKIwLc2VwYWwgd2lk
+dGiUaJZLAGgQiGVdlCiMDHBldGFsIGxlbmd0aJRolksAaBCIZV2UKIwLcGV0YWwgd2lkdGiUaJZL
+AGgQiGVdlCiMBGlyaXOUaEdLAYwsSXJpcy1zZXRvc2EsIElyaXMtdmVyc2ljb2xvciwgSXJpcy12
+aXJnaW5pY2GUiWVlc2g1SwF1aGcojAxzZXBhbCBsZW5ndGiUSwKGlIwLc2VwYWwgd2lkdGiUSwKG
+lIwMcGV0YWwgbGVuZ3RolEsChpSMC3BldGFsIHdpZHRolEsChpR0lGiJKWiKjARpcmlzlF2UKIwL
+SXJpcy1zZXRvc2GUjA9JcmlzLXZlcnNpY29sb3KUjA5JcmlzLXZpcmdpbmljYZRlhpSFlGiLXZR1
+YmV1Lg==
+</properties>
+		<properties node_id="3" format="literal">{'auto_commit': True, 'color_by_class': True, 'controlAreaVisible': True, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00F\x00\x00\x00\x1b\x00\x00\x07u\x00\x00\x02\x1f\x00\x00\x00F\x00\x00\x00@\x00\x00\x07u\x00\x00\x02\x1f\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80\x00\x00\x00F\x00\x00\x00@\x00\x00\x07u\x00\x00\x02\x1f', 'select_rows': True, 'show_attribute_labels': True, 'show_distributions': False, 'stored_selection': {'rows': [], 'columns': []}, 'stored_sort': [], '__version__': 1}</properties>
+	</node_properties>
+	<session_state>
+		<window_groups />
+	</session_state>
+</scheme>
