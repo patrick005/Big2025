@@ -18,6 +18,7 @@
 		<node id="14" name="Select Columns" qualified_name="Orange.widgets.data.owselectcolumns.OWSelectAttributes" project_name="Orange3" version="" title="Select Columns (1)" position="(1070.0, 686.0)" />
 		<node id="15" name="Correlations" qualified_name="Orange.widgets.data.owcorrelations.OWCorrelations" project_name="Orange3" version="" title="Correlations" position="(1230.0, 688.0)" />
 		<node id="16" name="Save Data" qualified_name="Orange.widgets.data.owsave.OWSave" project_name="Orange3" version="" title="Save Data" position="(1371.0, 587.0)" />
+		<node id="17" name="Data Table" qualified_name="Orange.widgets.data.owtable.OWTable" project_name="Orange3" version="" title="Data Table (1)" position="(1160.0, 508.0)" />
 	</nodes>
 	<links>
 		<link id="0" source_node_id="0" sink_node_id="1" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
@@ -36,6 +37,7 @@
 		<link id="13" source_node_id="13" sink_node_id="14" source_channel="Matching Data" sink_channel="Data" enabled="true" source_channel_id="matching_data" sink_channel_id="data" />
 		<link id="14" source_node_id="14" sink_node_id="15" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
 		<link id="15" source_node_id="13" sink_node_id="16" source_channel="Matching Data" sink_channel="Data" enabled="true" source_channel_id="matching_data" sink_channel_id="data" />
+		<link id="16" source_node_id="13" sink_node_id="17" source_channel="Matching Data" sink_channel="Data" enabled="true" source_channel_id="matching_data" sink_channel_id="data" />
 	</links>
 	<annotations />
 	<thumbnail />
@@ -162,7 +164,8 @@ BnZhbHVlc5R9lCiMB2ZlYXR1cmWUTkr+////hpSMCXNlbGVjdGlvbpRdlCiMA2FnZZRLZoaUjBFh
 dmdfZ2x1Y29zZV9sZXZlbJRLZoaUZUr9////hpRoBUsDdYwKYXR0cmlidXRlc5R9lChoE0sCaBVL
 AowDYm1plEsCdYwFbWV0YXOUfZR1YmF1Lg==
 </properties>
-		<properties node_id="16" format="literal">{'add_type_annotations': True, 'auto_save': False, 'controlAreaVisible': True, 'filter': 'Comma-separated values (*.csv)', 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x03_\x00\x00\x01\\\x00\x00\x04}\x00\x00\x02\x18\x00\x00\x03_\x00\x00\x01\x81\x00\x00\x04}\x00\x00\x02\x18\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80\x00\x00\x03_\x00\x00\x01\x81\x00\x00\x04}\x00\x00\x02\x18', 'stored_name': 'health_new_data.csv', 'stored_path': '.', '__version__': 3}</properties>
+		<properties node_id="16" format="literal">{'add_type_annotations': False, 'auto_save': False, 'controlAreaVisible': True, 'filter': 'Comma-separated values (*.csv)', 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x03_\x00\x00\x017\x00\x00\x04}\x00\x00\x01\xf3\x00\x00\x03_\x00\x00\x01\\\x00\x00\x04}\x00\x00\x01\xf3\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80\x00\x00\x03_\x00\x00\x01\\\x00\x00\x04}\x00\x00\x01\xf3', 'stored_name': 'health_new_data.csv', 'stored_path': '.', '__version__': 3}</properties>
+		<properties node_id="17" format="literal">{'auto_commit': True, 'color_by_class': True, 'controlAreaVisible': True, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x00F\x00\x00\x00\x1b\x00\x00\x07u\x00\x00\x02\x1f\x00\x00\x00F\x00\x00\x00@\x00\x00\x07u\x00\x00\x02\x1f\x00\x00\x00\x00\x00\x00\x00\x00\x07\x80\x00\x00\x00F\x00\x00\x00@\x00\x00\x07u\x00\x00\x02\x1f', 'select_rows': True, 'show_attribute_labels': True, 'show_distributions': False, 'stored_selection': {'rows': [], 'columns': []}, 'stored_sort': [], '__version__': 1}</properties>
 	</node_properties>
 	<session_state>
 		<window_groups />
