@@ -1,0 +1,1 @@
+CROPPED cropped_result.jpg

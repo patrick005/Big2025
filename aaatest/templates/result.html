@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>가상 피팅 결과</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="hero">
+    <div class="overlay">
+      <div class="left-box">
+        <h2 class="title">가상 피팅 결과</h2>
+        {% if result %}
+          <img src="{{ result }}" width="300"><br><br>
+        {% else %}
+          <p>결과 이미지를 불러올 수 없습니다.</p>
+        {% endif %}
+        <a href="{{ url_for('upload') }}"><button class="reupload-btn">다른 사진 업로드</button></a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

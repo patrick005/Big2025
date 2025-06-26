@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>추천 상의</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="hero">
+    <div class="overlay">
+      {% if user %}
+        <div class="top-right">
+          <span class="greeting" style="color: white;">{{ user.nickname }} 님</span>
+          <a href="/logout"><button class="logout-btn">로그아웃</button></a>
+        </div>
+      {% endif %}
+      <div class="left-box">
+        <h2 class="title">어울리는 상의를 선택해보세요</h2>
+        {% if photo %}
+          <img src="{{ url_for('static', filename=photo.split('static/')[-1]) }}" width="200"><br>
+        {% endif %}
+        {% if items and items|length > 0 %}
+          <form method="post" action="{{ url_for('dress') }}">
+            <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+              {% for item in items %}
+                <div style="text-align: center;">
+                  <img src="{{ item.image }}" width="120"><br>
+                  <input type="radio" name="clothes_img" value="{{ item.image }}" required>
+                  <div style="color:white;">{{ item.name }}</div>
+                  <a href="{{ item.link }}" target="_blank" style="color:#fee500;">구매 링크</a>
+                </div>
+              {% endfor %}
+            </div>
+            <button type="submit" class="upload-btn" style="margin-top: 20px;">가상 피팅하기</button>
+          </form>
+        {% else %}
+          <p style="color:white;">추천된 옷이 없습니다. 다시 시도해주세요.</p>
+        {% endif %}
+        <a href="{{ url_for('upload') }}">
+          <button class="reupload-btn">다른 사진 업로드</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

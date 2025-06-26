@@ -1,0 +1,169 @@
+/* Reset & Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: #000;
+  overflow: hidden;
+}
+
+/* Hero Background */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url('/static/images/mmm.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Overlay for layout */
+.overlay {
+  position: absolute;
+  inset: 0;
+  padding: 2rem;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Top-right layout */
+.top-right {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+/* Title */
+.title {
+  font-size: 1.8rem;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/* Buttons */
+button {
+  background-color: #FEE500;
+  color: #3C1E1E;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background-color: #e0ca00;
+}
+
+/* Greeting */
+.greeting {
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: 1rem;
+  z-index: 2;
+}
+
+/* Upload content left box */
+.left-box {
+  align-self: flex-start;
+  margin-left: 5%;
+  max-width: 450px;
+  pointer-events: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+/* Image styling */
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 10px 0;
+  z-index: 2;
+}
+
+/* Form containers */
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 5% auto;
+  padding: 2rem;
+  background-color: #111;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"] {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+}
+
+/* Submit buttons in form */
+.login-btn, .signup-btn, .upload-btn, .reupload-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Upload main button */
+.upload-hero-btn {
+  font-size: 1.1rem;
+  padding: 0.9rem 2rem;
+}
+
+/* Responsive */
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 2.2rem;
+  }
+
+  button {
+    font-size: 1.1rem;
+    padding: 0.8rem 1.6rem;
+  }
+
+  .top-right {
+    top: 30px;
+    right: 30px;
+  }
+
+  .form-container {
+    margin-top: 10vh;
+  }
+}
