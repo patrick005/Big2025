@@ -8,18 +8,28 @@
 <body>
   <div class="form-container">
     <h2>로그인</h2>
-    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+    <!-- 🔔 Flash 메시지 표시 -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash-messages">
+          {% for message in messages %}
+            <li style="color: red;">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
     <form method="post">
       <input type="text" name="username" placeholder="아이디" required><br>
       <input type="password" name="password" placeholder="비밀번호" required><br>
-      <button type="submit" class="login-btn">로그인</button>
+      <button type="submit">로그인</button>
+      <p style="margin-top:10px;">
+        <a href="{{ url_for('reset.reset_request') }}">비밀번호를 잊으셨나요?</a>
+      </p>
     </form>
-    <hr>
-    <p>또는 SNS로 로그인</p>
-    <a href="/oauth">
-      <img src="{{ url_for('static', filename='/images/kakao_login_medium_narrow.png') }}" alt="카카오 로그인">
-    </a>
-    <p>계정이 없으신가요? <a href="/signup">회원가입</a></p>
+    <p>또는</p>
+    <a href="/login/kakao"><button class="kakao-btn">카카오 로그인</button></a>
   </div>
 </body>
 </html>

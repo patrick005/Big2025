@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>MMM - 메인</title>
+  <title>Manners Maketh Man</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -17,11 +17,11 @@
       {% endif %}
     </div>
     <div class="hero-content">
-      <h1 class="title">Manners Maketh Man</h1>
-      <p>이미지를 업로드하고 어울리는 상의를 추천받아보세요</p>
-      <button class="btn upload-hero-btn" onclick="location.href='{{ url_for('upload') }}'">
-        사진 업로드 하러 가기
+      {% if user %}
+       <button class="btn upload-hero-btn" onclick="location.href='{{ url_for('upload.upload') }}'">
+        사진 업로드
       </button>
+      {% endif %}
     </div>
   </div>
 </body>

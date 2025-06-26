@@ -12,7 +12,7 @@ html, body {
   overflow: hidden;
 }
 
-/* Hero Background */
+/* Hero full-screen background */
 .hero {
   position: relative;
   width: 100%;
@@ -26,7 +26,7 @@ html, body {
   align-items: center;
 }
 
-/* Overlay for layout */
+/* Overlay container (transparency off for now) */
 .overlay {
   position: absolute;
   inset: 0;
@@ -36,10 +36,10 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
+  pointer-events: none; /* prevents blocking clicks */
 }
 
-/* Top-right layout */
+/* Buttons and top-right layout */
 .top-right {
   position: absolute;
   top: 20px;
@@ -47,21 +47,10 @@ html, body {
   display: flex;
   gap: 0.5rem;
   z-index: 10;
-  pointer-events: auto;
+  pointer-events: auto; /* allow button interaction */
 }
 
-/* Title */
-.title {
-  font-size: 1.8rem;
-  color: white;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  z-index: 2;
-  pointer-events: auto;
-}
-
-/* Buttons */
+/* All button styles */
 button {
   background-color: #FEE500;
   color: #3C1E1E;
@@ -78,7 +67,18 @@ button:hover {
   background-color: #e0ca00;
 }
 
-/* Greeting */
+/* Title */
+.title {
+  font-size: 1.8rem;
+  color: white;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/* Greeting text */
 .greeting {
   font-size: 1.1rem;
   color: white;
@@ -86,68 +86,16 @@ button:hover {
   z-index: 2;
 }
 
-/* Upload content left box */
-.left-box {
-  align-self: flex-start;
-  margin-left: 5%;
-  max-width: 450px;
-  pointer-events: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 2rem;
-  border-radius: 15px;
-}
-
-/* Image styling */
+/* Image inside content */
 img {
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
   border-radius: 10px;
   margin: 10px 0;
   z-index: 2;
 }
 
-/* Form containers */
-.form-container {
-  width: 100%;
-  max-width: 400px;
-  margin: 5% auto;
-  padding: 2rem;
-  background-color: #111;
-  border-radius: 10px;
-  color: white;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-}
-
-input[type="text"],
-input[type="password"],
-input[type="file"] {
-  width: 100%;
-  padding: 0.7rem;
-  margin-bottom: 1rem;
-  border-radius: 5px;
-  border: none;
-  font-size: 1rem;
-}
-
-/* Submit buttons in form */
-.login-btn, .signup-btn, .upload-btn, .reupload-btn {
-  width: 100%;
-  margin-top: 0.5rem;
-}
-
-.error {
-  color: #ff6b6b;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
-
-/* Upload main button */
-.upload-hero-btn {
-  font-size: 1.1rem;
-  padding: 0.9rem 2rem;
-}
-
-/* Responsive */
+/* Media Queries for larger screens */
 @media screen and (min-width: 768px) {
   .title {
     font-size: 2.2rem;
@@ -162,8 +110,19 @@ input[type="file"] {
     top: 30px;
     right: 30px;
   }
+}
 
-  .form-container {
-    margin-top: 10vh;
-  }
+.left-box {
+  align-self: flex-start;
+  margin-left: 5%;
+  max-width: 450px;
+  pointer-events: auto;
+}
+
+.flash-messages {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #ffe0e0;
+  border: 1px solid #ff8c8c;
+  border-radius: 5px;
 }

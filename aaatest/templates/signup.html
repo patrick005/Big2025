@@ -1,3 +1,4 @@
+# templates/signup.html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,19 +6,33 @@
   <title>회원가입</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <script>
-    function checkId() {
+    function checkUsername() {
       const username = document.getElementById("username").value;
-      if (!username) return;
-      fetch(`/check_id?username=${username}`)
-        .then(res => res.json())
+      const status = document.getElementById("check-result");
+
+      if (username.length < 4 || username.length > 12) {
+        status.textContent = "아이디는 4자 이상 12자 이하여야 합니다.";
+        status.style.color = "red";
+        return;
+      }
+
+      fetch(`/check_username?username=${encodeURIComponent(username)}`)
+        .then(response => response.json())
         .then(data => {
-          const msg = document.getElementById("check-msg");
-          if (data.exists) {
-            msg.innerText = "이미 사용 중인 아이디입니다.";
-            msg.style.color = "red";
+          if (data.available) {
+            status.textContent = "사용 가능한 아이디입니다.";
+            status.style.color = "green";
+            document.getElementById("password").disabled = false;
+            document.getElementById("name").disabled = false;
+            document.getElementById("email").disabled = false;
+            document.getElementById("submit-btn").disabled = false;
           } else {
-            msg.innerText = "사용 가능한 아이디입니다.";
-            msg.style.color = "green";
+            status.textContent = "이미 존재하는 아이디입니다.";
+            status.style.color = "red";
+            document.getElementById("password").disabled = true;
+            document.getElementById("name").disabled = true;
+            document.getElementById("email").disabled = true;
+            document.getElementById("submit-btn").disabled = true;
           }
         });
     }
@@ -26,16 +41,36 @@
 <body>
   <div class="form-container">
     <h2>회원가입</h2>
-    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flash-messages" style="background-color: #ffe0e0; border: 1px solid #ff8888; padding: 10px;">
+          {% for message in messages %}
+            <li style="color: red;">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
     <form method="post">
-      <input type="text" name="username" id="username" placeholder="아이디" required onblur="checkId()"><br>
-      <p id="check-msg" style="font-size: 0.9em;"></p>
-      <input type="password" name="password" placeholder="비밀번호" required><br>
-      <input type="password" name="password_confirm" placeholder="비밀번호 확인" required><br>
-      <input type="text" name="nickname" placeholder="닉네임" required><br>
-      <button type="submit" class="signup-btn">회원가입</button>
+      <input type="text" name="username" id="username" placeholder="아이디"
+             value="{{ request.form.get('username', '') }}" required>
+      <button type="button" onclick="checkUsername()">중복 확인</button><br>
+      <span id="check-result"></span><br>
+
+      <input type="password" name="password" id="password" placeholder="비밀번호" required disabled><br>
+
+      <input type="text" name="name" id="name" placeholder="이름"
+             value="{{ request.form.get('name', '') }}" required disabled><br>
+
+      <input type="email" name="email" id="email" placeholder="이메일"
+             value="{{ request.form.get('email', '') }}" required disabled><br>
+
+      <button type="submit" id="submit-btn" disabled>회원가입</button>
     </form>
-    <p>이미 계정이 있으신가요? <a href="/login">로그인</a></p>
+
+    <p>또는</p>
+    <a href="/signup/kakao"><button class="kakao-btn">카카오 회원가입</button></a>
   </div>
 </body>
 </html>

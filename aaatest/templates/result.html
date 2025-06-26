@@ -8,14 +8,41 @@
 <body>
   <div class="hero">
     <div class="overlay">
+      {% if user %}
+        <div class="top-right">
+          <span class="greeting" style="color: white;">{{ user.nickname }} 님</span>
+          <a href="/logout"><button class="logout-btn">로그아웃</button></a>
+        </div>
+      {% endif %}
+
       <div class="left-box">
         <h2 class="title">가상 피팅 결과</h2>
+
         {% if result %}
-          <img src="{{ result }}" width="300"><br><br>
+          <img src="{{ result }}" width="300" id="result-image"><br><br>
+          {% if item %}
+            <p style="color:white;">선택한 옷</p>
+            <img src="{{ item }}" width="150"><br>
+          {% endif %}
         {% else %}
           <p>결과 이미지를 불러올 수 없습니다.</p>
         {% endif %}
-        <a href="{{ url_for('upload') }}"><button class="reupload-btn">다른 사진 업로드</button></a>
+
+        <a href="{{ url_for('upload.upload') }}">
+          <button class="reupload-btn">다른 사진 업로드</button>
+        </a>
+
+        {% if previous %}
+        <a href="{{ previous }}">
+          <button class="reupload-btn" style="background-color:#999;">추천 옷 다시 보기</button>
+        </a>
+        {% endif %}
+
+        {% if result %}
+        <a href="{{ result }}" download="fitting_result.png">
+          <button class="reupload-btn" style="background-color:#27ae60;">결과 이미지 저장</button>
+        </a>
+        {% endif %}
       </div>
     </div>
   </div>
