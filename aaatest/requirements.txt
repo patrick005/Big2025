@@ -1,26 +1,20 @@
-# Flask 웹 프레임워크
+# aaatest/requirements.txt
+# Flask 웹 프레임워크 및 확장 기능
 Flask==2.3.3
-
-# SQLAlchemy - ORM
 Flask-SQLAlchemy==3.1.1
+Werkzeug==2.3.7
+python-dotenv==1.0.1
+
+# 암호화 및 인증
+bcrypt==4.1.2
 
 # 요청 처리 (Kakao/Naver API 포함 시 사용)
 requests==2.31.0
 
+# 수치 계산
+numpy==1.26.4
+
 # 이미지 처리
 Pillow==10.2.0
-
-# OpenCV - 이미지 합성 및 pose 이미지 처리
 opencv-python==4.9.0.80
-
-# MediaPipe - pose landmark 추출
 mediapipe==0.10.9
-
-# Selenium - 네이버 쇼핑 이미지 크롤링
-selenium==4.21.0
-
-# 웹 드라이버 (크롬용) → 시스템 설치 권장, pip 경로 설치 가능 시:
-# webdriver-manager==4.0.1  # optional
-
-# 환경에 따라 추가 설치 필요할 수 있음:
-# python-dotenv==1.0.1  # 환경변수 사용 시

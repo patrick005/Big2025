@@ -33,7 +33,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 with app.app_context():
     db.create_all()
     inspector = inspect(db.engine)
-    print("✅ DB 테이블 생성/확인 완료:", inspector.get_table_names())
+    print("DB 테이블 생성/확인 완료:", inspector.get_table_names())
 
 print("EMAIL_USER:", os.environ.get("EMAIL_USER"))
 print("EMAIL_PASS:", os.environ.get("EMAIL_PASS"))
@@ -50,4 +50,4 @@ app.register_blueprint(oauth_bp)
 app.register_blueprint(reset_bp)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, debug=True)
+    app.run(host='0.0.0.0', port=8099, debug=True)

@@ -74,6 +74,7 @@
 #         is_horizontal_aligned
 #     ])
 
+# frontal.py
 import numpy as np
 import mediapipe as mp
 

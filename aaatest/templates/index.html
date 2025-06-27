@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -20,6 +20,38 @@
       {% if user %}
        <button class="btn upload-hero-btn" onclick="location.href='{{ url_for('upload.upload') }}'">
         사진 업로드
+      </button>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>MMM - 메인</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="main-page">
+  <div class="hero">
+    <div class="background-layer"></div>
+    <img src="{{ url_for('static', filename='images/mmm-removebg-preview.png') }}" alt="person" class="person-image">
+    <div class="top-right">
+      {% if not user %}
+        <a href="/login"><button class="login-btn">로그인</button></a>
+        <a href="/signup"><button class="signup-btn">회원가입</button></a>
+      {% else %}
+        <span class="greeting">{{ user.nickname }} 님</span>
+        <a href="/logout"><button class="logout-btn">로그아웃</button></a>
+      {% endif %}
+    </div>
+    <div class="hero-content">
+      <h1 class="title">Manners Maketh Man</h1>
+      <p>로그인 후 이미지를 업로드하고 어울리는 상의를 추천받아보세요</p>
+      {% if user %}
+      <button class="btn upload-hero-btn" onclick="location.href='{{ url_for('upload') }}'">
+        사진 업로드 하러 가기
       </button>
       {% endif %}
     </div>

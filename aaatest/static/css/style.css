@@ -8,25 +8,70 @@
 html, body {
   height: 100%;
   font-family: 'Noto Sans KR', sans-serif;
-  background-color: #000;
   overflow: hidden;
 }
 
-/* Hero full-screen background */
+body.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  background-color: #fff;
+  flex-direction: column;
+}
+
+/* Hero Background */
 .hero {
   position: relative;
   width: 100%;
   height: 100vh;
-  background-image: url('/static/images/mmm.jpg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center top;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Overlay container (transparency off for now) */
+/* 중앙에 있는 문구를 왼쪽 중앙으로 이동 */
+.main-page .hero-content {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  z-index: 2;
+  opacity: 0;   /* 처음엔 투명 */
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 6s;
+  text-align: left;
+  color: rgb(0, 0, 0);
+}
+
+/* 배경 레이어 */
+.main-page .background-layer {
+  position: absolute;
+  inset: 0;
+  background-image: url('/static/images/istockphoto-1044295184-612x612.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+  animation-delay: 1s;
+  z-index: 0;
+}
+
+/* 인물 이미지 */
+.main-page .person-image {
+  position: absolute;
+  top: 50%;
+  left: 5%;               /* 오른쪽 여백 */
+  transform: translateY(-50%);
+  max-height: 90vh;       /* 브라우저 창 높이에 맞게 자동 조정 */
+  opacity: 0;
+  animation: slideFadeInRight 1s ease forwards;
+  animation-delay: 3s;
+  z-index: 1;
+}
+
+/* Overlay for layout */
 .overlay {
   position: absolute;
   inset: 0;
@@ -36,21 +81,36 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  pointer-events: none; /* prevents blocking clicks */
+  pointer-events: none;
 }
 
-/* Buttons and top-right layout */
-.top-right {
+/* Top-right layout */
+.main-page .top-right {
   position: absolute;
   top: 20px;
   right: 20px;
   display: flex;
   gap: 0.5rem;
   z-index: 10;
-  pointer-events: auto; /* allow button interaction */
+  pointer-events: auto;
+
+  opacity: 0;                               /* 처음에 안보이게 */
+  animation: fadeIn 1s ease forwards;       /* 서서히 나타나기 */
+  animation-delay: 6s;                      /* 6초 뒤에 등장 */
 }
 
-/* All button styles */
+/* Title */
+.title {
+  font-size: 1.8rem;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/* Buttons */
 button {
   background-color: #FEE500;
   color: #3C1E1E;
@@ -63,22 +123,36 @@ button {
   transition: background 0.2s ease;
 }
 
+.login-page button {
+  width: 100%;
+  background-color: #FEE500;
+  color: #3C1E1E;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 button:hover {
   background-color: #e0ca00;
 }
 
-/* Title */
-.title {
-  font-size: 1.8rem;
-  color: white;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  z-index: 2;
-  pointer-events: auto;
+.login-page button:hover {
+  background-color: #e0ca00;
 }
 
-/* Greeting text */
+.login-page a {
+  color: #000000;
+  text-decoration: none;
+}
+
+.login-page a:hover {
+  text-decoration: underline;
+}
+
+/* Greeting */
 .greeting {
   font-size: 1.1rem;
   color: white;
@@ -86,16 +160,224 @@ button:hover {
   z-index: 2;
 }
 
-/* Image inside content */
+/* Upload content left box */
+.left-box {
+  align-self: flex-start;
+  margin-left: 5%;
+  max-width: 450px;
+  pointer-events: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+/* Image styling */
 img {
-  max-width: 90%;
+  max-width: 100%;
   height: auto;
   border-radius: 10px;
   margin: 10px 0;
   z-index: 2;
 }
 
-/* Media Queries for larger screens */
+/* Form containers */
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 5% auto;
+  padding: 2rem;
+  background-color: #111;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.login-page .form-container {
+  flex-direction: column;          /* 수직 정렬 */
+  justify-content: center;         /* 세로 중앙 */
+  align-items: center;             /* 가로 중앙 */
+  text-align: center;
+
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 10px;
+  color: #000;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  margin: 0;                      /* ← 기존 margin 제거 */
+}
+
+.login-page .input-title {
+  font-size: 4rem;       /* 원하는 크기 */
+  font-weight: bold;     /* 글자 굵게 */
+  margin-bottom: 7rem;   /* 아래 여백 */
+  text-align: right;    /* 가운데 정렬 */
+  white-space: nowrap;   /* 줄바꿈 금지 */
+  
+  transform: translateX(-140px);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"] {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+}
+
+.login-page input[type="text"],
+.login-page input[type="password"] {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: none;
+  font-size: 1rem;
+  border: 1px solid #000;   /* 검은색 테두리 */
+}
+
+.signup-page input[type="text"],
+.signup-page input[type="password"] {
+  width: 100%;
+  padding: 0.7rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border: 1px solid #000;   /* ← 여기 검은색 테두리 */
+  font-size: 1rem;
+}
+
+/* Submit buttons in form */
+.login-btn, .signup-btn, .upload-btn, .reupload-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.error {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Upload main button */
+.upload-hero-btn {
+  font-size: 1.1rem;
+  padding: 0.9rem 2rem;
+}
+
+.login-page .kakao-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #FEE500;
+  color: #3C1E1E;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.login-page .kakao-btn:hover {
+  background-color: #e0ca00;
+}
+
+.login-page .signup-btn-link {
+  display: inline-block;
+  background-color: #FEE500;
+  color: #3C1E1E;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.login-page .signup-btn-link:hover {
+  background-color: #e0ca00;
+}
+
+.signup-page .login-link {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #FEE500;
+  color: #3C1E1E;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.signup-page .login-link:hover {
+  background-color: #e0ca00;
+}
+
+.signup-page .signup-btn {
+  margin-bottom: 1rem;
+}
+
+/* 로그인 페이지 - 상단 메인으로 버튼 */
+.login-page .back-to-main {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 50;
+}
+
+.login-page .back-to-main a {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #FEE500;
+  color: #3C1E1E;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.login-page .back-to-main a:hover {
+  background-color: #e0ca00;
+}
+
+.signup-page .back-to-main {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 50;
+}
+
+.signup-page .back-to-main a {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #FEE500;
+  color: #3C1E1E;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-right: 8px;  /* 버튼 간격 */
+}
+
+.signup-page .back-to-main a:hover {
+  background-color: #e0ca00;
+}
+
+.signup-page .form-container {
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.signup-page .form-container h2 {
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  color: #000;   /* 흰 배경에서 검은 글씨로 */
+}
+
+/* Responsive */
 @media screen and (min-width: 768px) {
   .title {
     font-size: 2.2rem;
@@ -110,19 +392,26 @@ img {
     top: 30px;
     right: 30px;
   }
+
+  .form-container {
+    margin-top: 10vh;
+  }
+
+ /* Fade-in animation */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
 }
 
-.left-box {
-  align-self: flex-start;
-  margin-left: 5%;
-  max-width: 450px;
-  pointer-events: auto;
+@keyframes slideFadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px) translateY(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(-50%);
+  }
 }
-
-.flash-messages {
-  padding: 10px;
-  margin-bottom: 10px;
-  background-color: #ffe0e0;
-  border: 1px solid #ff8c8c;
-  border-radius: 5px;
 }
