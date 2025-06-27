@@ -94,8 +94,8 @@
 import cv2
 import numpy as np
 
-PROTO_FILE = "/home/aa/Big2025/aaatest/model/pose_deploy_linevec_faster_4_stages.prototxt"
-WEIGHTS_FILE = "/home/aa/Big2025/aaatest/model/pose_iter_160000.caffemodel"
+PROTO_FILE = "./model/pose_deploy_linevec_faster_4_stages.prototxt"
+WEIGHTS_FILE = "./model/pose_iter_160000.caffemodel"
 N_POINTS = 15
 THRESHOLD = 0.1
 
@@ -107,7 +107,7 @@ RSHOULDER = 2
 LELBOW = 6
 RELBOW = 3
 
-def detect_upper_body(image, visualize_crop=False):
+def detect_upper_body(image, visualize_crop=True):
     net = cv2.dnn.readNetFromCaffe(PROTO_FILE, WEIGHTS_FILE)
     in_height, in_width = 368, 368
     frame_height, frame_width = image.shape[:2]

@@ -1,0 +1,5 @@
+{
+    "board": "arduino:avr:esplora",
+    "sketch": "arduino/esp32_cam_basic/esp32_cam_basic.ino",
+    "port": "/dev/ttyUSB0"
+}

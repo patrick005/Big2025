@@ -1,9 +1,10 @@
-# aaatest/requirements.txt
+#수정시 하단에 추가및 수정 , 주석으로 기능쓰기
 # Flask 웹 프레임워크 및 확장 기능
 Flask==2.3.3
 Flask-SQLAlchemy==3.1.1
 Werkzeug==2.3.7
 python-dotenv==1.0.1
+Flask-Migrate==4.1.0
 
 # 암호화 및 인증
 bcrypt==4.1.2

@@ -36,7 +36,6 @@
 #         items=items,
 #         user=session.get('user')
 #     )
-# routes/recommend.py
 from flask import Blueprint, render_template, session, redirect, url_for, request, flash
 
 recommend_bp = Blueprint('recommend', __name__)

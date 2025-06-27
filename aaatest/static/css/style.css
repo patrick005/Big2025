@@ -81,7 +81,7 @@ body.login-page {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 /* Top-right layout */

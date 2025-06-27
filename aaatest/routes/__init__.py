@@ -1,4 +1,3 @@
-# routes/__init__.py
 from .index import index_bp
 from .login import login_bp
 from .signup import signup_bp

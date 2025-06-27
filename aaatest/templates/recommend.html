@@ -20,17 +20,18 @@
       <img src="{{ url_for('static', filename=photo.split('static/')[-1]) }}" width="200"><br>
 
       {% if items %}
-        <div style="display:flex; flex-wrap:wrap; gap:20px;">
-          {% for item in items %}
-            <div>
-              <img src="{{ item.image }}" width="120"><br>
-              <span style="color:white;">{{ item.name }}</span><br>
-              <a href="{{ url_for('result.result', item=item.image) }}">
-                <button class="upload-btn">가상 피팅하기</button>
-              </a>
-            </div>
-          {% endfor %}
-        </div>
+        <form method="POST" action="{{ url_for('recommend.recommend') }}">
+          <div style="display:flex; flex-wrap:wrap; gap:20px;">
+            {% for item in items %}
+              <div>
+                <img src="{{ item.image }}" width="120"><br>
+                <input type="radio" name="clothes_img" value="{{ item.image }}" required>
+                <span style="color:white;">{{ item.name }}</span>
+              </div>
+            {% endfor %}
+          </div>
+          <button type="submit" class="upload-btn" style="margin-top:20px;">가상 피팅하기</button>
+        </form>
       {% else %}
         <p style="color:white;">추천된 옷이 없습니다. 다시 시도해주세요.</p>
         <ul style="color:lightgray; font-size: 12px;">
@@ -46,12 +47,6 @@
     </div>
   </div>
 </div>
-
-{% if not items %}
-<script>
-  console.warn('추천된 아이템 없음. HTML 크롤링 실패 또는 차단 가능성.');
-</script>
-{% endif %}
 
 </body>
 </html>

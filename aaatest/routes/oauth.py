@@ -12,8 +12,11 @@ def login_kakao():
     kakao_rest_api_key = os.environ.get('KAKAO_REST_KEY', 'your_default_key')
     redirect_uri = url_for('oauth.oauth', _external=True)
     return redirect(
-        f"https://kauth.kakao.com/oauth/authorize?"
-        f"client_id={kakao_rest_api_key}&redirect_uri={redirect_uri}&response_type=code"
+        f"https://kauth.kakao.com/oauth/authorize"
+        f"?client_id={kakao_rest_api_key}"
+        f"&redirect_uri={redirect_uri}"
+        f"&response_type=code"
+        f"&prompt=login"  # ✅ 매번 로그인 창 띄우기
     )
 
 @oauth_bp.route('/signup/kakao')
@@ -28,37 +31,53 @@ def oauth():
         return "인증 코드가 없습니다", 400
 
     kakao_rest_api_key = os.environ.get('KAKAO_REST_KEY', 'your_default_key')
-    token_url = 'https://kauth.kakao.com/oauth/token'
     redirect_uri = url_for('oauth.oauth', _external=True)
-    payload = {
-        'grant_type': 'authorization_code',
-        'client_id': kakao_rest_api_key,
-        'redirect_uri': redirect_uri,
-        'code': code
-    }
-    headers = {'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'}
-    token_response = requests.post(token_url, data=payload, headers=headers)
+    token_response = requests.post(
+        'https://kauth.kakao.com/oauth/token',
+        data={
+            'grant_type': 'authorization_code',
+            'client_id': kakao_rest_api_key,
+            'redirect_uri': redirect_uri,
+            'code': code
+        },
+        headers={'Content-type': 'application/x-www-form-urlencoded;charset=utf-8'}
+    )
     token_json = token_response.json()
     if 'access_token' not in token_json:
-        error_desc = token_json.get('error_description', str(token_json))
-        return f"토큰 요청 실패: {error_desc}", 400
+        return f"토큰 요청 실패: {token_json.get('error_description', token_json)}", 400
 
     access_token = token_json['access_token']
-    user_info_response = requests.get(
+    user_info = requests.get(
         'https://kapi.kakao.com/v2/user/me',
         headers={'Authorization': f'Bearer {access_token}'}
-    )
-    user_info = user_info_response.json()
-    kakao_id = str(user_info['id'])
-    email = user_info.get('kakao_account', {}).get('email', f"{kakao_id}@kakao.com")
-    name = user_info.get('properties', {}).get('nickname', f"사용자_{kakao_id}")
+    ).json()
+
+    kakao_id = str(user_info.get('id'))
+    properties = user_info.get('properties', {})
+    account = user_info.get('kakao_account', {})
+    profile = account.get('profile', {})
+
+    nickname = properties.get('nickname') or profile.get('nickname', f"사용자_{kakao_id}")
+    email = account.get('email', f"{kakao_id}@kakao.com")
+    name = profile.get('nickname', nickname)
 
     user = User.query.filter_by(kakao_id=kakao_id).first()
-    if not user:
-        user = User(kakao_id=kakao_id, name=name, email=email)
+    auth_type = session.get('auth_type')
+
+    if auth_type == 'signup':
+        if user:
+            return "이미 가입된 카카오 계정입니다. 로그인 해주세요.", 400
+        user = User(kakao_id=kakao_id, name=name, nickname=nickname, email=email)
         db.session.add(user)
         db.session.commit()
 
+    elif auth_type == 'login':
+        if not user:
+            return "등록되지 않은 카카오 계정입니다. 먼저 회원가입 해주세요.", 400
+
+    else:
+        return "잘못된 접근입니다. 로그인 또는 회원가입을 선택해주세요.", 400
+
     session.permanent = True
-    session['user'] = {'id': user.id, 'nickname': name}
+    session['user'] = {'id': user.id, 'nickname': user.nickname}
     return redirect(url_for('upload.upload'))
