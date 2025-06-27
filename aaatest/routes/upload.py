@@ -27,10 +27,10 @@
 #     return render_template('upload.html', user=session.get('user'))
 
 # routes/upload.py
-from flask import Blueprint, render_template, request, redirect, session, url_for, current_app
+from flask import Blueprint, render_template, request, redirect, session, url_for, current_app, flash, jsonify
 from werkzeug.utils import secure_filename
 import os
-
+from models import db
 from test_python_only.upload_img_check import check_uploaded_image
 
 upload_bp = Blueprint('upload', __name__)
@@ -38,7 +38,8 @@ upload_bp = Blueprint('upload', __name__)
 @upload_bp.route('/upload', methods=['GET', 'POST'])
 def upload():
     if 'user' not in session:
-        return redirect(url_for('index.index'))
+        flash("업로드하려면 먼저 로그인해주세요.")
+        return redirect(url_for('login.login_page'))
 
     if request.method == 'POST':
         if 'photo' not in request.files:
@@ -52,21 +53,21 @@ def upload():
         file.save(file_path)
         session['photo_path'] = file_path
 
-        # ▶ 상반신 + 정면 체크 수행
-        result = check_uploaded_image(file_path)
-        print(f"[Image Check Result] {result}")
-
-        if result == "VALID":
-            return redirect(url_for('recommend.recommend'))  # 다음 페이지 이동
-        elif result == "NOT_FRONTAL":
-            return "Uploaded image is not frontal.", 400
-        elif result == "CHEST_NOT_DETECTED":
-            return "Chest not detected in uploaded image.", 400
-        elif result == "LANDMARK_NOT_FOUND":
-            return "Pose landmarks not found.", 400
-        elif result == "DECODE_FAIL":
-            return "Image decode failed.", 400
-        else:
-            return "Unknown error.", 500
+        # loading.html로 이동 (자바스크립트가 /image_check 호출)
+        return render_template(
+            'loading.html',
+            stage='업로드된 이미지 적합성 체크'
+        )
 
     return render_template('upload.html', user=session.get('user'))
+
+@upload_bp.route('/image_check')
+def image_check():
+    photo_path = session.get('photo_path')
+    if not photo_path:
+        return jsonify({'status': 'NO_IMAGE'})
+
+    status = check_uploaded_image(photo_path)
+    session['check_result'] = status  # recommend에서 사용할 수 있음
+
+    return jsonify({'status': status})

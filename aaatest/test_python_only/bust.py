@@ -94,8 +94,8 @@
 import cv2
 import numpy as np
 
-PROTO_FILE = "./model/pose_deploy_linevec_faster_4_stages.prototxt"
-WEIGHTS_FILE = "./model/pose_iter_160000.caffemodel"
+PROTO_FILE = "/home/aa/Big2025/aaatest/model/pose_deploy_linevec_faster_4_stages.prototxt"
+WEIGHTS_FILE = "/home/aa/Big2025/aaatest/model/pose_iter_160000.caffemodel"
 N_POINTS = 15
 THRESHOLD = 0.1
 
@@ -164,12 +164,17 @@ def detect_upper_body(image, visualize_crop=False):
             y2 = min(frame_height, y2)
 
             cropped = image[y1:y2, x1:x2].copy()
-            if visualize_crop:
-                cv2.imshow("Cropped Upper Body", cropped)
-                print("[Info] Press ESC to exit preview.")
-                if cv2.waitKey(0) == 27:
-                    cv2.destroyAllWindows()
-
+            # --- Debugging code (now commented out) ---
+            # if visualize_crop:
+            #     cv2.imshow("Cropped Upper Body", cropped)
+            #     print("[Info] Press ESC to exit preview.")
+            #     if cv2.waitKey(0) == 27:
+            #         cv2.destroyAllWindows()
+            #         time.sleep(0.5)
+            # --- End of debugging code ---
+            
+            # If the crop is successful, return the cropped image.
+            print("[Status] Upper body successfully cropped.")
             return "UPPER_BODY", cropped
-
+    
     return "Upper Body", points

@@ -1,4 +1,4 @@
-<!-- templates/loading.html -->
+<!-- templates/loading.html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -21,6 +21,64 @@
       color: #ccc;
     }
   </style>
+</head>
+<body>
+  <div class="loading-message">
+    {{ stage }} 중 입니다
+  </div>
+  <div class="sub-message">
+    ※ 조금 시간이 걸립니다. 기다려주세요.
+  </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>로딩 중...</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin-top: 15%;
+    }
+    .loading-message {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .sub-message {
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
+  <script>
+    async function checkStatus() {
+      try {
+        const response = await fetch("/image_check");
+        const result = await response.json();
+
+        if (result.status === "VALID") {
+          window.location.href = "/recommend";
+        } else if (["CHEST_NOT_DETECTED", "NOT_FRONTAL", "LANDMARK_NOT_FOUND", "DECODE_FAIL"].includes(result.status)) {
+          alert("이미지가 적합하지 않습니다: " + result.status);
+          window.location.href = "/upload";
+        } else {
+          setTimeout(checkStatus, 2000); // 2초 후 다시 확인
+        }
+      } catch (e) {
+        console.error("오류 발생:", e);
+        setTimeout(checkStatus, 3000);
+      }
+    }
+
+    window.onload = () => {
+      {% if stage == '업로드된 이미지 적합성 체크' %}
+        checkStatus();
+      {% endif %}
+    };
+  </script>
 </head>
 <body>
   <div class="loading-message">

@@ -50,4 +50,4 @@ app.register_blueprint(oauth_bp)
 app.register_blueprint(reset_bp)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8099, debug=True)
+    app.run(host='0.0.0.0', port=8097, debug=True)

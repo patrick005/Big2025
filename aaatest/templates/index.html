@@ -50,7 +50,7 @@
       <h1 class="title">Manners Maketh Man</h1>
       <p>로그인 후 이미지를 업로드하고 어울리는 상의를 추천받아보세요</p>
       {% if user %}
-      <button class="btn upload-hero-btn" onclick="location.href='{{ url_for('upload') }}'">
+      <button class="btn upload-hero-btn" onclick="location.href='{{ url_for('upload.upload') }}'">
         사진 업로드 하러 가기
       </button>
       {% endif %}
