@@ -1,0 +1,56 @@
+.recommend-section {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.image-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cropped-img {
+  border: 2px solid white;
+  margin-top: 10px;
+}
+
+.original-img {
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  width: 120px;
+}
+
+/* 새로 추가된 스타일 */
+.greeting,
+.cropped-img-label,
+.original-img-label,
+.item-name,
+.no-recommend-msg {
+  color: white;
+}
+
+.cropped-img-label,
+.original-img-label {
+  font-size: 14px;
+}
+
+.no-recommend-tips {
+  color: lightgray;
+  font-size: 12px;
+}
+
+.recommend-form {
+  margin-top: 30px;
+}
+
+.clothes-selection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.upload-btn {
+  margin-top: 20px;
+}

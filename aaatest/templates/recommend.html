@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -48,5 +48,70 @@
   </div>
 </div>
 
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>추천 상의</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/recommend.css') }}">
+</head>
+<body>
+<div class="hero">
+  <div class="overlay">
+    {% if user %}
+      <div class="top-right">
+        <span class="greeting">{{ user.nickname }} 님</span>
+        <a href="/logout"><button class="logout-btn">로그아웃</button></a>
+      </div>
+    {% endif %}
+
+    <div class="left-box">
+      <h2 class="title">어울리는 상의를 선택해보세요</h2>
+
+      <div class="recommend-section">
+        <div class="image-box">
+          {% if cropped_img_url %}
+            <p class="cropped-img-label">[검출된 상반신]</p>
+            <img src="{{ cropped_img_url }}" width="200" class="cropped-img">
+          {% endif %}
+        </div>
+
+        <div class="image-box">
+          <p class="original-img-label">[원본 이미지]</p>
+          <img src="{{ url_for('static', filename=photo.split('static/')[-1]) }}" class="original-img">
+        </div>
+      </div>
+
+      {% if items %}
+        <form method="POST" action="{{ url_for('recommend.recommend') }}" class="recommend-form">
+          <div class="clothes-selection">
+            {% for item in items %}
+              <div class="item-option">
+                <img src="{{ item.image }}" width="120"><br>
+                <input type="radio" name="clothes_img" value="{{ item.image }}" required>
+                <span class="item-name">{{ item.name }}</span>
+              </div>
+            {% endfor %}
+          </div>
+          <button type="submit" class="upload-btn">가상 피팅하기</button>
+        </form>
+      {% else %}
+        <p class="no-recommend-msg">추천된 옷이 없습니다. 다시 시도해주세요.</p>
+        <ul class="no-recommend-tips">
+          <li>사진에 사람이 명확하게 보이지 않거나</li>
+          <li>분석이 충분히 수행되지 않았을 수 있습니다.</li>
+        </ul>
+      {% endif %}
+
+      <a href="{{ url_for('upload.upload') }}">
+        <button class="reupload-btn">다른 사진 업로드</button>
+      </a>
+    </div>
+  </div>
+</div>
 </body>
 </html>
