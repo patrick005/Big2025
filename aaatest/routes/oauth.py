@@ -1,6 +1,5 @@
-# routes/oauth.py
 import os
-from flask import Blueprint, redirect, request, session, url_for
+from flask import Blueprint, redirect, request, session, url_for, flash, render_template
 import requests
 from models import db, User
 
@@ -16,7 +15,7 @@ def login_kakao():
         f"?client_id={kakao_rest_api_key}"
         f"&redirect_uri={redirect_uri}"
         f"&response_type=code"
-        f"&prompt=login"  # ✅ 매번 로그인 창 띄우기
+        f"&prompt=login"
     )
 
 @oauth_bp.route('/signup/kakao')
@@ -28,7 +27,7 @@ def signup_kakao():
 def oauth():
     code = request.args.get('code')
     if not code:
-        return "인증 코드가 없습니다", 400
+        return "인증 코드가 없습니다.", 400
 
     kakao_rest_api_key = os.environ.get('KAKAO_REST_KEY', 'your_default_key')
     redirect_uri = url_for('oauth.oauth', _external=True)
@@ -66,18 +65,30 @@ def oauth():
 
     if auth_type == 'signup':
         if user:
-            return "이미 가입된 카카오 계정입니다. 로그인 해주세요.", 400
-        user = User(kakao_id=kakao_id, name=name, nickname=nickname, email=email)
-        db.session.add(user)
-        db.session.commit()
+            # 이미 가입된 경우 로그인 상태로 index로
+            session.permanent = True
+            session['user'] = {'id': user.id, 'nickname': user.nickname}
+            flash("이미 가입된 카카오 계정으로 로그인되었습니다.")
+            return redirect(url_for('index.index'))  # index.html 렌더링하는 라우트 이름에 맞추세요
+        else:
+            # 신규 가입 처리
+            user = User(kakao_id=kakao_id, name=name, nickname=nickname, email=email)
+            db.session.add(user)
+            db.session.commit()
+            session.permanent = True
+            session['user'] = {'id': user.id, 'nickname': user.nickname}
+            flash("카카오 계정으로 회원가입이 완료되었습니다.")
+            return redirect(url_for('index.index'))
 
     elif auth_type == 'login':
         if not user:
-            return "등록되지 않은 카카오 계정입니다. 먼저 회원가입 해주세요.", 400
+            flash("등록되지 않은 카카오 계정입니다. 먼저 회원가입 해주세요.")
+            return redirect(url_for('signup.signup_page'))
+        else:
+            session.permanent = True
+            session['user'] = {'id': user.id, 'nickname': user.nickname}
+            flash("카카오 계정으로 로그인되었습니다.")
+            return redirect(url_for('index.index'))
 
     else:
         return "잘못된 접근입니다. 로그인 또는 회원가입을 선택해주세요.", 400
-
-    session.permanent = True
-    session['user'] = {'id': user.id, 'nickname': user.nickname}
-    return redirect(url_for('upload.upload'))
