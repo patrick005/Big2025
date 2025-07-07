@@ -1,0 +1,7 @@
+# requirements.txt
+segment-anything @ git+https://github.com/facebookresearch/segment-anything.git
+torch
+torchvision
+opencv-python
+matplotlib
+numpy

@@ -9,6 +9,7 @@ __pycache__/
 .*.cmd
 *.caffemodel
 *.pth
+*.exe
 
 raspberryPi/WiringPi/build/
 raspberryPi/WiringPi/wiringPi/*.o
